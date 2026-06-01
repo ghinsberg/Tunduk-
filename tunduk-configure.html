@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configure Your Yurt — Tündük</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:       #FAF6EE;
+      --parchment:   #EFE6D5;
+      --terracotta:  #B85C38;
+      --terra-light: #D4785A;
+      --soil:        #1C0E06;
+      --soil-mid:    #3A1F10;
+      --sage:        #6B7B5E;
+      --gold:        #C4923A;
+      --stone:       #9A8778;
+      --stone-light: #D4C8BC;
+      --text-dark:   #1C0E06;
+      --text-mid:    #5A4035;
+      --font-d: 'Cormorant Garamond', Georgia, serif;
+      --font-b: 'Jost', system-ui, sans-serif;
+      --w: 1300px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--parchment); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    a    { text-decoration: none; color: inherit; }
+    .wrap { width: 90%; max-width: var(--w); margin: 0 auto; }
+
+    /* NAV */
+    nav#nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0 clamp(1.5rem,5vw,5rem); height: 64px; display: flex; align-items: center; justify-content: space-between; background: #FAFAF7; box-shadow: 0 1px 0 rgba(26,20,16,.07); }
+    .nav-left, .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-link { font-size: .7rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: #1A1410; opacity: .55; transition: opacity .25s; text-decoration: none; }
+    .nav-link:hover, .nav-link.active { opacity: 1; }
+    nav#nav .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+    nav#nav .nav-logo svg { width: 28px; height: 28px; color: #1A1410; }
+    nav#nav .nav-logo-word { font-family: var(--font-d); font-size: 1.35rem; font-weight: 500; letter-spacing: .1em; color: #1A1410; }
+    .nav-quote { font-size: .68rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: #1A1410; opacity: .55; border-bottom: 1px solid rgba(26,20,16,.2); padding-bottom: 1px; transition: opacity .25s, border-color .25s; text-decoration: none; }
+    .nav-quote:hover { opacity: 1; border-color: #B85C38; }
+    /* ── MOBILE NAV ── */
+    .nav-hamburger {
+      display: none; cursor: pointer; z-index: 210;
+      width: 28px; height: 20px; position: relative;
+      flex-direction: column; justify-content: space-between;
+    }
+    .nav-hamburger span {
+      display: block; height: 1.5px; width: 100%; background: var(--ink);
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(9.25px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9.25px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--white); z-index: 199;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem; opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: auto; }
+    .mobile-menu a {
+      font-family: var(--font-d); font-size: 1.6rem; font-weight: 400;
+      letter-spacing: .08em; color: var(--ink); opacity: .7;
+      transition: opacity .25s;
+    }
+    .mobile-menu a:hover { opacity: 1; }
+    .mobile-menu .mm-cta {
+      margin-top: 1rem; font-family: var(--font-b);
+      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+      border-bottom: 1px solid var(--terra); padding-bottom: 2px;
+    }
+
+    @media(max-width:780px) {
+      .nav-left, .nav-right { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* PAGE HERO */
+    .page-hero { padding: 8.5rem 0 3.5rem; background: var(--soil); position: relative; overflow: hidden; }
+    .ph-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 60%, rgba(196,146,58,.18) 0%, transparent 55%), #1C0E06; }
+    .ph-content { position: relative; z-index: 2; }
+    .ph-breadcrumb { font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(250,246,238,.38); margin-bottom: 1.3rem; display: flex; align-items: center; gap: .7rem; }
+    .ph-breadcrumb a { color: var(--gold); }
+    .ph-breadcrumb span { opacity: .4; }
+    .ph-h1 { font-family: var(--font-d); font-size: clamp(2.6rem, 6.5vw, 5.5rem); font-weight: 300; font-style: italic; color: var(--cream); line-height: .95; letter-spacing: -.02em; margin-bottom: 1.1rem; }
+    .ph-sub { font-size: .88rem; color: rgba(250,246,238,.5); line-height: 1.7; max-width: 480px; }
+
+    /* PROGRESS STEPPER */
+    .stepper { background: var(--cream); border-bottom: 1px solid var(--stone-light); position: sticky; top: 64px; z-index: 90; }
+    .step-inner { display: flex; align-items: center; padding: 1.1rem 0; gap: 0; }
+    .step-item { display: flex; align-items: center; gap: .65rem; padding: .4rem 1.4rem .4rem 0; cursor: pointer; }
+    .step-num { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .7rem; font-weight: 600; border: 1.5px solid var(--stone-light); color: var(--stone); transition: all .3s; flex-shrink: 0; }
+    .step-lbl { font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); transition: color .3s; }
+    .step-item.active .step-num { background: var(--terracotta); border-color: var(--terracotta); color: #fff; }
+    .step-item.active .step-lbl { color: var(--terracotta); }
+    .step-item.done .step-num { background: var(--sage); border-color: var(--sage); color: #fff; }
+    .step-item.done .step-lbl { color: var(--sage); }
+    .step-div { flex: 1; height: 1px; background: var(--stone-light); max-width: 3.5rem; }
+    .step-div.done { background: var(--sage); }
+
+    /* MAIN LAYOUT */
+    .config-main { display: grid; grid-template-columns: 1fr; gap: 2.5rem; padding: 2.5rem 0 5rem; }
+    @media(min-width:1000px) { .config-main { grid-template-columns: 1fr 380px; gap: 3.5rem; } }
+
+    /* CONFIGURATOR PANELS */
+    .config-panel { }
+    .panel-step { display: none; animation: fadeIn .45s ease; }
+    .panel-step.active { display: block; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+
+    .panel-hdr { margin-bottom: 2rem; }
+    .panel-hdr p { font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--terracotta); margin-bottom: .7rem; }
+    .panel-hdr h2 { font-family: var(--font-d); font-size: clamp(1.7rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--soil); line-height: 1.1; }
+    .panel-hdr h2 em { font-style: italic; color: var(--terracotta); }
+
+    /* OPTION CARDS */
+    .opt-grid { display: grid; gap: 1.2rem; }
+    .opt-grid.cols2 { grid-template-columns: repeat(2, 1fr); }
+    .opt-grid.cols3 { grid-template-columns: repeat(3, 1fr); }
+    @media(max-width:680px) { .opt-grid.cols3 { grid-template-columns: repeat(2, 1fr); } .opt-grid.cols2 { grid-template-columns: 1fr; } }
+
+    .opt-card { border: 1.5px solid var(--stone-light); background: var(--cream); padding: 1.6rem; cursor: pointer; position: relative; transition: all .25s; user-select: none; }
+    .opt-card:hover { border-color: var(--terra-light); }
+    .opt-card.selected { border-color: var(--terracotta); background: #FFF9F5; }
+    .opt-card.selected::after { content: '✓'; position: absolute; top: .9rem; right: .9rem; width: 22px; height: 22px; background: var(--terracotta); border-radius: 50%; color: #fff; font-size: .72rem; display: flex; align-items: center; justify-content: center; }
+    .opt-tag  { font-size: .62rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .55rem; }
+    .opt-name { font-family: var(--font-d); font-size: 1.35rem; font-weight: 500; color: var(--soil); margin-bottom: .35rem; }
+    .opt-dim  { font-size: .78rem; color: var(--stone); margin-bottom: .7rem; }
+    .opt-feat { font-size: .77rem; color: var(--text-mid); line-height: 1.65; }
+    .opt-price{ font-family: var(--font-d); font-size: 1.5rem; font-weight: 300; color: var(--terracotta); margin-top: .9rem; }
+    .opt-price span { font-size: .75rem; color: var(--stone); font-family: var(--font-b); }
+
+    /* CHECK ADD-ONS */
+    .addon-grid { display: flex; flex-direction: column; gap: .9rem; margin-top: .5rem; }
+    .addon-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 1.4rem; background: var(--cream); border: 1.5px solid var(--stone-light); cursor: pointer; transition: border-color .25s; }
+    .addon-item:hover { border-color: var(--terra-light); }
+    .addon-item.selected { border-color: var(--terracotta); background: #FFF9F5; }
+    .addon-cb { width: 20px; height: 20px; border: 1.5px solid var(--stone-light); flex-shrink: 0; margin-top: .15rem; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .addon-item.selected .addon-cb { background: var(--terracotta); border-color: var(--terracotta); }
+    .addon-item.selected .addon-cb::after { content: '✓'; color: #fff; font-size: .72rem; }
+    .addon-body { flex: 1; }
+    .addon-name { font-size: .9rem; font-weight: 500; color: var(--soil); margin-bottom: .2rem; }
+    .addon-desc { font-size: .78rem; color: var(--stone); line-height: 1.6; }
+    .addon-p    { font-family: var(--font-d); font-size: 1.1rem; font-weight: 300; color: var(--terracotta); flex-shrink: 0; margin-top: .1rem; }
+
+    /* CONTACT FORM */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    @media(max-width:600px) { .form-grid { grid-template-columns: 1fr; } }
+    .field { display: flex; flex-direction: column; gap: .4rem; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: .68rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--text-mid); }
+    .field input, .field select, .field textarea {
+      padding: .85rem 1rem; background: var(--cream); border: 1.5px solid var(--stone-light); color: var(--soil);
+      font-family: var(--font-b); font-size: .87rem; outline: none; transition: border-color .25s; width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--terracotta); }
+    .field input::placeholder, .field textarea::placeholder { color: var(--stone); }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A8778' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+    .field textarea { resize: vertical; min-height: 110px; }
+
+    .radio-group { display: flex; flex-direction: column; gap: .55rem; }
+    .radio-item { display: flex; align-items: center; gap: .7rem; cursor: pointer; padding: .7rem .9rem; border: 1.5px solid var(--stone-light); background: var(--cream); transition: border-color .2s; }
+    .radio-item:hover { border-color: var(--terra-light); }
+    .radio-item input[type=radio] { accent-color: var(--terracotta); width: 16px; height: 16px; flex-shrink: 0; }
+    .radio-item span { font-size: .84rem; color: var(--text-mid); }
+
+    /* STEP NAV BUTTONS */
+    .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; }
+    .btn-prev { font-size: .74rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; color: var(--stone); padding: .85rem 1.6rem; border: 1.5px solid var(--stone-light); background: transparent; cursor: pointer; transition: all .25s; font-family: var(--font-b); }
+    .btn-prev:hover { border-color: var(--stone); color: var(--soil); }
+    .btn-next { font-size: .74rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; color: var(--cream); padding: .85rem 2rem; background: var(--terracotta); border: none; cursor: pointer; transition: background .25s; font-family: var(--font-b); }
+    .btn-next:hover { background: var(--terra-light); }
+    .btn-next:disabled { background: var(--stone-light); cursor: not-allowed; }
+
+    /* SUMMARY PANEL (sticky sidebar) */
+    .summary-panel { position: sticky; top: 115px; align-self: start; }
+    .sum-box { background: var(--soil); padding: 2.2rem; }
+    .sum-title { font-size: .65rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; }
+    .sum-yurt-name { font-family: var(--font-d); font-size: 1.95rem; font-weight: 300; font-style: italic; color: var(--cream); margin-bottom: .2rem; line-height: 1; }
+    .sum-kyrgyz { font-family: var(--font-d); font-style: italic; font-size: .9rem; color: rgba(250,246,238,.35); margin-bottom: 1.6rem; }
+    .sum-divider { height: 1px; background: rgba(250,246,238,.08); margin: 1.3rem 0; }
+    .sum-row { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .85rem; }
+    .sum-row:last-of-type { margin-bottom: 0; }
+    .sum-key { font-size: .75rem; color: rgba(250,246,238,.42); }
+    .sum-val { font-size: .82rem; color: rgba(250,246,238,.82); font-weight: 500; text-align: right; max-width: 58%; }
+    .sum-val.empty { color: rgba(250,246,238,.22); font-weight: 400; font-style: italic; }
+    .sum-total-row { display: flex; justify-content: space-between; align-items: baseline; }
+    .sum-total-lbl { font-size: .7rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: rgba(250,246,238,.4); }
+    .sum-total-val { font-family: var(--font-d); font-size: 2.2rem; font-weight: 300; color: var(--gold); }
+    .sum-note { font-size: .72rem; color: rgba(250,246,238,.28); line-height: 1.6; margin-top: 1rem; }
+
+    .sum-diagram { margin-top: 1.8rem; }
+    .sum-dia-box { background: rgba(250,246,238,.03); border: 1px solid rgba(250,246,238,.06); padding: 1.4rem; text-align: center; }
+
+    /* SUCCESS STATE */
+    .success-state { display: none; padding: 4rem 2rem; text-align: center; background: var(--cream); }
+    .success-state.show { display: block; }
+    .success-icon { width: 64px; height: 64px; background: var(--sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; }
+    .success-icon svg { width: 28px; height: 28px; color: #fff; }
+    .success-h2 { font-family: var(--font-d); font-size: 2.4rem; font-weight: 300; color: var(--soil); margin-bottom: .75rem; }
+    .success-p  { font-size: .88rem; color: var(--stone); line-height: 1.8; max-width: 440px; margin: 0 auto 1.75rem; }
+    .success-ref { font-size: .78rem; font-weight: 500; color: var(--text-mid); }
+
+    /* FOOTER */
+    footer { background: #100700; padding: 2.5rem 0; }
+    .foot-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .9rem; }
+    .foot-logo { display: flex; align-items: center; gap: .7rem; }
+    .foot-logo svg { width: 26px; height: 26px; color: var(--terracotta); }
+    .foot-logo span { font-family: var(--font-d); font-size: 1.2rem; font-weight: 500; color: var(--cream); }
+    .foot-copy { font-size: .73rem; color: rgba(250,246,238,.22); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-left">
+    <a href="tunduk-homeware.html" class="nav-link">Homeware</a>
+    <a href="tunduk-story.html" class="nav-link">Our Story</a>
+    <a href="tunduk-heritage.html" class="nav-link">Heritage</a>
+  </div>
+  <a href="tunduk-homepage-v2.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/><circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="1.5"/><line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="45" x2="69.44" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="48.66" x2="57" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="48.66" x2="23" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="45" x2="10.56" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="35" x2="10.56" y2="23" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="31.34" x2="23" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="31.34" x2="57" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="35" x2="69.44" y2="23" stroke="currentColor" stroke-width="1.2"/></svg>
+    <span class="nav-logo-word">Tündük</span>
+  </a>
+  <div class="nav-right">
+    <a href="tunduk-gallery.html" class="nav-link">Gallery</a>
+    <a href="tunduk-configure.html" class="nav-quote">Configure a Yurt</a>
+  </div>
+
+  <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open');">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="tunduk-homeware.html">Homeware</a>
+  <a href="tunduk-story.html">Our Story</a>
+  <a href="tunduk-heritage.html">Heritage</a>
+  <a href="tunduk-gallery.html">Gallery</a>
+  <a href="tunduk-configure.html" class="mm-cta">Configure a Yurt</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="wrap">
+    <div class="ph-content">
+      <p class="ph-breadcrumb"><a href="tunduk-homepage-v2.html">Tündük</a><span>/</span> Configure</p>
+      <h1 class="ph-h1">Configure<br>Your Yurt</h1>
+      <p class="ph-sub">Select your tier, size, and add-ons. We'll build your personalised quote and respond within 48 hours.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STEPPER -->
+<div class="stepper">
+  <div class="wrap">
+    <div class="step-inner">
+      <div class="step-item active" id="si-1" onclick="goStep(1)"><div class="step-num" id="sn-1">1</div><span class="step-lbl">Tier</span></div>
+      <div class="step-div" id="sd-1"></div>
+      <div class="step-item" id="si-2" onclick="goStep(2)"><div class="step-num" id="sn-2">2</div><span class="step-lbl">Size</span></div>
+      <div class="step-div" id="sd-2"></div>
+      <div class="step-item" id="si-3" onclick="goStep(3)"><div class="step-num" id="sn-3">3</div><span class="step-lbl">Add-ons</span></div>
+      <div class="step-div" id="sd-3"></div>
+      <div class="step-item" id="si-4" onclick="goStep(4)"><div class="step-num" id="sn-4">4</div><span class="step-lbl">Quantity</span></div>
+      <div class="step-div" id="sd-4"></div>
+      <div class="step-item" id="si-5" onclick="goStep(5)"><div class="step-num" id="sn-5">5</div><span class="step-lbl">Your Details</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="wrap">
+  <div class="config-main">
+
+    <!-- LEFT: PANELS -->
+    <div class="config-panel">
+
+      <!-- STEP 1: TIER -->
+      <div class="panel-step active" id="step-1">
+        <div class="panel-hdr">
+          <p>Step 1 of 5</p>
+          <h2>Choose your <em>collection.</em></h2>
+        </div>
+        <div class="opt-grid cols3">
+
+          <div class="opt-card" id="tier-trad" onclick="selectTier('traditional','Boz Üy','Grey House',6000)">
+            <p class="opt-tag">Traditional</p>
+            <p class="opt-name">Boz Üy</p>
+            <p class="opt-dim">Full traditional yurt</p>
+            <p class="opt-feat">Turpan Tal willow frame · handmade wool felt (kiyiz) · chiy reed mats · rawhide joinery. Zero nails, zero metal fasteners. The original boz üy.</p>
+            <p class="opt-price">from $6,000 <span>delivered</span></p>
+          </div>
+
+          <div class="opt-card" id="tier-export" onclick="selectTier('export','Export Suite','Heritage + Climate Ready',8000)">
+            <p class="opt-tag" style="color:var(--terracotta)">★ Most Popular</p>
+            <p class="opt-name">Export Suite</p>
+            <p class="opt-dim">Traditional + weather-ready</p>
+            <p class="opt-feat">Everything in Traditional, plus breathable rain cover, enhanced insulation layer, stove chimney aperture, and full pre-shipment QC. Built for European and North American climates.</p>
+            <p class="opt-price">from $8,000 <span>delivered</span></p>
+          </div>
+
+          <div class="opt-card" id="tier-bespoke" onclick="selectTier('bespoke','Bespoke','Made to Order',12000)">
+            <p class="opt-tag" style="color:var(--stone)">Custom / Luxury</p>
+            <p class="opt-name">Bespoke</p>
+            <p class="opt-dim">Fully customised</p>
+            <p class="opt-feat">Custom diameter, carved & painted bosogo door frame, bespoke shyrdak & ala kiyiz patterns, zabık bash decorative bands, oimo chiy reed mats. Every detail to your brief.</p>
+            <p class="opt-price">from $12,000 <span>+ consultation</span></p>
+          </div>
+
+        </div>
+        <div class="step-nav">
+          <span></span>
+          <button class="btn-next" id="next-1" onclick="goStep(2)" disabled>Next: Choose Size →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: SIZE -->
+      <div class="panel-step" id="step-2">
+        <div class="panel-hdr">
+          <p>Step 2 of 5</p>
+          <h2>Choose your <em>size.</em></h2>
+        </div>
+        <div class="opt-grid cols3">
+
+          <div class="opt-card" id="size-5" onclick="selectSize('5m','5m (16 ft)','Floor area ~19.6 m² (211 sq ft)',0)">
+            <p class="opt-tag">Compact · 4 kanat</p>
+            <p class="opt-name">5m</p>
+            <p class="opt-dim">16 ft · 19.6 m² · 55 uuk · 4 kerege</p>
+            <p class="opt-feat">Garden studio, meditation space, or intimate glamping for 2. Tündük ∅ 1.25m · Height 3m · ~120 kg · 2 m³ packed.</p>
+            <p class="opt-price">Base price <span>(included)</span></p>
+          </div>
+
+          <div class="opt-card" id="size-6" onclick="selectSize('6m','6m (20 ft)','Floor area ~28.3 m² (304 sq ft)',1200)">
+            <p class="opt-tag" style="color:var(--terracotta)">★ Most Popular · 6 kanat</p>
+            <p class="opt-name">6m</p>
+            <p class="opt-dim">20 ft · 28.3 m² · 85 uuk · 6 kerege</p>
+            <p class="opt-feat">The ideal all-round yurt. Turpan Tal willow frame. Tündük ∅ 1.65m · Height 3.5m · ~150 kg · 2.5 m³ packed · Max component 2.7m.</p>
+            <p class="opt-price">+$1,200 <span>from base</span></p>
+          </div>
+
+          <div class="opt-card" id="size-7" onclick="selectSize('7m','7m (23 ft)','Floor area ~38.5 m² (414 sq ft)',2800)">
+            <p class="opt-tag">Large · 8 kanat</p>
+            <p class="opt-name">7m</p>
+            <p class="opt-dim">23 ft · 38.5 m² · 100 uuk · 8 kerege</p>
+            <p class="opt-feat">Family glamping, yoga studio, event space. Turpan Tal frame. Tündük ∅ 1.85m · Height 3.8m · ~200 kg · 3.2 m³ packed.</p>
+            <p class="opt-price">+$2,800 <span>from base</span></p>
+          </div>
+
+        </div>
+        <div id="size-8m-row" style="margin-top:1.2rem">
+          <div class="opt-card" id="size-8" onclick="selectSize('8m','8m (26 ft)','Floor area ~50.3 m² (541 sq ft) — Bespoke tier only',4800)">
+            <p class="opt-tag">XL — Bespoke Only</p>
+            <p class="opt-name">8m</p>
+            <p class="opt-dim">26 ft diameter · ~50.3 m²</p>
+            <p class="opt-feat">Our largest format. Built for resort centrepieces, high-end event spaces, and luxury installations. Requires Bespoke tier.</p>
+            <p class="opt-price">+$4,800 <span>from base</span></p>
+          </div>
+        </div>
+        <div style="margin-top:1.8rem;padding:1.2rem 1.4rem;background:var(--parchment);border-left:3px solid var(--gold)">
+          <p style="font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem">Kyrgyz sizing explained</p>
+          <p style="font-size:.78rem;color:var(--text-mid);line-height:1.75"><strong>Kanat</strong> = wall sections (kerege panels) · <strong>Uuk</strong> = curved roof poles radiating from the tündük · <strong>Tündük ∅</strong> = crown ring diameter · All frames steam-bent <strong>Turpan Tal willow</strong> · Zero nails, zero metal fasteners · Rawhide (gök) joinery throughout</p>
+        </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goStep(1)">← Back</button>
+          <button class="btn-next" id="next-2" onclick="goStep(3)" disabled>Next: Add-ons →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: ADD-ONS -->
+      <div class="panel-step" id="step-3">
+        <div class="panel-hdr">
+          <p>Step 3 of 5</p>
+          <h2>Enhance your <em>yurt.</em></h2>
+        </div>
+        <p style="font-size:.84rem;color:var(--stone);margin-bottom:1.5rem;line-height:1.7">Select any add-ons for your configuration. All are optional — we'll confirm availability and exact pricing in your quote.</p>
+        <div class="addon-grid">
+          <div class="addon-item" id="ao-rain" onclick="toggleAddon('rain','Breathable Rain Cover',650)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Breathable Rain Cover</p><p class="addon-desc">Essential for wet climates. A high-quality breathable membrane fits over the kiyiz felt covering — repels water while allowing wool to breathe and self-regulate humidity. Strongly recommended for &gt;600mm annual rainfall.</p></div>
+            <p class="addon-p">+$650</p>
+          </div>
+          <div class="addon-item" id="ao-ins" onclick="toggleAddon('ins','Enhanced Insulation Layer',480)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Enhanced Insulation Layer</p><p class="addon-desc">Additional wool felt layer between the chiy reed mats and outer felt. Recommended for cold climates (below 5°C winters).</p></div>
+            <p class="addon-p">+$480</p>
+          </div>
+          <div class="addon-item" id="ao-stove" onclick="toggleAddon('stove','Stove-Ready Chimney Kit',380)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Stove-Ready Chimney Kit</p><p class="addon-desc">Reinforced chimney aperture through the felt roof with heat-resistant lining and sealing ring. Compatible with most standard wood-burning stoves.</p></div>
+            <p class="addon-p">+$380</p>
+          </div>
+          <div class="addon-item" id="ao-door" onclick="toggleAddon('door','Carved & Painted Bosogo',740)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Carved &amp; Painted Bosogo (Door Frame)</p><p class="addon-desc">Upgrade the bosogo with traditional Kyrgyz hand-carved and painted decoration. Each frame is unique — ancestral motifs chosen by Adylet. Includes ichki and syrtky zabık bash decorative felt bands.</p></div>
+            <p class="addon-p">+$740</p>
+          </div>
+          <div class="addon-item" id="ao-shyrdak" onclick="toggleAddon('shyrdak','Shyrdak & Ala Kiyiz Floor Set',920)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Shyrdak &amp; Ala Kiyiz Floor Set</p><p class="addon-desc">Full floor coverage combining shyrdak (mosaic felt appliqué carpets) and ala kiyiz (rolled felt rugs) in complementary traditional motifs. Colour palette customisable. Made by the women of the Kyzyl-Tuu artisan family.</p></div>
+            <p class="addon-p">+$920</p>
+          </div>
+          <div class="addon-item" id="ao-chiy" onclick="toggleAddon('chiy','Oimo Chiy — Patterned Reed Mats',320)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Oimo Chiy — Patterned Reed Mats</p><p class="addon-desc">Upgrade the standard chiy reed insulation mats to oimo chiy — hand-decorated with coloured wool woven into geometric patterns. Lines the interior kerege walls with an additional layer of beauty.</p></div>
+            <p class="addon-p">+$320</p>
+          </div>
+          <div class="addon-item" id="ao-zabik" onclick="toggleAddon('zabik','Zabık Bash — Decorative Felt Bands',280)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Zabık Bash — Decorative Felt Bands</p><p class="addon-desc">Traditional ornamental felt strips that ring the interior wall-to-roof junction (ichki zabık bash) and exterior lower edge (syrtky zabık bash). Hand-embroidered with ancestral motifs in red, green, and gold.</p></div>
+            <p class="addon-p">+$280</p>
+          </div>
+          <div class="addon-item" id="ao-toshok" onclick="toggleAddon('toshok','Toshok — Floor Cushion Set',480)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Toshok — Traditional Floor Cushions</p><p class="addon-desc">Set of traditional Kyrgyz floor cushions/mattresses in national fabric with ornamental covers. The authentic alternative to chairs — how nomadic families have sat in the yurt for centuries.</p></div>
+            <p class="addon-p">+$480</p>
+          </div>
+          <div class="addon-item" id="ao-install" onclick="toggleAddon('install','Assembly &amp; Installation Guide',0)">
+            <div class="addon-cb"></div>
+            <div class="addon-body"><p class="addon-name">Detailed Assembly Guide + Video</p><p class="addon-desc">Full illustrated step-by-step assembly guide plus a recorded video walkthrough by our master builder. Included with all Export Suite and Bespoke orders at no charge.</p></div>
+            <p class="addon-p" style="color:var(--sage)">Free</p>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goStep(2)">← Back</button>
+          <button class="btn-next" onclick="goStep(4)">Next: Quantity →</button>
+        </div>
+      </div>
+
+      <!-- STEP 4: QUANTITY & USE -->
+      <div class="panel-step" id="step-4">
+        <div class="panel-hdr">
+          <p>Step 4 of 5</p>
+          <h2>Quantity &amp; <em>intended use.</em></h2>
+        </div>
+        <div style="display:grid;gap:1.5rem">
+          <div class="field">
+            <label>Number of yurts</label>
+            <select id="qty-sel" onchange="updateQty(this.value)">
+              <option value="1">1 yurt</option>
+              <option value="2">2 yurts</option>
+              <option value="3">3 yurts</option>
+              <option value="4">4 yurts</option>
+              <option value="5">5 yurts (B2B pricing applies)</option>
+              <option value="10">10+ yurts (B2B — contact us directly)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Primary intended use</label>
+            <div class="radio-group" id="use-group">
+              <label class="radio-item"><input type="radio" name="use" value="backyard"> <span>Backyard / garden room / home office</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="glamping"> <span>Glamping / holiday let / Airbnb</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="retreat"> <span>Yoga / meditation / wellness retreat</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="resort"> <span>Resort / eco-lodge (multiple units)</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="event"> <span>Events / festivals</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="other"> <span>Other / not sure yet</span></label>
+            </div>
+          </div>
+          <div class="field">
+            <label>Destination country</label>
+            <select id="dest-sel" onchange="updateDest(this.value)">
+              <option value="">Select country…</option>
+              <option>United States</option>
+              <option>United Kingdom</option>
+              <option>Germany</option>
+              <option>France</option>
+              <option>Netherlands</option>
+              <option>Australia</option>
+              <option>New Zealand</option>
+              <option>Canada</option>
+              <option>Turkey</option>
+              <option>UAE / Gulf</option>
+              <option>Other — I'll specify in my message</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Approximate timeline</label>
+            <select>
+              <option>As soon as possible</option>
+              <option>Within 3 months</option>
+              <option>3–6 months</option>
+              <option>6–12 months</option>
+              <option>Planning stage — no fixed date</option>
+            </select>
+          </div>
+        </div>
+        <div class="step-nav">
+          <button class="btn-prev" onclick="goStep(3)">← Back</button>
+          <button class="btn-next" onclick="goStep(5)">Next: Your Details →</button>
+        </div>
+      </div>
+
+      <!-- STEP 5: CONTACT -->
+      <div class="panel-step" id="step-5">
+        <div class="panel-hdr">
+          <p>Step 5 of 5</p>
+          <h2>Your <em>details.</em></h2>
+        </div>
+        <div id="contact-form">
+          <div class="form-grid">
+            <div class="field">
+              <label>First name *</label>
+              <input type="text" id="fn" placeholder="Your first name" oninput="checkForm()">
+            </div>
+            <div class="field">
+              <label>Last name *</label>
+              <input type="text" id="ln" placeholder="Your last name" oninput="checkForm()">
+            </div>
+            <div class="field full">
+              <label>Email address *</label>
+              <input type="email" id="em" placeholder="you@email.com" oninput="checkForm()">
+            </div>
+            <div class="field">
+              <label>Phone (optional)</label>
+              <input type="tel" placeholder="+1 234 567 8900">
+            </div>
+            <div class="field">
+              <label>Company / Business (optional)</label>
+              <input type="text" placeholder="Your organisation">
+            </div>
+            <div class="field full">
+              <label>Any specific requirements or questions?</label>
+              <textarea placeholder="Tell us anything that would help us prepare your quote — site details, customisation ideas, specific delivery requirements, questions about installation…"></textarea>
+            </div>
+          </div>
+          <p style="font-size:.75rem;color:var(--stone);margin-top:1.2rem;line-height:1.7">By submitting this form you agree to our Privacy Policy. We'll use your details only to prepare and send your personalised quote. We respond within 48 hours.</p>
+          <div class="step-nav">
+            <button class="btn-prev" onclick="goStep(4)">← Back</button>
+            <button class="btn-next" id="submit-btn" onclick="submitForm()" disabled>Send Quote Request →</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /config-panel -->
+
+    <!-- RIGHT: SUMMARY -->
+    <div class="summary-panel">
+      <div class="sum-box">
+        <p class="sum-title">Your Configuration</p>
+        <p class="sum-yurt-name" id="sum-name">Your Yurt</p>
+        <p class="sum-kyrgyz" id="sum-kyrgyz">Select a tier to begin</p>
+
+        <div class="sum-divider"></div>
+
+        <div class="sum-row"><span class="sum-key">Tier</span><span class="sum-val empty" id="sd-tier">Not selected</span></div>
+        <div class="sum-row"><span class="sum-key">Size</span><span class="sum-val empty" id="sd-size">Not selected</span></div>
+        <div class="sum-row"><span class="sum-key">Add-ons</span><span class="sum-val empty" id="sd-addons">None selected</span></div>
+        <div class="sum-row"><span class="sum-key">Quantity</span><span class="sum-val" id="sd-qty">1 yurt</span></div>
+        <div class="sum-row"><span class="sum-key">Destination</span><span class="sum-val empty" id="sd-dest">Not specified</span></div>
+
+        <div class="sum-divider"></div>
+
+        <div class="sum-total-row">
+          <span class="sum-total-lbl">Estimated from</span>
+          <span class="sum-total-val" id="sum-total">—</span>
+        </div>
+        <p class="sum-note">This is an indicative estimate. Your personalised quote will include exact pricing, lead time, and shipping to your destination.</p>
+
+        <!-- Tiny yurt diagram -->
+        <div class="sum-diagram">
+          <div class="sum-dia-box">
+            <svg width="100%" viewBox="0 0 200 150" fill="none">
+              <!-- simple yurt silhouette -->
+              <ellipse cx="100" cy="138" rx="74" ry="7" fill="rgba(250,246,238,.04)"/>
+              <path d="M30 104 Q100 28 170 104" stroke="rgba(250,246,238,.22)" stroke-width="1.5" fill="rgba(250,246,238,.03)"/>
+              <rect x="50" y="100" width="24" height="36" rx="2" fill="none" stroke="rgba(196,146,58,.3)" stroke-width="1"/>
+              <rect x="74" y="100" width="52" height="36" rx="2" fill="rgba(250,246,238,.04)" stroke="rgba(250,246,238,.1)" stroke-width="1"/>
+              <rect x="126" y="100" width="24" height="36" rx="2" fill="none" stroke="rgba(196,146,58,.3)" stroke-width="1"/>
+              <line x1="100" y1="100" x2="100" y2="28" stroke="rgba(196,146,58,.25)" stroke-width="1"/>
+              <line x1="100" y1="100" x2="30" y2="104" stroke="rgba(196,146,58,.18)" stroke-width="1"/>
+              <line x1="100" y1="100" x2="170" y2="104" stroke="rgba(196,146,58,.18)" stroke-width="1"/>
+              <circle cx="100" cy="30" r="12" stroke="rgba(196,146,58,.5)" stroke-width="1.5" fill="none"/>
+              <circle cx="100" cy="30" r="4"  fill="rgba(196,146,58,.4)"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Heritage note -->
+      <div style="margin-top:1.2rem;padding:1.4rem;background:var(--cream);border:1px solid var(--stone-light)">
+        <p style="font-size:.63rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--terracotta);margin-bottom:.55rem">UNESCO ICH</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--soil);line-height:1.6">Every Tündük yurt is handbuilt in Kyzyl-Tuu village by UNESCO-recognised master craftsmen.</p>
+      </div>
+    </div>
+
+  </div><!-- /config-main -->
+</div><!-- /wrap -->
+
+<!-- SUCCESS STATE -->
+<div class="success-state" id="success">
+  <div class="success-icon">
+    <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="5 14 11 20 23 8"/></svg>
+  </div>
+  <h2 class="success-h2">Quote Request Sent</h2>
+  <p class="success-p">Thank you. We've received your configuration and will prepare a personalised quote for you within 48 hours. Check your inbox — we'll be in touch from <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="04706165694470716a60716f2a676b">[email&#160;protected]</a></strong></p>
+  <p class="success-ref" id="success-ref"></p>
+  <br><br>
+  <a href="tunduk-homepage-v2.html" style="font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta)">← Return to Homepage</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-bot">
+      <div class="foot-logo">
+        <svg viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="2"/>
+          <line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="30" y1="40" x2="6"  y2="40" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="40" y1="30" x2="40" y2="6"  stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span>Tündük</span>
+      </div>
+      <p class="foot-copy">© 2026 Tündük. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── State ──
+  const S = { tier:null, tierName:'', tierKyrgyz:'', base:0, size:null, sizeName:'', sizePrem:0, addons:{}, qty:1, dest:'' };
+
+  // ── Step Nav ──
+  let currentStep = 1;
+  function goStep(n) {
+    if(n < 1 || n > 5) return;
+    document.querySelectorAll('.panel-step').forEach(p => p.classList.remove('active'));
+    document.getElementById('step-' + n).classList.add('active');
+    for(let i=1;i<=5;i++) {
+      const si = document.getElementById('si-'+i);
+      const sn = document.getElementById('sn-'+i);
+      si.classList.toggle('active', i===n);
+      si.classList.toggle('done', i<n);
+      if(i<n) sn.textContent = '✓';
+      else if(i===n) sn.textContent = i;
+      else sn.textContent = i;
+    }
+    for(let i=1;i<=4;i++) {
+      const sd = document.getElementById('sd-'+i);
+      if(sd) sd.classList.toggle('done', i<n);
+    }
+    currentStep = n;
+    window.scrollTo({top: document.querySelector('.stepper').offsetTop - 50, behavior:'smooth'});
+  }
+
+  // ── Tier ──
+  function selectTier(id, name, kyrgyz, base) {
+    S.tier=id; S.tierName=name; S.tierKyrgyz=kyrgyz; S.base=base;
+    ['tier-trad','tier-export','tier-bespoke'].forEach(c => document.getElementById(c).classList.remove('selected'));
+    document.getElementById('tier-'+id.split('')[0]+(id==='traditional'?'rad':id==='export'?'xport':'espoke').replace('x','').replace('e','')).classList.add('selected');
+    // simpler id mapping:
+    const map = {traditional:'tier-trad', export:'tier-export', bespoke:'tier-bespoke'};
+    Object.values(map).forEach(v => document.getElementById(v).classList.remove('selected'));
+    document.getElementById(map[id]).classList.add('selected');
+    document.getElementById('next-1').disabled = false;
+    // update summary
+    document.getElementById('sum-name').textContent = name;
+    document.getElementById('sum-kyrgyz').textContent = kyrgyz;
+    setVal('sd-tier', name, false);
+    updateTotal();
+  }
+
+  // ── Size ──
+  function selectSize(id, label, dim, prem) {
+    S.size=id; S.sizeName=label; S.sizePrem=prem;
+    ['size-5','size-6','size-7','size-8'].forEach(c => document.getElementById(c).classList.remove('selected'));
+    document.getElementById('size-'+id.replace('m','')).classList.add('selected');
+    document.getElementById('next-2').disabled = false;
+    setVal('sd-size', label, false);
+    updateTotal();
+  }
+
+  // ── Add-ons ──
+  function toggleAddon(id, name, price) {
+    const el = document.getElementById('ao-'+id);
+    if(S.addons[id]) { delete S.addons[id]; el.classList.remove('selected'); }
+    else { S.addons[id]={name,price}; el.classList.add('selected'); }
+    const names = Object.values(S.addons).map(a=>a.name);
+    setVal('sd-addons', names.length ? names.join(', ') : 'None selected', !names.length);
+    updateTotal();
+  }
+
+  // ── Qty / Dest ──
+  function updateQty(v) {
+    S.qty = parseInt(v) || 1;
+    document.getElementById('sd-qty').textContent = v + ' yurt' + (v!='1'?'s':'');
+    updateTotal();
+  }
+  function updateDest(v) {
+    S.dest = v;
+    setVal('sd-dest', v||'Not specified', !v);
+  }
+
+  // ── Total ──
+  function updateTotal() {
+    if(!S.tier) { document.getElementById('sum-total').textContent='—'; return; }
+    let t = S.base + S.sizePrem;
+    Object.values(S.addons).forEach(a => t+=a.price);
+    t *= S.qty;
+    document.getElementById('sum-total').textContent = '$' + t.toLocaleString();
+  }
+
+  // ── Form ──
+  function checkForm() {
+    const ok = document.getElementById('fn').value.trim() && document.getElementById('ln').value.trim() && document.getElementById('em').value.includes('@');
+    document.getElementById('submit-btn').disabled = !ok;
+  }
+  function submitForm() {
+    const ref = 'TDK-' + Date.now().toString(36).toUpperCase();
+    document.getElementById('success-ref').textContent = 'Reference: ' + ref;
+    document.querySelector('.config-main').style.display='none';
+    document.querySelector('.stepper').style.display='none';
+    document.querySelector('.page-hero').style.display='none';
+    document.getElementById('success').classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+    // ── Helpers ──
+  function setVal(id, txt, empty) {
+    const el = document.getElementById(id);
+    el.textContent = txt;
+    el.classList.toggle('empty', empty);
+    if (!empty) el.classList.add('sum-val');
+  }
+</script>
+</body>
+</html>

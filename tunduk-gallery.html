@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — Tündük Kyrgyz Yurts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:       #FAF6EE;
+      --parchment:   #EFE6D5;
+      --terracotta:  #B85C38;
+      --terra-light: #D4785A;
+      --soil:        #1C0E06;
+      --soil-mid:    #3A1F10;
+      --sage:        #6B7B5E;
+      --gold:        #C4923A;
+      --stone:       #9A8778;
+      --stone-light: #D4C8BC;
+      --text-dark:   #1C0E06;
+      --text-mid:    #5A4035;
+      --font-d: 'Cormorant Garamond', Georgia, serif;
+      --font-b: 'Jost', system-ui, sans-serif;
+      --w: 1300px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    a    { text-decoration: none; color: inherit; }
+    .wrap { width: 90%; max-width: var(--w); margin: 0 auto; }
+
+    /* REVEAL */
+    .rev { opacity: 0; transform: translateY(20px); transition: opacity .8s ease, transform .8s ease; }
+    .rev.in { opacity: 1; transform: none; }
+    .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.4s}.d6{transition-delay:.48s}
+
+    /* NAV */
+    nav#nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0 clamp(1.5rem,5vw,5rem); height: 64px; display: flex; align-items: center; justify-content: space-between; background: #FAFAF7; box-shadow: 0 1px 0 rgba(26,20,16,.07); }
+    .nav-left, .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-link { font-size: .7rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: #1A1410; opacity: .55; transition: opacity .25s; text-decoration: none; }
+    .nav-link:hover, .nav-link.active { opacity: 1; }
+    nav#nav .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+    nav#nav .nav-logo svg { width: 28px; height: 28px; color: #1A1410; }
+    nav#nav .nav-logo-word { font-family: var(--font-d); font-size: 1.35rem; font-weight: 500; letter-spacing: .1em; color: #1A1410; }
+    .nav-quote { font-size: .68rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: #1A1410; opacity: .55; border-bottom: 1px solid rgba(26,20,16,.2); padding-bottom: 1px; transition: opacity .25s, border-color .25s; text-decoration: none; }
+    .nav-quote:hover { opacity: 1; border-color: #B85C38; }
+    /* ── MOBILE NAV ── */
+    .nav-hamburger {
+      display: none; cursor: pointer; z-index: 210;
+      width: 28px; height: 20px; position: relative;
+      flex-direction: column; justify-content: space-between;
+    }
+    .nav-hamburger span {
+      display: block; height: 1.5px; width: 100%; background: var(--ink);
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(9.25px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9.25px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--white); z-index: 199;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem; opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: auto; }
+    .mobile-menu a {
+      font-family: var(--font-d); font-size: 1.6rem; font-weight: 400;
+      letter-spacing: .08em; color: var(--ink); opacity: .7;
+      transition: opacity .25s;
+    }
+    .mobile-menu a:hover { opacity: 1; }
+    .mobile-menu .mm-cta {
+      margin-top: 1rem; font-family: var(--font-b);
+      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+      border-bottom: 1px solid var(--terra); padding-bottom: 2px;
+    }
+
+    @media(max-width:780px) {
+      .nav-left, .nav-right { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* PAGE HERO */
+    .page-hero { padding: 9rem 0 4rem; background: var(--soil); position: relative; overflow: hidden; }
+    .ph-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 45%, rgba(184,92,56,.35) 0%, transparent 55%), radial-gradient(ellipse at 20% 80%, rgba(196,146,58,.12) 0%, transparent 45%), #1C0E06; }
+    .ph-wheel { position: absolute; right: -4%; top: 50%; transform: translateY(-50%); width: 40vw; max-width: 420px; opacity: .05; animation: spin 100s linear infinite; }
+    @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
+    .ph-content { position: relative; z-index: 2; }
+    .ph-breadcrumb { font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(250,246,238,.38); margin-bottom: 1.3rem; display: flex; align-items: center; gap: .7rem; }
+    .ph-breadcrumb a { color: var(--gold); }
+    .ph-breadcrumb span { opacity: .4; }
+    .ph-h1 { font-family: var(--font-d); font-size: clamp(3rem, 8vw, 7rem); font-weight: 300; font-style: italic; color: var(--cream); line-height: .92; letter-spacing: -.02em; margin-bottom: 1.2rem; }
+    .ph-sub { font-size: .88rem; color: rgba(250,246,238,.5); line-height: 1.7; max-width: 500px; }
+
+    /* FILTER BAR */
+    .filter-bar { background: var(--parchment); border-bottom: 1px solid var(--stone-light); position: sticky; top: 64px; z-index: 90; }
+    .fb-inner { display: flex; align-items: center; gap: 0; overflow-x: auto; padding: .2rem 0; }
+    .fb-btn { font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: .95rem 1.4rem; color: var(--stone); white-space: nowrap; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; font-family: var(--font-b); transition: all .25s; }
+    .fb-btn:hover { color: var(--terracotta); }
+    .fb-btn.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+
+    /* ── SECTION LABEL ── */
+    .s-label { font-size: .67rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.4rem; display: flex; align-items: center; gap: .8rem; }
+    .s-label::before { content: ''; width: 28px; height: 1px; background: var(--terracotta); opacity: .5; }
+
+    /* ── IMAGE PLACEHOLDER ── */
+    .img-ph {
+      background: var(--parchment);
+      border: 1.5px dashed var(--stone-light);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: .7rem; position: relative; overflow: hidden; cursor: pointer;
+      transition: border-color .3s, transform .35s;
+    }
+    .img-ph:hover { border-color: var(--terracotta); transform: scale(1.015); }
+    .img-ph::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(184,92,56,.04) 0%, transparent 60%); }
+    .img-ph svg { width: 32px; height: 32px; color: var(--stone-light); position: relative; z-index: 1; }
+    .img-ph-label { font-size: .67rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--stone-light); position: relative; z-index: 1; text-align: center; padding: 0 1rem; }
+    .img-ph-sub { font-size: .62rem; color: var(--stone-light); opacity: .7; position: relative; z-index: 1; text-align: center; }
+    /* tag overlay */
+    .img-tag { position: absolute; top: .9rem; left: .9rem; font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: .28rem .65rem; z-index: 2; }
+    .img-tag.tc { background: var(--terracotta); color: #fff; }
+    .img-tag.tg { background: var(--gold); color: var(--soil); }
+    .img-tag.ts { background: var(--sage); color: #fff; }
+
+    /* ── VIDEO PLACEHOLDER ── */
+    .vid-ph {
+      background: var(--soil-mid);
+      border: 1.5px dashed rgba(196,146,58,.3);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: .9rem; position: relative; overflow: hidden; cursor: pointer;
+      transition: border-color .3s;
+    }
+    .vid-ph:hover { border-color: var(--gold); }
+    .vid-ph:hover .vp-play { transform: scale(1.1); }
+    .vp-play { width: 56px; height: 56px; background: rgba(196,146,58,.85); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .3s; position: relative; z-index: 1; }
+    .vp-play svg { width: 22px; height: 22px; color: #fff; margin-left: 3px; }
+    .vp-label { font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(250,246,238,.55); position: relative; z-index: 1; text-align: center; }
+    .vp-dur   { font-size: .62rem; color: rgba(250,246,238,.3); position: relative; z-index: 1; }
+
+    /* ── HERO MOSAIC ── */
+    .hero-mosaic { padding: 3rem 0; background: var(--cream); }
+    .mosaic-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 280px 280px;
+      gap: 6px;
+    }
+    .m1 { grid-column: 1/8; grid-row: 1/3; }
+    .m2 { grid-column: 8/10; grid-row: 1/2; }
+    .m3 { grid-column: 10/13; grid-row: 1/2; }
+    .m4 { grid-column: 8/11; grid-row: 2/3; }
+    .m5 { grid-column: 11/13; grid-row: 2/3; }
+    @media(max-width:900px) {
+      .mosaic-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 200px 200px; }
+      .m1 { grid-column: 1/3; grid-row: 1/2; }
+      .m2 { grid-column: 1/2; grid-row: 2/3; }
+      .m3 { grid-column: 2/3; grid-row: 2/3; }
+      .m4 { grid-column: 1/2; grid-row: 3/4; }
+      .m5 { grid-column: 2/3; grid-row: 3/4; }
+    }
+
+    /* ── PHOTO SECTIONS ── */
+    .gallery-section { padding: 4rem 0; }
+    .gallery-section + .gallery-section { border-top: 1px solid var(--stone-light); }
+
+    .gs-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; gap: 1.5rem; flex-wrap: wrap; }
+    .gs-h2 { font-family: var(--font-d); font-size: clamp(1.7rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--soil); line-height: 1.1; }
+    .gs-h2 em { font-style: italic; color: var(--terracotta); }
+    .gs-count { font-size: .75rem; color: var(--stone); letter-spacing: .08em; }
+
+    /* Grid layouts */
+    .g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .g2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; }
+    .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+    .g-feat { display: grid; grid-template-columns: 1.65fr 1fr; gap: 8px; }
+    .g-feat-r { display: grid; grid-template-columns: 1fr 1.65fr; gap: 8px; }
+    .g-mix { display: grid; grid-template-columns: repeat(12,1fr); gap: 8px; }
+    .gm1 { grid-column:1/5; }
+    .gm2 { grid-column:5/9; }
+    .gm3 { grid-column:9/13; }
+    .gm4 { grid-column:1/7; }
+    .gm5 { grid-column:7/13; }
+
+    @media(max-width:768px) { .g3,.g4,.g-feat,.g-feat-r { grid-template-columns:1fr 1fr; } .g-mix { grid-template-columns:1fr 1fr; } .gm1,.gm2,.gm3,.gm4,.gm5 { grid-column:auto; } }
+    @media(max-width:540px) { .g3,.g4,.g-feat,.g-feat-r,.g2,.g-mix { grid-template-columns:1fr; } }
+
+    .h240 { height: 240px; }
+    .h280 { height: 280px; }
+    .h320 { height: 320px; }
+    .h360 { height: 360px; }
+    .h400 { height: 400px; }
+    .h460 { height: 460px; }
+    .h560 { height: 560px; }
+
+    /* ── VIDEO SECTION ── */
+    .video-section { padding: 4rem 0; background: var(--soil); }
+    .vs-hdr { margin-bottom: 2.5rem; }
+    .vs-h2 { font-family: var(--font-d); font-size: clamp(1.8rem, 3.8vw, 3.2rem); font-weight: 300; color: var(--cream); line-height: 1.1; }
+    .vs-h2 em { font-style: italic; color: rgba(250,246,238,.42); }
+    .vs-sub { font-size: .83rem; color: rgba(250,246,238,.42); margin-top: .6rem; }
+
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+    @media(min-width:900px) { .video-grid { grid-template-columns: 1.5fr 1fr 1fr; } }
+
+    .vid-card { display: flex; flex-direction: column; gap: .9rem; }
+    .vid-info-title { font-family: var(--font-d); font-size: 1.15rem; font-weight: 400; color: var(--cream); }
+    .vid-info-sub   { font-size: .77rem; color: rgba(250,246,238,.42); margin-top: .2rem; }
+
+    /* ── ARTISAN STRIP ── */
+    .artisan-strip { padding: 4rem 0; background: var(--parchment); }
+    .as-hdr { margin-bottom: 2rem; }
+    .as-h2 { font-family: var(--font-d); font-size: clamp(1.7rem, 3.5vw, 2.8rem); font-weight: 300; color: var(--soil); }
+    .as-h2 em { font-style: italic; color: var(--terracotta); }
+    .as-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; }
+    @media(max-width:768px) { .as-grid { grid-template-columns: repeat(2,1fr); } }
+    .as-card { display: flex; flex-direction: column; gap: .65rem; }
+    .as-name { font-family: var(--font-d); font-size: 1rem; font-weight: 500; color: var(--soil); }
+    .as-role { font-size: .72rem; color: var(--stone); letter-spacing: .08em; }
+
+    /* ── 360 SECTION ── */
+    .vr-section { padding: 4rem 0; background: var(--cream); }
+    .vr-inner { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+    @media(min-width:900px) { .vr-inner { grid-template-columns: 1fr 1fr; gap: 5rem; } }
+    .vr-h2 { font-family: var(--font-d); font-size: clamp(1.7rem, 3.5vw, 3rem); font-weight: 300; color: var(--soil); line-height: 1.1; margin-bottom: 1rem; }
+    .vr-h2 em { font-style: italic; color: var(--terracotta); }
+    .vr-p { font-size: .85rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 1.5rem; }
+    .vr-ph { aspect-ratio: 16/9; background: var(--soil); border: 1px solid rgba(250,246,238,.06); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; }
+    .vr-icon { font-size: 2.5rem; opacity: .35; }
+    .vr-lbl { font-size: .72rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: rgba(250,246,238,.3); }
+
+    /* CTA STRIP */
+    .gallery-cta { padding: 4.5rem 0; background: var(--soil); }
+    .gcta-in { display: flex; justify-content: space-between; align-items: center; gap: 2.5rem; flex-wrap: wrap; }
+    .gcta-h2 { font-family: var(--font-d); font-size: clamp(1.5rem, 3.4vw, 2.8rem); font-weight: 300; color: var(--cream); line-height: 1.15; }
+    .gcta-h2 em { font-style: italic; color: rgba(250,246,238,.42); }
+    .btn-p { display: inline-block; font-size: .78rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: 1rem 2.2rem; background: var(--terracotta); color: var(--cream); transition: background .3s; }
+    .btn-p:hover { background: var(--terra-light); }
+
+    /* LIGHTBOX */
+    .lightbox { position: fixed; inset: 0; background: rgba(28,14,6,.96); z-index: 500; display: none; align-items: center; justify-content: center; }
+    .lightbox.open { display: flex; }
+    .lb-inner { max-width: 92vw; max-height: 90vh; position: relative; }
+    .lb-img { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: var(--parchment); min-width: 320px; min-height: 240px; font-family: var(--font-d); font-style: italic; font-size: 1.1rem; color: var(--stone); }
+    .lb-close { position: absolute; top: -2.5rem; right: 0; background: none; border: none; color: rgba(250,246,238,.6); font-size: 1.4rem; cursor: pointer; font-family: var(--font-b); }
+    .lb-caption { margin-top: .75rem; font-size: .78rem; color: rgba(250,246,238,.45); }
+
+    /* FOOTER */
+    footer { background: #100700; padding: 2.5rem 0; }
+    .foot-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .9rem; }
+    .foot-logo { display: flex; align-items: center; gap: .7rem; }
+    .foot-logo svg { width: 26px; height: 26px; color: var(--terracotta); }
+    .foot-logo span { font-family: var(--font-d); font-size: 1.2rem; font-weight: 500; color: var(--cream); }
+    .foot-copy { font-size: .73rem; color: rgba(250,246,238,.22); }
+    .foot-links { display: flex; gap: 1.5rem; }
+    .foot-links a { font-size: .73rem; color: rgba(250,246,238,.38); transition: color .2s; }
+    .foot-links a:hover { color: var(--cream); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-left">
+    <a href="tunduk-homeware.html" class="nav-link">Homeware</a>
+    <a href="tunduk-story.html" class="nav-link">Our Story</a>
+    <a href="tunduk-heritage.html" class="nav-link">Heritage</a>
+  </div>
+  <a href="tunduk-homepage-v2.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/><circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="1.5"/><line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="45" x2="69.44" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="48.66" x2="57" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="48.66" x2="23" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="45" x2="10.56" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="35" x2="10.56" y2="23" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="31.34" x2="23" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="31.34" x2="57" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="35" x2="69.44" y2="23" stroke="currentColor" stroke-width="1.2"/></svg>
+    <span class="nav-logo-word">Tündük</span>
+  </a>
+  <div class="nav-right">
+    <a href="tunduk-gallery.html" class="nav-link active">Gallery</a>
+    <a href="tunduk-configure.html" class="nav-quote">Configure a Yurt</a>
+  </div>
+
+  <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open');">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="tunduk-homeware.html">Homeware</a>
+  <a href="tunduk-story.html">Our Story</a>
+  <a href="tunduk-heritage.html">Heritage</a>
+  <a href="tunduk-gallery.html">Gallery</a>
+  <a href="tunduk-configure.html" class="mm-cta">Configure a Yurt</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="ph-bg"></div>
+  <svg class="ph-wheel" viewBox="0 0 400 400" fill="none">
+    <circle cx="200" cy="200" r="185" stroke="white" stroke-width="2.5"/>
+    <circle cx="200" cy="200" r="100" stroke="white" stroke-width="2"/>
+    <circle cx="200" cy="200" r="40" stroke="white" stroke-width="2"/>
+    <line x1="240" y1="200" x2="385" y2="200" stroke="white" stroke-width="1.5"/>
+    <line x1="231" y1="231" x2="339" y2="339" stroke="white" stroke-width="1.5"/>
+    <line x1="200" y1="240" x2="200" y2="385" stroke="white" stroke-width="1.5"/>
+    <line x1="169" y1="231" x2="61"  y2="339" stroke="white" stroke-width="1.5"/>
+    <line x1="160" y1="200" x2="15"  y2="200" stroke="white" stroke-width="1.5"/>
+    <line x1="169" y1="169" x2="61"  y2="61"  stroke="white" stroke-width="1.5"/>
+    <line x1="200" y1="160" x2="200" y2="15"  stroke="white" stroke-width="1.5"/>
+    <line x1="231" y1="169" x2="339" y2="61"  stroke="white" stroke-width="1.5"/>
+  </svg>
+  <div class="wrap">
+    <div class="ph-content">
+      <p class="ph-breadcrumb"><a href="tunduk-homepage-v2.html">Tündük</a> <span>/</span> Gallery</p>
+      <h1 class="ph-h1">Yurts in<br>the World</h1>
+      <p class="ph-sub">Photography, artisan process films, and 360° virtual tours — from the workshops of Kyzyl-Tuu to glamping resorts, retreats, and gardens across five continents.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="wrap">
+    <div class="fb-inner">
+      <button class="fb-btn active" onclick="filterGallery('all',this)">All</button>
+      <button class="fb-btn" onclick="filterGallery('exterior',this)">Exterior</button>
+      <button class="fb-btn" onclick="filterGallery('interior',this)">Interior</button>
+      <button class="fb-btn" onclick="filterGallery('craft',this)">Craft &amp; Process</button>
+      <button class="fb-btn" onclick="filterGallery('landscape',this)">Landscape</button>
+      <button class="fb-btn" onclick="filterGallery('video',this)">Video</button>
+      <button class="fb-btn" onclick="filterGallery('360',this)">360°</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── HERO MOSAIC ── -->
+<section class="hero-mosaic" id="sec-all">
+  <div class="wrap">
+    <div class="mosaic-grid rev">
+      <div class="img-ph m1 h560" onclick="openLightbox('Exterior hero — 6m Export Suite yurt, alpine meadow setting, late afternoon light')">
+        <span class="img-tag tc">Hero Shot</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">6m Export Suite — Exterior<br>Alpine meadow · Late afternoon</span>
+        <span class="img-ph-sub">Recommended: 2400 × 3200px portrait</span>
+      </div>
+      <div class="img-ph m2" onclick="openLightbox('Tündük crown ring close-up — open to sky, daylight through the ring')">
+        <span class="img-tag tg">Detail</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Crown ring — sky view</span>
+        <span class="img-ph-sub">1200 × 900px landscape</span>
+      </div>
+      <div class="img-ph m3" onclick="openLightbox('Kyzyl-Tuu village panorama — Lake Issyk-Kul in the background')">
+        <span class="img-tag ts">Location</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Kyzyl-Tuu · Issyk-Kul</span>
+        <span class="img-ph-sub">1200 × 900px landscape</span>
+      </div>
+      <div class="img-ph m4" onclick="openLightbox('Interior — traditional boz üy, shyrdak carpets, central fire, warm evening light')">
+        <span class="img-tag tc">Interior</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Interior — shyrdak &amp; firelight</span>
+        <span class="img-ph-sub">1600 × 900px landscape</span>
+      </div>
+      <div class="img-ph m5" onclick="openLightbox('Assembly — four people raising the tündük crown ring, golden hour')">
+        <span class="img-tag tg">Process</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Assembly — raising the tündük</span>
+        <span class="img-ph-sub">900 × 900px square</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION: EXTERIORS ── -->
+<section class="gallery-section" id="sec-exterior">
+  <div class="wrap">
+    <div class="gs-hdr rev">
+      <div>
+        <p class="s-label">Exteriors</p>
+        <h2 class="gs-h2">The yurt <em>in its setting.</em></h2>
+      </div>
+      <p class="gs-count">8 photographs</p>
+    </div>
+    <div class="g-feat rev">
+      <div class="img-ph h360" onclick="openLightbox('6m Boz Üy traditional — morning mist, mountain backdrop')">
+        <span class="img-tag tc">6m Traditional</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Morning mist · Mountain backdrop</span>
+        <span class="img-ph-sub">2400 × 1600px</span>
+      </div>
+      <div style="display:grid;grid-template-rows:1fr 1fr;gap:8px;height:360px">
+        <div class="img-ph" onclick="openLightbox('Export Suite — glamping resort setting, deck, dusk lighting')">
+          <span class="img-tag tg">Export Suite</span>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Glamping resort · Dusk</span>
+          <span class="img-ph-sub">1400 × 900px</span>
+        </div>
+        <div class="img-ph" onclick="openLightbox('Backyard installation — English garden setting, summer')">
+          <span class="img-tag ts">Backyard</span>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Garden installation · Summer</span>
+          <span class="img-ph-sub">1400 × 900px</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:8px">
+      <div class="g4 rev">
+        <div class="img-ph h240" onclick="openLightbox('Cluster of 3 yurts — eco-resort, aerial view')">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Resort cluster — aerial</span>
+        </div>
+        <div class="img-ph h240" onclick="openLightbox('Winter yurt — snow-covered, wood smoke rising, twilight')">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Winter · Snow · Twilight</span>
+        </div>
+        <div class="img-ph h240" onclick="openLightbox('Door detail — carved bosogo in evening light')">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Bosogo door detail</span>
+        </div>
+        <div class="img-ph h240" onclick="openLightbox('7m Bespoke — luxury glamping, Moroccan-inspired landscape')">
+          <span class="img-tag tc">7m Bespoke</span>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">7m Bespoke · Luxury setting</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION: INTERIORS ── -->
+<section class="gallery-section" id="sec-interior">
+  <div class="wrap">
+    <div class="gs-hdr rev">
+      <div>
+        <p class="s-label">Interiors</p>
+        <h2 class="gs-h2">No poles. <em>Pure space.</em></h2>
+      </div>
+      <p class="gs-count">9 photographs</p>
+    </div>
+    <div class="g3 rev">
+      <div class="img-ph h320" onclick="openLightbox('Interior — yoga setup, morning light through tündük ring, meditation cushions')">
+        <span class="img-tag ts">Wellness</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Yoga interior · Morning light</span>
+        <span class="img-ph-sub">1200 × 1600px portrait</span>
+      </div>
+      <div class="img-ph h320" onclick="openLightbox('Interior — glamping bedroom, low bed, shyrdak carpets, warm lantern light')">
+        <span class="img-tag tg">Glamping</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Glamping bedroom · Lantern light</span>
+        <span class="img-ph-sub">1200 × 1600px portrait</span>
+      </div>
+      <div class="img-ph h320" onclick="openLightbox('Interior upward — looking up through open tündük to blue sky')">
+        <span class="img-tag tc">Detail</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Looking up through tündük</span>
+        <span class="img-ph-sub">1200 × 1600px portrait</span>
+      </div>
+    </div>
+    <div style="margin-top:8px">
+      <div class="g-feat-r rev">
+        <div class="img-ph h280" onclick="openLightbox('Interior detail — shyrdak carpet close-up, ram's horn motif, red and black')">
+          <span class="img-tag tg">Craft</span>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Shyrdak carpet detail</span>
+        </div>
+        <div class="img-ph h280" onclick="openLightbox('Interior wide — 7m bespoke yurt configured as event space, standing guests')">
+          <span class="img-tag tc">Event</span>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">7m — Event configuration</span>
+          <span class="img-ph-sub">2400 × 1600px</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VIDEO SECTION ── -->
+<section class="video-section" id="sec-video">
+  <div class="wrap">
+    <div class="vs-hdr rev">
+      <p class="s-label" style="color:var(--gold)">Films</p>
+      <h2 class="vs-h2">Watch the <em>craft.</em></h2>
+      <p class="vs-sub">Films from Kyzyl-Tuu village and yurt installations around the world.</p>
+    </div>
+    <div class="video-grid">
+      <div class="vid-card rev d1">
+        <div class="vid-ph h320" onclick="openLightbox('VIDEO: Master builder — full yurt assembly timelapse, Kyzyl-Tuu, 12 min')">
+          <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <p class="vp-label">Master Build — Kyzyl-Tuu</p>
+          <p class="vp-dur">12:34 · Full assembly timelapse</p>
+        </div>
+        <div>
+          <p class="vid-info-title">Building a 6m Export Suite</p>
+          <p class="vid-info-sub">Adylet &amp; his family build a complete yurt from timber to finished structure. Kyzyl-Tuu village, spring 2025.</p>
+        </div>
+      </div>
+      <div class="vid-card rev d2">
+        <div class="vid-ph h240" onclick="openLightbox('VIDEO: Felt making — women rolling wool felt, traditional process, 8 min')">
+          <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <p class="vp-label">The Felt Process</p>
+          <p class="vp-dur">7:48 · Craft documentary</p>
+        </div>
+        <div>
+          <p class="vid-info-title">Making the Felt</p>
+          <p class="vid-info-sub">How thirteen rolls of sheep wool felt are made by hand — the women's half of the craft.</p>
+        </div>
+      </div>
+      <div class="vid-card rev d3">
+        <div class="vid-ph h240" onclick="openLightbox('VIDEO: Glamping resort installation — 5 yurts, eco-resort Germany, 4 min')">
+          <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <p class="vp-label">Resort Installation</p>
+          <p class="vp-dur">4:15 · Client film</p>
+        </div>
+        <div>
+          <p class="vid-info-title">5-Yurt Eco-Resort · Germany</p>
+          <p class="vid-info-sub">From delivery to first guest — installing a cluster of 5 Export Suite yurts at a Bavarian eco-resort.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem">
+      <div class="video-grid rev">
+        <div class="vid-card">
+          <div class="vid-ph h200" onclick="openLightbox('VIDEO: Shyrdak carpet making — motif design and felt appliqué, 6 min')">
+            <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <p class="vp-label">Shyrdak Making</p>
+            <p class="vp-dur">5:52</p>
+          </div>
+          <div><p class="vid-info-title">The Shyrdak</p><p class="vid-info-sub">Felt carpet appliqué — every motif and its meaning.</p></div>
+        </div>
+        <div class="vid-card">
+          <div class="vid-ph h200" onclick="openLightbox('VIDEO: Yoga retreat opening — yurt in Portuguese forest, 3 min')">
+            <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <p class="vp-label">Retreat Opening</p>
+            <p class="vp-dur">3:12</p>
+          </div>
+          <div><p class="vid-info-title">Yoga Retreat · Portugal</p><p class="vid-info-sub">The opening of a 6m bespoke yurt at a wellness retreat in the Alentejo.</p></div>
+        </div>
+        <div class="vid-card">
+          <div class="vid-ph h200" onclick="openLightbox('VIDEO: Tündük — brand story film, 2 min')">
+            <div class="vp-play"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5,3 19,12 5,21"/></svg></div>
+            <p class="vp-label">Brand Story</p>
+            <p class="vp-dur">2:05</p>
+          </div>
+          <div><p class="vid-info-title">What is Tündük?</p><p class="vid-info-sub">A short film introducing our story, from Bishkek to the world.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION: CRAFT ── -->
+<section class="gallery-section" id="sec-craft" style="background:var(--parchment)">
+  <div class="wrap">
+    <div class="gs-hdr rev">
+      <div>
+        <p class="s-label">Craft &amp; Process</p>
+        <h2 class="gs-h2">Made <em>by hand.</em></h2>
+      </div>
+      <p class="gs-count">10 photographs</p>
+    </div>
+    <div class="g-mix rev">
+      <div class="img-ph gm1 h280" onclick="openLightbox('Craftsman bending wood over steam — tündük ring forming')">
+        <span class="img-tag tg">Frame</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Steam-bending the tündük</span>
+      </div>
+      <div class="img-ph gm2 h280" onclick="openLightbox('Kerege lattice being bound with rawhide strips — close-up hands')">
+        <span class="img-tag tc">Joinery</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Rawhide kerege binding</span>
+      </div>
+      <div class="img-ph gm3 h280" onclick="openLightbox('Women rolling wool felt on the ground — traditional communal process')">
+        <span class="img-tag ts">Felt</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Communal felt rolling</span>
+      </div>
+      <div class="img-ph gm4 h280" onclick="openLightbox('Carved door frame (bosogo) detail — traditional motifs, painted red and gold')">
+        <span class="img-tag tg">Carving</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Carved bosogo door frame</span>
+      </div>
+      <div class="img-ph gm5 h280" onclick="openLightbox('Shyrdak carpet being cut — felt layers, geometric pattern forming')">
+        <span class="img-tag tc">Textile</span>
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+        <span class="img-ph-label">Shyrdak cutting — pattern</span>
+      </div>
+    </div>
+    <div style="margin-top:8px">
+      <div class="g4 rev">
+        <div class="img-ph h220" onclick="openLightbox('Roof pole storage — workshop interior, bundles of curved uuk poles')">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Uuk poles — workshop</span>
+        </div>
+        <div class="img-ph h220" onclick="openLightbox('QC inspection — master builder checking kerege dimensions')">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">QC inspection</span>
+        </div>
+        <div class="img-ph h220" onclick="openLightbox('Packing for export — felt rolls being wrapped, Kyzyl-Tuu')">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Packing for export</span>
+        </div>
+        <div class="img-ph h220" onclick="openLightbox('Portrait — Adylet master builder, workshop, natural light')">
+          <span class="img-tag ts">Portrait</span>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Adylet — master builder</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ARTISAN PORTRAITS ── -->
+<section class="artisan-strip" id="sec-landscape">
+  <div class="wrap">
+    <div class="as-hdr rev">
+      <p class="s-label">People</p>
+      <h2 class="as-h2">The hands <em>behind every yurt.</em></h2>
+    </div>
+    <div class="as-grid">
+      <div class="as-card rev d1">
+        <div class="img-ph h280" onclick="openLightbox('Portrait — Adylet, master frame builder, Kyzyl-Tuu village')">
+          <span class="img-tag ts">Portrait</span>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="24" cy="20" r="7"/><path d="M8 44c0-8.84 7.16-16 16-16s16 7.16 16 16"/></svg>
+          <span class="img-ph-label">Headshot + workshop<br>800 × 1000px</span>
+        </div>
+        <p class="as-name">Adylet</p>
+        <p class="as-role">Master frame builder · Kyzyl-Tuu</p>
+      </div>
+      <div class="as-card rev d2">
+        <div class="img-ph h280" onclick="openLightbox('Portrait — Nura, production lead, Bishkek')">
+          <span class="img-tag ts">Portrait</span>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="24" cy="20" r="7"/><path d="M8 44c0-8.84 7.16-16 16-16s16 7.16 16 16"/></svg>
+          <span class="img-ph-label">Headshot + office<br>800 × 1000px</span>
+        </div>
+        <p class="as-name">Nura</p>
+        <p class="as-role">Operations lead · Bishkek</p>
+      </div>
+      <div class="as-card rev d3">
+        <div class="img-ph h280" onclick="openLightbox('Portrait — senior feltmaker, Kyzyl-Tuu, with shyrdak carpet')">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="24" cy="20" r="7"/><path d="M8 44c0-8.84 7.16-16 16-16s16 7.16 16 16"/></svg>
+          <span class="img-ph-label">Senior feltmaker<br>800 × 1000px</span>
+        </div>
+        <p class="as-name">To be confirmed</p>
+        <p class="as-role">Master feltmaker · Kyzyl-Tuu</p>
+      </div>
+      <div class="as-card rev d4">
+        <div class="img-ph h280" onclick="openLightbox('Group portrait — full Kyzyl-Tuu artisan team outside workshop')">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+          <span class="img-ph-label">Team portrait · Kyzyl-Tuu<br>1200 × 800px</span>
+        </div>
+        <p class="as-name">The Kyzyl-Tuu Team</p>
+        <p class="as-role">Our artisan partners</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 360° SECTION ── -->
+<section class="vr-section" id="sec-360">
+  <div class="wrap">
+    <div class="vr-inner">
+      <div class="rev">
+        <p class="s-label">Virtual Tours</p>
+        <h2 class="vr-h2">Step inside <em>before you order.</em></h2>
+        <p class="vr-p">Our 360° virtual tours let you experience the interior space of each yurt tier — feel the proportions, the light through the tündük, the atmosphere of natural materials. Available for 5m, 6m, and 7m configurations.</p>
+        <p style="font-size:.78rem;color:var(--stone);line-height:1.7">360° tours are shot with a Ricoh Theta Z1. <br>Hosted on Matterport / Kuula — embed code available for trade partners.</p>
+      </div>
+      <div class="rev">
+        <div class="vr-ph">
+          <span class="vr-icon">⬤</span>
+          <p class="vr-lbl">360° Tour — 6m Export Suite</p>
+          <p style="font-size:.7rem;color:rgba(250,246,238,.25);margin-top:.3rem">Embed: Matterport / Kuula iframe</p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+          <div class="vr-ph" style="aspect-ratio:1">
+            <span class="vr-icon" style="font-size:1.4rem">⬤</span>
+            <p class="vr-lbl" style="font-size:.62rem">5m Traditional</p>
+          </div>
+          <div class="vr-ph" style="aspect-ratio:1">
+            <span class="vr-icon" style="font-size:1.4rem">⬤</span>
+            <p class="vr-lbl" style="font-size:.62rem">7m Bespoke</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="gallery-cta">
+  <div class="wrap">
+    <div class="gcta-in rev">
+      <h2 class="gcta-h2">Seen enough?<br><em>Let's build yours.</em></h2>
+      <a href="tunduk-configure.html" class="btn-p">Configure Your Yurt →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lb-inner" onclick="event.stopPropagation()">
+    <button class="lb-close" onclick="closeLightbox()">✕ Close</button>
+    <div class="lb-img" id="lb-img"></div>
+    <p class="lb-caption" id="lb-caption"></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-bot">
+      <div class="foot-logo">
+        <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2.5"/><circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="2"/><line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Tündük</span>
+      </div>
+      <p class="foot-copy">© 2026 Tündük. All rights reserved.</p>
+      <div class="foot-links">
+        <a href="tunduk-homepage-v2.html">Home</a>
+        <a href="tunduk-heritage.html">Heritage</a>
+        <a href="tunduk-configure.html">Configure</a>
+        <a href="tunduk-contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);} }), {threshold:.06});
+  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+  function filterGallery(cat, btn) {
+    document.querySelectorAll('.fb-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function openLightbox(caption) {
+    document.getElementById('lb-img').textContent = caption;
+    document.getElementById('lb-caption').textContent = '↳ Replace with: ' + caption;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key==='Escape') closeLightbox(); });
+</script>
+</body>
+</html>

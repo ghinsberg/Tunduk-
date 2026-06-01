@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & B2B — Tündük Kyrgyz Yurts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:       #FAF6EE;
+      --parchment:   #EFE6D5;
+      --terracotta:  #B85C38;
+      --terra-light: #D4785A;
+      --soil:        #1C0E06;
+      --soil-mid:    #3A1F10;
+      --sage:        #6B7B5E;
+      --gold:        #C4923A;
+      --stone:       #9A8778;
+      --stone-light: #D4C8BC;
+      --text-dark:   #1C0E06;
+      --text-mid:    #5A4035;
+      --font-d: 'Cormorant Garamond', Georgia, serif;
+      --font-b: 'Jost', system-ui, sans-serif;
+      --w: 1300px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    .wrap { width: 90%; max-width: var(--w); margin: 0 auto; }
+
+    .rev { opacity: 0; transform: translateY(20px); transition: opacity .85s ease, transform .85s ease; }
+    .rev.in { opacity: 1; transform: none; }
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+    /* NAV */
+    nav#nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0 clamp(1.5rem,5vw,5rem); height: 64px; display: flex; align-items: center; justify-content: space-between; background: #FAFAF7; box-shadow: 0 1px 0 rgba(26,20,16,.07); }
+    .nav-left, .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-link { font-size: .7rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: #1A1410; opacity: .55; transition: opacity .25s; text-decoration: none; }
+    .nav-link:hover, .nav-link.active { opacity: 1; }
+    nav#nav .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+    nav#nav .nav-logo svg { width: 28px; height: 28px; color: #1A1410; }
+    nav#nav .nav-logo-word { font-family: var(--font-d); font-size: 1.35rem; font-weight: 500; letter-spacing: .1em; color: #1A1410; }
+    .nav-quote { font-size: .68rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: #1A1410; opacity: .55; border-bottom: 1px solid rgba(26,20,16,.2); padding-bottom: 1px; transition: opacity .25s, border-color .25s; text-decoration: none; }
+    .nav-quote:hover { opacity: 1; border-color: #B85C38; }
+    /* ── MOBILE NAV ── */
+    .nav-hamburger {
+      display: none; cursor: pointer; z-index: 210;
+      width: 28px; height: 20px; position: relative;
+      flex-direction: column; justify-content: space-between;
+    }
+    .nav-hamburger span {
+      display: block; height: 1.5px; width: 100%; background: var(--ink);
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(9.25px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9.25px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--white); z-index: 199;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem; opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: auto; }
+    .mobile-menu a {
+      font-family: var(--font-d); font-size: 1.6rem; font-weight: 400;
+      letter-spacing: .08em; color: var(--ink); opacity: .7;
+      transition: opacity .25s;
+    }
+    .mobile-menu a:hover { opacity: 1; }
+    .mobile-menu .mm-cta {
+      margin-top: 1rem; font-family: var(--font-b);
+      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+      border-bottom: 1px solid var(--terra); padding-bottom: 2px;
+    }
+
+    @media(max-width:780px) {
+      .nav-left, .nav-right { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* HERO — SPLIT */
+    .hero-split { display: grid; grid-template-columns: 1fr; min-height: 520px; }
+    @media(min-width:900px) { .hero-split { grid-template-columns: 1fr 1fr; } }
+
+    .hs-left { background: var(--soil); padding: 8.5rem 6% 5rem; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+    .hs-left-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 30%, rgba(196,146,58,.18) 0%, transparent 55%), radial-gradient(ellipse at 10% 80%, rgba(184,92,56,.14) 0%, transparent 45%); }
+    .hs-left-wheel { position: absolute; right: -8%; bottom: -10%; width: 380px; height: 380px; opacity: .045; animation: spin 120s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .hsl-content { position: relative; z-index: 2; }
+    .hsl-breadcrumb { font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(250,246,238,.38); margin-bottom: 1.4rem; display: flex; align-items: center; gap: .7rem; }
+    .hsl-breadcrumb a { color: var(--gold); }
+    .hsl-breadcrumb span { opacity: .4; }
+    .hsl-h1 { font-family: var(--font-d); font-size: clamp(2.8rem, 6vw, 5.5rem); font-weight: 300; font-style: italic; color: var(--cream); line-height: .92; letter-spacing: -.02em; margin-bottom: 1.4rem; }
+    .hsl-sub { font-size: .87rem; color: rgba(250,246,238,.52); line-height: 1.75; max-width: 400px; margin-bottom: 2.5rem; }
+
+    .contact-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(250,246,238,.06); }
+    .cc { background: rgba(28,14,6,.45); padding: 1.3rem 1.1rem; }
+    .cc-icon { font-size: .8rem; margin-bottom: .5rem; opacity: .5; }
+    .cc-type { font-size: .6rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+    .cc-val { font-size: .8rem; color: rgba(250,246,238,.7); }
+    .cc-val a { color: rgba(250,246,238,.7); border-bottom: 1px solid rgba(250,246,238,.15); transition: color .2s; }
+    .cc-val a:hover { color: var(--gold); }
+
+    .hs-right { background: var(--parchment); padding: 8.5rem 6% 5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+
+    /* TAB SWITCHER */
+    .tab-sw { display: flex; gap: 0; margin-bottom: 2.4rem; }
+    .tab-btn { flex: 1; padding: .85rem; font-size: .72rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; border: 1.5px solid var(--stone-light); background: transparent; color: var(--stone); cursor: pointer; font-family: var(--font-b); transition: all .25s; }
+    .tab-btn:first-child { border-right: none; }
+    .tab-btn.active { background: var(--terracotta); border-color: var(--terracotta); color: var(--cream); }
+
+    /* FORMS */
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; animation: fadeUp .4s ease; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+    @media(max-width:680px) { .form-grid { grid-template-columns: 1fr; } }
+    .field { display: flex; flex-direction: column; gap: .35rem; }
+    .field.full { grid-column: 1 / -1; }
+    .field label { font-size: .65rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--text-mid); }
+    .field input, .field select, .field textarea {
+      padding: .8rem .95rem; background: var(--cream); border: 1.5px solid var(--stone-light);
+      color: var(--soil); font-family: var(--font-b); font-size: .86rem; outline: none; transition: border-color .25s; width: 100%;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--terracotta); }
+    .field input::placeholder, .field textarea::placeholder { color: var(--stone); }
+    .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A8778' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+    .field textarea { resize: vertical; min-height: 100px; }
+    .form-note { font-size: .72rem; color: var(--stone); line-height: 1.65; margin-top: .9rem; }
+    .form-note a { color: var(--terracotta); }
+    .btn-submit { display: block; width: 100%; margin-top: 1.2rem; padding: 1rem; font-size: .78rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; background: var(--terracotta); color: var(--cream); border: none; cursor: pointer; font-family: var(--font-b); transition: background .3s; }
+    .btn-submit:hover { background: var(--terra-light); }
+    .success-msg { display: none; padding: 1.5rem; background: var(--cream); border: 1px solid var(--sage); text-align: center; }
+    .success-msg.show { display: block; }
+    .success-msg p { font-family: var(--font-d); font-style: italic; font-size: 1.15rem; color: var(--soil); }
+    .success-msg span { display: block; font-size: .77rem; color: var(--stone); margin-top: .4rem; }
+
+    /* B2B SECTION */
+    .b2b-section { padding: 5rem 0; background: var(--soil); position: relative; overflow: hidden; }
+    .b2b-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 90% 50%, rgba(184,92,56,.25) 0%, transparent 55%); }
+    .b2b-wheel { position: absolute; left: -5%; top: 50%; transform: translateY(-50%); width: 50vw; max-width: 540px; opacity: .04; }
+    .b2b-inner { position: relative; z-index: 2; }
+
+    .b2b-top { display: grid; grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem; }
+    @media(min-width:900px) { .b2b-top { grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; } }
+
+    .b2b-label { font-size: .67rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; display: flex; align-items: center; gap: .8rem; }
+    .b2b-label::before { content: ''; width: 28px; height: 1px; background: var(--gold); opacity: .5; }
+    .b2b-h2 { font-family: var(--font-d); font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 300; color: var(--cream); line-height: 1.05; margin-bottom: 1.3rem; }
+    .b2b-h2 em { font-style: italic; color: rgba(250,246,238,.42); }
+    .b2b-p { font-size: .87rem; color: rgba(250,246,238,.52); line-height: 1.82; margin-bottom: .9rem; }
+    .b2b-p strong { color: rgba(250,246,238,.82); }
+
+    .b2b-perks { display: flex; flex-direction: column; gap: 1px; background: rgba(250,246,238,.06); }
+    .bp { background: rgba(28,14,6,.4); padding: 1.3rem 1.5rem; display: flex; align-items: flex-start; gap: 1.1rem; }
+    .bp-dash { color: var(--gold); font-size: .9rem; flex-shrink: 0; margin-top: .12rem; }
+    .bp-title { font-size: .88rem; font-weight: 500; color: rgba(250,246,238,.8); margin-bottom: .2rem; }
+    .bp-sub   { font-size: .78rem; color: rgba(250,246,238,.38); line-height: 1.6; }
+
+    /* B2B USE CASES */
+    .b2b-use { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(250,246,238,.04); }
+    @media(min-width:600px) { .b2b-use { grid-template-columns: repeat(2, 1fr); } }
+    @media(min-width:1000px) { .b2b-use { grid-template-columns: repeat(4, 1fr); } }
+    .bu { background: rgba(28,14,6,.35); padding: 2rem 1.6rem; }
+    .bu-ico { font-size: 1.3rem; margin-bottom: 1rem; opacity: .7; }
+    .bu-h3 { font-family: var(--font-d); font-size: 1.1rem; font-weight: 500; color: rgba(250,246,238,.85); margin-bottom: .5rem; }
+    .bu-p { font-size: .78rem; color: rgba(250,246,238,.4); line-height: 1.7; }
+
+    /* B2B PROCESS */
+    .b2b-process { margin-top: 4rem; }
+    .bp2-title { font-family: var(--font-d); font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 300; color: var(--cream); margin-bottom: 2.5rem; }
+    .bp2-title em { font-style: italic; color: rgba(250,246,238,.38); }
+    .proc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(250,246,238,.06); }
+    @media(min-width:900px) { .proc-grid { grid-template-columns: repeat(4, 1fr); } }
+    .proc-step { background: rgba(28,14,6,.35); padding: 1.8rem 1.5rem; }
+    .ps-num { font-family: var(--font-d); font-size: 3rem; font-weight: 300; font-style: italic; color: rgba(250,246,238,.08); line-height: 1; margin-bottom: .5rem; }
+    .ps-title { font-size: .82rem; font-weight: 500; color: rgba(250,246,238,.7); margin-bottom: .5rem; letter-spacing: .04em; }
+    .ps-p { font-size: .77rem; color: rgba(250,246,238,.35); line-height: 1.7; }
+
+    /* TEAM / ABOUT */
+    .team-section { padding: 5rem 0; background: var(--parchment); }
+    .ts-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: start; }
+    @media(min-width:900px) { .ts-grid { grid-template-columns: 1fr 1fr; gap: 6rem; } }
+    .ts-h2 { font-family: var(--font-d); font-size: clamp(1.7rem, 3.5vw, 3rem); font-weight: 300; color: var(--soil); line-height: 1.1; margin-bottom: 1.3rem; }
+    .ts-h2 em { font-style: italic; color: var(--terracotta); }
+    .ts-p { font-size: .87rem; color: var(--text-mid); line-height: 1.82; margin-bottom: .95rem; }
+    .s-label { font-size: .67rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.4rem; display: flex; align-items: center; gap: .8rem; }
+    .s-label::before { content: ''; width: 28px; height: 1px; background: var(--terracotta); opacity: .5; }
+
+    /* Image placeholder */
+    .img-ph { background: var(--soil-mid); border: 1.5px dashed rgba(250,246,238,.1); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .7rem; }
+    .iph-label { font-size: .67rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(250,246,238,.22); text-align: center; padding: 0 1rem; }
+    .iph-sub { font-size: .62rem; color: rgba(250,246,238,.14); }
+
+    .team-people { display: flex; flex-direction: column; gap: 1px; }
+    .tp { display: flex; gap: 1.4rem; align-items: flex-start; padding: 1.4rem 0; border-top: 1px solid var(--stone-light); }
+    .tp:last-child { border-bottom: 1px solid var(--stone-light); }
+    .tp-avatar { width: 52px; height: 52px; background: var(--soil); flex-shrink: 0; border: 1.5px dashed rgba(250,246,238,.12); display: flex; align-items: center; justify-content: center; }
+    .tp-avatar svg { width: 20px; height: 20px; color: rgba(250,246,238,.2); }
+    .tp-name { font-family: var(--font-d); font-size: 1.05rem; font-weight: 500; color: var(--soil); }
+    .tp-role { font-size: .72rem; color: var(--stone); letter-spacing: .06em; margin-top: .15rem; margin-bottom: .45rem; }
+    .tp-bio  { font-size: .8rem; color: var(--text-mid); line-height: 1.65; }
+
+    /* LOCATIONS */
+    .locations { padding: 3.5rem 0; background: var(--cream); border-top: 1px solid var(--stone-light); }
+    .loc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--stone-light); }
+    @media(min-width:900px) { .loc-grid { grid-template-columns: repeat(3, 1fr); } }
+    .loc { background: var(--cream); padding: 2rem 1.8rem; }
+    .loc-city { font-family: var(--font-d); font-size: 1.35rem; font-weight: 500; color: var(--soil); margin-bottom: .25rem; }
+    .loc-role { font-size: .62rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: .85rem; }
+    .loc-detail { font-size: .8rem; color: var(--stone); line-height: 1.75; }
+    .loc-detail a { color: var(--terracotta); border-bottom: 1px solid rgba(184,92,56,.2); }
+    .loc-detail a:hover { border-color: var(--terracotta); }
+    .loc-map { margin-top: 1.2rem; background: var(--parchment); border: 1px dashed var(--stone-light); height: 120px; display: flex; align-items: center; justify-content: center; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone-light); }
+
+    /* FOOTER */
+    footer { background: #100700; padding: 3.75rem 0 2rem; }
+    .foot-top { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(250,246,238,.07); margin-bottom: 2rem; }
+    @media(min-width:768px) { .foot-top { grid-template-columns: 2fr 1fr 1fr 1fr; } }
+    .foot-logo { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; }
+    .foot-logo svg { width: 26px; height: 26px; color: var(--terracotta); }
+    .foot-logo span { font-family: var(--font-d); font-size: 1.2rem; font-weight: 500; color: var(--cream); }
+    .foot-tag { font-size: .78rem; color: rgba(250,246,238,.32); line-height: 1.7; max-width: 220px; }
+    .foot-nav-h { font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: rgba(250,246,238,.3); margin-bottom: 1rem; }
+    .foot-nav { list-style: none; }
+    .foot-nav li { margin-bottom: .5rem; }
+    .foot-nav a { font-size: .8rem; color: rgba(250,246,238,.45); transition: color .2s; }
+    .foot-nav a:hover { color: var(--cream); }
+    .foot-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .9rem; }
+    .foot-copy { font-size: .73rem; color: rgba(250,246,238,.22); }
+    .foot-origin { font-size: .73rem; color: rgba(250,246,238,.22); }
+    .foot-origin span { color: var(--terracotta); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-left">
+    <a href="tunduk-homeware.html" class="nav-link">Homeware</a>
+    <a href="tunduk-story.html" class="nav-link">Our Story</a>
+    <a href="tunduk-heritage.html" class="nav-link">Heritage</a>
+  </div>
+  <a href="tunduk-homepage-v2.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/><circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="1.5"/><line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="45" x2="69.44" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="48.66" x2="57" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="48.66" x2="23" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="45" x2="10.56" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="35" x2="10.56" y2="23" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="31.34" x2="23" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="31.34" x2="57" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="35" x2="69.44" y2="23" stroke="currentColor" stroke-width="1.2"/></svg>
+    <span class="nav-logo-word">Tündük</span>
+  </a>
+  <div class="nav-right">
+    <a href="tunduk-gallery.html" class="nav-link">Gallery</a>
+    <a href="tunduk-configure.html" class="nav-quote">Configure a Yurt</a>
+  </div>
+
+  <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open');">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="tunduk-homeware.html">Homeware</a>
+  <a href="tunduk-story.html">Our Story</a>
+  <a href="tunduk-heritage.html">Heritage</a>
+  <a href="tunduk-gallery.html">Gallery</a>
+  <a href="tunduk-configure.html" class="mm-cta">Configure a Yurt</a>
+</div>
+
+<!-- HERO SPLIT -->
+<div class="hero-split">
+  <!-- LEFT: info -->
+  <div class="hs-left">
+    <div class="hs-left-bg"></div>
+    <svg class="hs-left-wheel" viewBox="0 0 400 400" fill="none">
+      <circle cx="200" cy="200" r="185" stroke="white" stroke-width="2.5"/>
+      <circle cx="200" cy="200" r="100" stroke="white" stroke-width="2"/>
+      <circle cx="200" cy="200" r="40" stroke="white" stroke-width="2"/>
+      <line x1="240" y1="200" x2="385" y2="200" stroke="white" stroke-width="1.5"/>
+      <line x1="231" y1="231" x2="339" y2="339" stroke="white" stroke-width="1.5"/>
+      <line x1="200" y1="240" x2="200" y2="385" stroke="white" stroke-width="1.5"/>
+      <line x1="169" y1="231" x2="61"  y2="339" stroke="white" stroke-width="1.5"/>
+      <line x1="160" y1="200" x2="15"  y2="200" stroke="white" stroke-width="1.5"/>
+      <line x1="169" y1="169" x2="61"  y2="61"  stroke="white" stroke-width="1.5"/>
+      <line x1="200" y1="160" x2="200" y2="15"  stroke="white" stroke-width="1.5"/>
+      <line x1="231" y1="169" x2="339" y2="61"  stroke="white" stroke-width="1.5"/>
+    </svg>
+    <div class="hsl-content">
+      <p class="hsl-breadcrumb"><a href="tunduk-homepage-v2.html">Tündük</a> <span>/</span> Contact</p>
+      <h1 class="hsl-h1">Let's Talk<br>Yurts</h1>
+      <p class="hsl-sub">Individual buyers, retreat operators, glamping developers. We respond within 48 hours from our Bishkek office.</p>
+      <div class="contact-cards">
+        <div class="cc">
+          <p class="cc-type">Email</p>
+          <p class="cc-val"><a href="/cdn-cgi/l/email-protection#0d65686161624d797863697866236e62"><span class="__cf_email__" data-cfemail="b3dbd6dfdfdcf3c7c6ddd7c6d89dd0dc">[email&#160;protected]</span></a></p>
+        </div>
+        <div class="cc">
+          <p class="cc-type">B2B</p>
+          <p class="cc-val"><a href="/cdn-cgi/l/email-protection#6e1a1c0f0a0b2e1a1b000a1b05400d01"><span class="__cf_email__" data-cfemail="3246405356577246475c5647591c515d">[email&#160;protected]</span></a></p>
+        </div>
+        <div class="cc">
+          <p class="cc-type">WhatsApp</p>
+          <p class="cc-val"><a href="#">+996 XXX XXX XXX</a></p>
+        </div>
+        <div class="cc">
+          <p class="cc-type">Response</p>
+          <p class="cc-val">Within 48 hours</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: form -->
+  <div class="hs-right">
+    <div class="tab-sw">
+      <button class="tab-btn active" onclick="switchTab('general', this)">General Enquiry</button>
+      <button class="tab-btn" onclick="switchTab('b2b', this)">B2B / Trade</button>
+    </div>
+
+    <!-- GENERAL -->
+    <div class="tab-pane active" id="tab-general">
+      <div class="form-grid" id="gen-form">
+        <div class="field"><label>First name *</label><input type="text" id="gfn" placeholder="Your name" oninput="checkGenForm()"></div>
+        <div class="field"><label>Last name *</label><input type="text" id="gln" placeholder="Your surname" oninput="checkGenForm()"></div>
+        <div class="field full"><label>Email address *</label><input type="email" id="gem" placeholder="you@email.com" oninput="checkGenForm()"></div>
+        <div class="field full"><label>Subject</label>
+          <select>
+            <option>I'd like to configure a yurt / get a quote</option>
+            <option>Question about my existing order</option>
+            <option>Assembly or technical question</option>
+            <option>Press / media enquiry</option>
+            <option>Partnership / distribution</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field full"><label>Message *</label><textarea id="gmsg" placeholder="Tell us what you're looking for…" oninput="checkGenForm()"></textarea></div>
+      </div>
+      <p class="form-note">We'll reply to your email within 48 hours. See our <a href="tunduk-faq.html">FAQ</a> for quick answers to common questions.</p>
+      <button class="btn-submit" id="gen-submit" onclick="submitGen()" disabled>Send Message</button>
+      <div class="success-msg" id="gen-success"><p>Message received — thank you.</p><span>We'll be in touch within 48 hours at the email you provided.</span></div>
+    </div>
+
+    <!-- B2B -->
+    <div class="tab-pane" id="tab-b2b">
+      <div class="form-grid" id="b2b-form">
+        <div class="field"><label>First name *</label><input type="text" id="bfn" placeholder="Your name" oninput="checkB2BForm()"></div>
+        <div class="field"><label>Last name *</label><input type="text" id="bln" placeholder="Your surname" oninput="checkB2BForm()"></div>
+        <div class="field full"><label>Business / Organisation *</label><input type="text" id="borg" placeholder="Company or project name" oninput="checkB2BForm()"></div>
+        <div class="field full"><label>Email address *</label><input type="email" id="bem" placeholder="you@company.com" oninput="checkB2BForm()"></div>
+        <div class="field"><label>Phone</label><input type="tel" placeholder="+1 234 567 8900"></div>
+        <div class="field"><label>Country</label>
+          <select>
+            <option value="">Country…</option>
+            <option>United States</option><option>United Kingdom</option><option>Germany</option>
+            <option>France</option><option>Netherlands</option><option>Australia</option>
+            <option>New Zealand</option><option>Canada</option><option>Turkey</option>
+            <option>UAE / Gulf</option><option>Other</option>
+          </select>
+        </div>
+        <div class="field full"><label>Type of business</label>
+          <select>
+            <option>Glamping resort / eco-lodge</option>
+            <option>Retreat / wellness centre</option>
+            <option>Hotel / hospitality group</option>
+            <option>Event / festival company</option>
+            <option>Distributor / importer</option>
+            <option>Architecture / landscape design firm</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field full"><label>Number of units interested in</label>
+          <select>
+            <option>5–10 yurts</option>
+            <option>11–20 yurts</option>
+            <option>21–50 yurts</option>
+            <option>50+ yurts</option>
+            <option>Not sure yet — exploring</option>
+          </select>
+        </div>
+        <div class="field full"><label>Project details *</label><textarea id="bmsg" placeholder="Describe your project — location, timeline, what you're trying to build, any specific requirements…" oninput="checkB2BForm()"></textarea></div>
+      </div>
+      <p class="form-note">B2B enquiries are handled by our trade team. We typically respond within 24 hours with an introductory call invitation.</p>
+      <button class="btn-submit" id="b2b-submit" onclick="submitB2B()" disabled>Send B2B Enquiry</button>
+      <div class="success-msg" id="b2b-success"><p>B2B enquiry received — thank you.</p><span>Our trade team will be in touch within 24 hours to arrange an introductory call.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- B2B SECTION -->
+<section class="b2b-section" id="b2b">
+  <div class="b2b-bg"></div>
+  <svg class="b2b-wheel" viewBox="0 0 400 400" fill="none">
+    <circle cx="200" cy="200" r="185" stroke="white" stroke-width="2"/>
+    <circle cx="200" cy="200" r="100" stroke="white" stroke-width="1.5"/>
+    <circle cx="200" cy="200" r="40" stroke="white" stroke-width="1.5"/>
+    <line x1="240" y1="200" x2="385" y2="200" stroke="white" stroke-width="1.2"/>
+    <line x1="231" y1="231" x2="339" y2="339" stroke="white" stroke-width="1.2"/>
+    <line x1="200" y1="240" x2="200" y2="385" stroke="white" stroke-width="1.2"/>
+    <line x1="169" y1="231" x2="61"  y2="339" stroke="white" stroke-width="1.2"/>
+    <line x1="160" y1="200" x2="15"  y2="200" stroke="white" stroke-width="1.2"/>
+    <line x1="169" y1="169" x2="61"  y2="61"  stroke="white" stroke-width="1.2"/>
+    <line x1="200" y1="160" x2="200" y2="15"  stroke="white" stroke-width="1.2"/>
+    <line x1="231" y1="169" x2="339" y2="61"  stroke="white" stroke-width="1.2"/>
+  </svg>
+  <div class="wrap">
+    <div class="b2b-inner">
+      <div class="b2b-top">
+        <div>
+          <p class="b2b-label rev">For Business</p>
+          <h2 class="b2b-h2 rev">Ordering 5+ yurts?<br><em>We work differently.</em></h2>
+          <p class="b2b-p rev">Volume orders unlock dedicated account management, competitive per-unit pricing, phased production scheduling, and on-site installation support options. We've supplied yurts to eco-resorts, retreat centres, glamping developers, and festival operators across Europe, North America, and the Middle East.</p>
+          <p class="b2b-p rev"><strong>Every B2B project begins with a call.</strong> We learn about your site, your timeline, and your guest profile — then recommend the right configuration and prepare a formal project quote.</p>
+        </div>
+        <div class="b2b-perks rev">
+          <div class="bp"><span class="bp-dash">—</span><div><p class="bp-title">Volume Pricing</p><p class="bp-sub">Per-unit price decreases from 5 units. Pricing structure shared at quote stage.</p></div></div>
+          <div class="bp"><span class="bp-dash">—</span><div><p class="bp-title">Phased Delivery</p><p class="bp-sub">Large orders can be delivered in tranches matched to your construction schedule.</p></div></div>
+          <div class="bp"><span class="bp-dash">—</span><div><p class="bp-title">Camp Design Consultation</p><p class="bp-sub">We advise on yurt placement, orientation, spacing, and site preparation.</p></div></div>
+          <div class="bp"><span class="bp-dash">—</span><div><p class="bp-title">Dedicated Account Manager</p><p class="bp-sub">One point of contact from enquiry through to post-delivery support.</p></div></div>
+          <div class="bp"><span class="bp-dash">—</span><div><p class="bp-title">On-Site Assembly Support</p><p class="bp-sub">For large orders we can arrange an artisan team to supervise first assembly. Travel costs apply.</p></div></div>
+          <div class="bp"><span class="bp-dash">—</span><div><p class="bp-title">White-Label Option</p><p class="bp-sub">Custom branding on packaging and documentation for resellers and distribution partners.</p></div></div>
+        </div>
+      </div>
+
+      <!-- Use cases -->
+      <div class="b2b-use rev">
+        <div class="bu"><p class="bu-ico">⛺</p><h3 class="bu-h3">Glamping Resorts</h3><p class="bu-p">Full resort configurations — 5 to 50+ units. Cluster layouts, staggered delivery, installation guidance.</p></div>
+        <div class="bu"><p class="bu-ico">🧘</p><h3 class="bu-h3">Retreat Centres</h3><p class="bu-p">Wellness, yoga, and meditation spaces. Pole-free interior maximises usable floor space for classes.</p></div>
+        <div class="bu"><p class="bu-ico">🌿</p><h3 class="bu-h3">Eco-Tourism</h3><p class="bu-p">Authentic cultural accommodation with UNESCO provenance story. Unique guest experience.</p></div>
+        <div class="bu"><p class="bu-ico">🏢</p><h3 class="bu-h3">Distributors</h3><p class="bu-p">Regional importers and distribution partners welcome. White-label and co-branding arrangements available.</p></div>
+      </div>
+
+      <!-- B2B Process -->
+      <div class="b2b-process rev">
+        <h2 class="bp2-title">How B2B works. <em>Step by step.</em></h2>
+        <div class="proc-grid">
+          <div class="proc-step"><p class="ps-num">01</p><p class="ps-title">Initial Enquiry</p><p class="ps-p">Fill in the B2B form above or email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="80f4f2e1e4e5c0f4f5eee4f5ebaee3ef">[email&#160;protected]</a>. Tell us about your project and number of units.</p></div>
+          <div class="proc-step"><p class="ps-num">02</p><p class="ps-title">Introductory Call</p><p class="ps-p">We arrange a 30-minute video call to understand your site, timeline, and requirements in detail.</p></div>
+          <div class="proc-step"><p class="ps-num">03</p><p class="ps-title">Project Quote</p><p class="ps-p">You receive a formal project quote with per-unit pricing, delivery schedule, and payment structure.</p></div>
+          <div class="proc-step"><p class="ps-num">04</p><p class="ps-title">Production &amp; Delivery</p><p class="ps-p">On deposit, production begins. QC evidence provided before each shipment. Phased delivery available.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team-section">
+  <div class="wrap">
+    <div class="ts-grid">
+      <div>
+        <p class="s-label rev">Who You're Talking To</p>
+        <h2 class="ts-h2 rev">A small team<br><em>in two continents.</em></h2>
+        <p class="ts-p rev">Tündük is operated from Bishkek, Kyrgyzstan with international sales. We are not a factory. We are a sourcing and export business built around direct relationships with the master craftsmen of Kyzyl-Tuu village.</p>
+        <p class="ts-p rev">Every yurt is built by the same artisan families who have made them for generations. We handle the logistics, the quality control, and the customer relationship — they handle the craft.</p>
+        <div style="margin-top:2.5rem">
+          <div class="img-ph rev" style="height:260px">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="40" height="32" rx="3"/><circle cx="18" cy="22" r="5"/><path d="M4 34l11-10 8 8 6-5 15 13"/></svg>
+            <p class="iph-label">Team photo — Bishkek office<br>+ Kyzyl-Tuu workshop visit</p>
+            <p class="iph-sub">Recommended: 1600 × 900px</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="team-people rev">
+          <div class="tp">
+            <div class="tp-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"/></svg></div>
+            <div>
+              <p class="tp-name">Yossi Ghinsberg</p>
+              <p class="tp-role">International Sales Lead · Tel Aviv / Remote</p>
+              <p class="tp-bio">Leads international B2B relationships and key account sales. First point of contact for resort developers, retreat operators, and distribution partners outside Central Asia.</p>
+            </div>
+          </div>
+          <div class="tp">
+            <div class="tp-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"/></svg></div>
+            <div>
+              <p class="tp-name">Nura</p>
+              <p class="tp-role">Operations Lead · Bishkek</p>
+              <p class="tp-bio">Manages production coordination, quality control, BOM, packaging specifications, and freight logistics from the Bishkek office. Primary liaison with the Kyzyl-Tuu artisan team.</p>
+            </div>
+          </div>
+          <div class="tp">
+            <div class="tp-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.42 3.58-8 8-8s8 3.58 8 8"/></svg></div>
+            <div>
+              <p class="tp-name">Adylet</p>
+              <p class="tp-role">Master Builder · Kyzyl-Tuu Village</p>
+              <p class="tp-bio">Third-generation yurt master craftsman in Kyzyl-Tuu. Leads production of all Tündük yurts and conducts video QC inspections before every shipment.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="locations">
+  <div class="wrap">
+    <p class="s-label rev">Our Presence</p>
+    <div class="loc-grid">
+      <div class="loc rev d1">
+        <p class="loc-city">Bishkek</p>
+        <p class="loc-role">Operations HQ</p>
+        <p class="loc-detail">Production coordination, QC, logistics, customer service.<br><a href="/cdn-cgi/l/email-protection#137b767f7f7c5367667d7766783d707c"><span class="__cf_email__" data-cfemail="ddb5b8b1b1b29da9a8b3b9a8b6f3beb2">[email&#160;protected]</span></a></p>
+        <div class="loc-map">Map placeholder — Bishkek, Kyrgyzstan</div>
+      </div>
+      <div class="loc rev d2">
+        <p class="loc-city">Kyzyl-Tuu</p>
+        <p class="loc-role">Production · Issyk-Kul Oblast</p>
+        <p class="loc-detail">Master craftsmen workshop. All yurts built here. Visits available for B2B clients by arrangement.</p>
+        <div class="loc-map">Map placeholder — Kyzyl-Tuu village, Issyk-Kul</div>
+      </div>
+      <div class="loc rev d3">
+        <p class="loc-city">International Sales</p>
+        <p class="loc-role">Remote · Global</p>
+        <p class="loc-detail">B2B and key account management. Available for video calls across US, European, and Asia-Pacific time zones.<br><a href="/cdn-cgi/l/email-protection#d4a0a6b5b0b194a0a1bab0a1bffab7bb"><span class="__cf_email__" data-cfemail="d3a7a1b2b7b693a7a6bdb7a6b8fdb0bc">[email&#160;protected]</span></a></p>
+        <div class="loc-map">Global coverage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">
+          <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2.5"/><circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="2"/><line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.5"/></svg>
+          <span>Tündük</span>
+        </div>
+        <p class="foot-tag">Authentic Kyrgyz yurts. Handbuilt in Kyzyl-Tuu. Shipped worldwide.</p>
+      </div>
+      <div>
+        <p class="foot-nav-h">Pages</p>
+        <ul class="foot-nav">
+          <li><a href="tunduk-homepage-v2.html">Home</a></li>
+          <li><a href="tunduk-heritage.html">Heritage</a></li>
+          <li><a href="tunduk-gallery.html">Gallery</a></li>
+          <li><a href="tunduk-configure.html">Configure</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-nav-h">Support</p>
+        <ul class="foot-nav">
+          <li><a href="tunduk-faq.html">FAQ</a></li>
+          <li><a href="#">Assembly Guide</a></li>
+          <li><a href="#">Care &amp; Maintenance</a></li>
+          <li><a href="#">Downloads</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-nav-h">Contact</p>
+        <ul class="foot-nav">
+          <li><a href="/cdn-cgi/l/email-protection#f69e939a9a99b682839892839dd89599"><span class="__cf_email__" data-cfemail="6b030e0707042b1f1e050f1e00450804">[email&#160;protected]</span></a></li>
+          <li><a href="/cdn-cgi/l/email-protection#5622243732331622233832233d783539"><span class="__cf_email__" data-cfemail="5c282e3d38391c282932382937723f33">[email&#160;protected]</span></a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <p class="foot-copy">© 2026 Tündük. All rights reserved.</p>
+      <p class="foot-origin">Handbuilt in <span>Kyzyl-Tuu</span> · Shipped worldwide</p>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);} }), {threshold:.06});
+  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+  function switchTab(id, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + id).classList.add('active');
+  }
+
+  function checkGenForm() {
+    const ok = document.getElementById('gfn').value.trim() && document.getElementById('gln').value.trim() && document.getElementById('gem').value.includes('@') && document.getElementById('gmsg').value.trim();
+    document.getElementById('gen-submit').disabled

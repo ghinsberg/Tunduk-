@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Tündük Kyrgyz Yurts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream:       #FAF6EE;
+      --parchment:   #EFE6D5;
+      --terracotta:  #B85C38;
+      --terra-light: #D4785A;
+      --soil:        #1C0E06;
+      --gold:        #C4923A;
+      --stone:       #9A8778;
+      --stone-light: #D4C8BC;
+      --text-mid:    #5A4035;
+      --sage:        #6B7B5E;
+      --font-d: 'Cormorant Garamond', Georgia, serif;
+      --font-b: 'Jost', system-ui, sans-serif;
+      --w: 1300px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); background: var(--cream); color: var(--soil); line-height: 1.6; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    .wrap { width: 90%; max-width: var(--w); margin: 0 auto; }
+
+    .rev { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+    .rev.in { opacity: 1; transform: none; }
+    .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+    /* NAV */
+    nav#nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0 clamp(1.5rem,5vw,5rem); height: 64px; display: flex; align-items: center; justify-content: space-between; background: #FAFAF7; box-shadow: 0 1px 0 rgba(26,20,16,.07); }
+    .nav-left, .nav-right { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-link { font-size: .7rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: #1A1410; opacity: .55; transition: opacity .25s; text-decoration: none; }
+    .nav-link:hover, .nav-link.active { opacity: 1; }
+    nav#nav .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .65rem; text-decoration: none; }
+    nav#nav .nav-logo svg { width: 28px; height: 28px; color: #1A1410; }
+    nav#nav .nav-logo-word { font-family: var(--font-d); font-size: 1.35rem; font-weight: 500; letter-spacing: .1em; color: #1A1410; }
+    .nav-quote { font-size: .68rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: #1A1410; opacity: .55; border-bottom: 1px solid rgba(26,20,16,.2); padding-bottom: 1px; transition: opacity .25s, border-color .25s; text-decoration: none; }
+    .nav-quote:hover { opacity: 1; border-color: #B85C38; }
+    /* ── MOBILE NAV ── */
+    .nav-hamburger {
+      display: none; cursor: pointer; z-index: 210;
+      width: 28px; height: 20px; position: relative;
+      flex-direction: column; justify-content: space-between;
+    }
+    .nav-hamburger span {
+      display: block; height: 1.5px; width: 100%; background: var(--ink);
+      transition: transform .3s, opacity .3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(9.25px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9.25px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--white); z-index: 199;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2rem; opacity: 0; pointer-events: none;
+      transition: opacity .35s ease;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: auto; }
+    .mobile-menu a {
+      font-family: var(--font-d); font-size: 1.6rem; font-weight: 400;
+      letter-spacing: .08em; color: var(--ink); opacity: .7;
+      transition: opacity .25s;
+    }
+    .mobile-menu a:hover { opacity: 1; }
+    .mobile-menu .mm-cta {
+      margin-top: 1rem; font-family: var(--font-b);
+      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+      border-bottom: 1px solid var(--terra); padding-bottom: 2px;
+    }
+
+    @media(max-width:780px) {
+      .nav-left, .nav-right { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* HERO */
+    .page-hero { padding: 9rem 0 4rem; background: var(--soil); position: relative; overflow: hidden; }
+    .ph-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 85% 55%, rgba(196,146,58,.2) 0%, transparent 55%), #1C0E06; }
+    .ph-content { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: end; }
+    @media(max-width:768px) { .ph-content { grid-template-columns: 1fr; gap: 2rem; } }
+    .ph-breadcrumb { font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(250,246,238,.38); margin-bottom: 1.3rem; display: flex; align-items: center; gap: .7rem; }
+    .ph-breadcrumb a { color: var(--gold); }
+    .ph-breadcrumb span { opacity: .4; }
+    .ph-h1 { font-family: var(--font-d); font-size: clamp(3rem, 7.5vw, 6.5rem); font-weight: 300; font-style: italic; color: var(--cream); line-height: .92; letter-spacing: -.02em; margin-bottom: 1.2rem; }
+    .ph-sub { font-size: .88rem; color: rgba(250,246,238,.5); line-height: 1.75; }
+    .ph-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(250,246,238,.06); align-self: end; }
+    .ph-stat { background: rgba(28,14,6,.5); padding: 1.6rem 1.4rem; }
+    .ph-num { font-family: var(--font-d); font-size: 2.4rem; font-weight: 300; font-style: italic; color: var(--gold); line-height: 1; margin-bottom: .3rem; }
+    .ph-lbl { font-size: .72rem; color: rgba(250,246,238,.38); line-height: 1.5; }
+
+    /* CATEGORY NAV */
+    .cat-nav { background: var(--parchment); border-bottom: 1px solid var(--stone-light); position: sticky; top: 64px; z-index: 90; }
+    .cn-inner { display: flex; gap: 0; overflow-x: auto; }
+    .cn-link { font-size: .7rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; padding: 1rem 1.35rem; color: var(--stone); white-space: nowrap; border-bottom: 2px solid transparent; transition: all .25s; }
+    .cn-link:hover { color: var(--terracotta); }
+    .cn-link.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+
+    /* LAYOUT */
+    .faq-layout { display: grid; grid-template-columns: 1fr; gap: 3rem; padding: 3.5rem 0 5rem; }
+    @media(min-width:1000px) { .faq-layout { grid-template-columns: 260px 1fr; gap: 5rem; } }
+
+    /* SIDEBAR */
+    .faq-sidebar { position: sticky; top: 115px; align-self: start; }
+    .fs-title { font-size: .63rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); margin-bottom: 1.1rem; }
+    .fs-links { list-style: none; }
+    .fs-links li { border-top: 1px solid var(--stone-light); }
+    .fs-links li:last-child { border-bottom: 1px solid var(--stone-light); }
+    .fs-links a { display: flex; align-items: center; justify-content: space-between; padding: .85rem 0; font-size: .8rem; color: var(--text-mid); transition: color .2s; }
+    .fs-links a:hover, .fs-links a.active { color: var(--terracotta); }
+    .fs-links .count { font-size: .68rem; color: var(--stone-light); font-weight: 500; }
+    .fs-links a.active .count { color: var(--terracotta); }
+
+    .fs-cta { margin-top: 2rem; padding: 1.5rem; background: var(--soil); }
+    .fsc-t { font-family: var(--font-d); font-style: italic; font-size: 1.1rem; color: var(--cream); line-height: 1.4; margin-bottom: 1rem; }
+    .fsc-btn { display: block; text-align: center; font-size: .7rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; padding: .8rem; background: var(--terracotta); color: var(--cream); transition: background .25s; }
+    .fsc-btn:hover { background: var(--terra-light); }
+
+    /* FAQ CONTENT */
+    .faq-content {}
+
+    /* Search */
+    .faq-search { margin-bottom: 2.5rem; position: relative; }
+    .faq-search input { width: 100%; padding: 1rem 1rem 1rem 3rem; border: 1.5px solid var(--stone-light); background: var(--cream); font-family: var(--font-b); font-size: .88rem; color: var(--soil); outline: none; transition: border-color .25s; }
+    .faq-search input:focus { border-color: var(--terracotta); }
+    .faq-search input::placeholder { color: var(--stone); }
+    .faq-search svg { position: absolute; left: .95rem; top: 50%; transform: translateY(-50%); width: 17px; height: 17px; color: var(--stone); }
+    #search-empty { display: none; padding: 2rem; text-align: center; font-size: .88rem; color: var(--stone); }
+
+    /* FAQ GROUP */
+    .faq-group { margin-bottom: 3.5rem; }
+    .faq-group:last-child { margin-bottom: 0; }
+    .fg-title { font-family: var(--font-d); font-size: clamp(1.4rem, 2.8vw, 2.2rem); font-weight: 300; color: var(--soil); margin-bottom: .4rem; padding-bottom: 1rem; border-bottom: 1px solid var(--stone-light); }
+    .fg-title em { font-style: italic; color: var(--terracotta); }
+
+    /* ACCORDION */
+    .faq-item { border-bottom: 1px solid var(--stone-light); }
+    .faq-q { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; padding: 1.35rem 0; cursor: pointer; user-select: none; }
+    .faq-q:hover .fq-text { color: var(--terracotta); }
+    .fq-text { font-size: .92rem; font-weight: 500; color: var(--soil); line-height: 1.45; transition: color .2s; flex: 1; }
+    .fq-icon { width: 22px; height: 22px; flex-shrink: 0; border: 1.5px solid var(--stone-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-top: .1rem; transition: all .3s; }
+    .fq-icon svg { width: 10px; height: 10px; color: var(--stone); transition: transform .35s; }
+    .faq-item.open .fq-icon { background: var(--terracotta); border-color: var(--terracotta); }
+    .faq-item.open .fq-icon svg { color: #fff; transform: rotate(45deg); }
+    .faq-item.open .fq-text { color: var(--terracotta); }
+
+    .faq-a { display: none; padding: 0 0 1.5rem; max-width: 680px; }
+    .faq-item.open .faq-a { display: block; animation: fadeIn .3s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(-6px)} to{opacity:1;transform:none} }
+    .faq-a p { font-size: .87rem; color: var(--text-mid); line-height: 1.85; margin-bottom: .9rem; }
+    .faq-a p:last-child { margin-bottom: 0; }
+    .faq-a strong { color: var(--soil); font-weight: 500; }
+    .faq-a a { color: var(--terracotta); border-bottom: 1px solid rgba(184,92,56,.3); }
+    .faq-a a:hover { border-color: var(--terracotta); }
+    .faq-a ul { margin: .5rem 0 .9rem 0; list-style: none; }
+    .faq-a ul li { padding: .3rem 0; font-size: .85rem; color: var(--text-mid); display: flex; gap: .7rem; }
+    .faq-a ul li::before { content: '—'; color: var(--terracotta); flex-shrink: 0; }
+    .note-box { margin-top: 1rem; padding: 1rem 1.2rem; background: var(--parchment); border-left: 3px solid var(--gold); font-size: .82rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* HIGHLIGHT RESULTS */
+    mark { background: rgba(184,92,56,.15); color: var(--terracotta); border-radius: 2px; padding: 0 2px; }
+
+    /* CTA SECTION */
+    .faq-cta { padding: 5rem 0; background: var(--soil); }
+    .fc-in { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+    @media(min-width:900px) { .fc-in { grid-template-columns: 1fr 1fr; } }
+    .fc-h2 { font-family: var(--font-d); font-size: clamp(1.7rem, 3.5vw, 3rem); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 1rem; }
+    .fc-h2 em { font-style: italic; color: rgba(250,246,238,.42); }
+    .fc-p { font-size: .85rem; color: rgba(250,246,238,.48); line-height: 1.78; }
+    .fc-btns { display: flex; flex-direction: column; gap: 1rem; }
+    .btn-p { display: block; text-align: center; font-size: .78rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: 1.05rem 2rem; background: var(--terracotta); color: var(--cream); transition: background .3s; }
+    .btn-p:hover { background: var(--terra-light); }
+    .btn-g { display: block; text-align: center; font-size: .78rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: 1.05rem 2rem; border: 1px solid rgba(250,246,238,.22); color: rgba(250,246,238,.65); transition: all .3s; }
+    .btn-g:hover { border-color: var(--cream); color: var(--cream); }
+
+    /* FOOTER */
+    footer { background: #100700; padding: 2.5rem 0; }
+    .foot-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .9rem; }
+    .foot-logo { display: flex; align-items: center; gap: .7rem; }
+    .foot-logo svg { width: 26px; height: 26px; color: var(--terracotta); }
+    .foot-logo span { font-family: var(--font-d); font-size: 1.2rem; font-weight: 500; color: var(--cream); }
+    .foot-copy { font-size: .73rem; color: rgba(250,246,238,.22); }
+    .foot-links { display: flex; gap: 1.5rem; }
+    .foot-links a { font-size: .73rem; color: rgba(250,246,238,.38); transition: color .2s; }
+    .foot-links a:hover { color: var(--cream); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-left">
+    <a href="tunduk-homeware.html" class="nav-link">Homeware</a>
+    <a href="tunduk-story.html" class="nav-link">Our Story</a>
+    <a href="tunduk-heritage.html" class="nav-link">Heritage</a>
+  </div>
+  <a href="tunduk-homepage-v2.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/><circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="1.5"/><line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="45" x2="69.44" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="48.66" x2="57" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="48.66" x2="23" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="45" x2="10.56" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="35" x2="10.56" y2="23" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="31.34" x2="23" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="31.34" x2="57" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="35" x2="69.44" y2="23" stroke="currentColor" stroke-width="1.2"/></svg>
+    <span class="nav-logo-word">Tündük</span>
+  </a>
+  <div class="nav-right">
+    <a href="tunduk-gallery.html" class="nav-link">Gallery</a>
+    <a href="tunduk-configure.html" class="nav-quote">Configure a Yurt</a>
+  </div>
+
+  <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open');">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="tunduk-homeware.html">Homeware</a>
+  <a href="tunduk-story.html">Our Story</a>
+  <a href="tunduk-heritage.html">Heritage</a>
+  <a href="tunduk-gallery.html">Gallery</a>
+  <a href="tunduk-configure.html" class="mm-cta">Configure a Yurt</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="ph-bg"></div>
+  <div class="wrap">
+    <div class="ph-content">
+      <div>
+        <p class="ph-breadcrumb"><a href="tunduk-homepage-v2.html">Tündük</a> <span>/</span> FAQ</p>
+        <h1 class="ph-h1">Frequently<br>Asked</h1>
+        <p class="ph-sub">Everything you need to know about Kyrgyz yurts — the craft, the ordering process, shipping, weather performance, and life with a boz üy.</p>
+      </div>
+      <div class="ph-stats">
+        <div class="ph-stat"><p class="ph-num">6</p><p class="ph-lbl">Topic categories</p></div>
+        <div class="ph-stat"><p class="ph-num">38</p><p class="ph-lbl">Questions answered</p></div>
+        <div class="ph-stat"><p class="ph-num">48h</p><p class="ph-lbl">Response time for anything not covered here</p></div>
+        <div class="ph-stat"><p class="ph-num">0</p><p class="ph-lbl">Nails, screws or metal fasteners in a traditional yurt</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAT NAV -->
+<nav class="cat-nav">
+  <div class="wrap">
+    <div class="cn-inner">
+      <a href="#the-yurt" class="cn-link active">The Yurt</a>
+      <a href="#ordering" class="cn-link">Ordering</a>
+      <a href="#shipping" class="cn-link">Shipping</a>
+      <a href="#weather" class="cn-link">Weather &amp; Climate</a>
+      <a href="#assembly" class="cn-link">Assembly</a>
+      <a href="#planning" class="cn-link">Planning &amp; Permits</a>
+      <a href="#terminology" class="cn-link">Terminology</a>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="wrap">
+  <div class="faq-layout">
+
+    <!-- SIDEBAR -->
+    <div class="faq-sidebar">
+      <p class="fs-title">Categories</p>
+      <ul class="fs-links">
+        <li><a href="#the-yurt" class="active">The Yurt <span class="count">8</span></a></li>
+        <li><a href="#ordering">Ordering &amp; Pricing <span class="count">7</span></a></li>
+        <li><a href="#shipping">Shipping &amp; Delivery <span class="count">6</span></a></li>
+        <li><a href="#weather">Weather &amp; Climate <span class="count">6</span></a></li>
+        <li><a href="#assembly">Assembly &amp; Installation <span class="count">6</span></a></li>
+        <li><a href="#planning">Planning &amp; Permits <span class="count">5</span></a></li>
+        <li><a href="#terminology">Kyrgyz Terminology <span class="count">10</span></a></li>
+      </ul>
+      <div class="fs-cta">
+        <p class="fsc-t">Still have questions?</p>
+        <a href="tunduk-contact.html" class="fsc-btn">Ask Us Directly</a>
+      </div>
+    </div>
+
+    <!-- QUESTIONS -->
+    <div class="faq-content">
+
+      <div class="faq-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="faq-search" placeholder="Search questions…" oninput="searchFAQ(this.value)">
+      </div>
+      <p id="search-empty">No questions match your search. <a href="tunduk-contact.html">Ask us directly →</a></p>
+
+      <!-- ── THE YURT ── -->
+      <div class="faq-group rev" id="the-yurt">
+        <h2 class="fg-title">The <em>Yurt</em></h2>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What exactly is a boz üy — is it the same as a Mongolian ger?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>A boz üy is the Kyrgyz term for a traditional portable dwelling — "grey house" in Old Turkish. While both the Kyrgyz boz üy and the Mongolian ger are circular portable structures, they are architecturally distinct in an important way: <strong>Kyrgyz yurts use curved roof poles</strong> (uuk) that radiate from the crown ring and carry all structural load to the lattice walls. This creates a taller, more elegant dome with no internal support poles whatsoever.</p><p>Mongolian gers use straight roof poles and typically require two central support poles (bagana) that stand in the middle of the interior. The absence of center poles in a Kyrgyz yurt creates completely unobstructed interior space — a significant advantage for yoga studios, retreat spaces, event venues, or simply generous living space.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What are the yurts made from — are any synthetic materials used?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Traditional Tündük yurts contain <strong>zero synthetic materials</strong>. Every component is natural and renewable:</p><ul><li><strong>Frame:</strong> locally sourced hardwood (willow and birch), shaped by hand</li><li><strong>Bindings:</strong> rawhide strips — applied wet and shrunk tight, no nails or screws</li><li><strong>Insulation:</strong> woven reed mats (chiy) wrapped around the lattice walls</li><li><strong>Covering:</strong> handmade sheep wool felt — 13 rolls per yurt</li><li><strong>Interior:</strong> shyrdak felt carpets with hand-dyed wool</li></ul><p>Our Export Suite add-on rain cover uses a breathable technical membrane, which is the only synthetic element in our range — and it is an optional add-on, not part of the traditional structure.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How much does a fully assembled yurt weigh?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>A traditional 6m (20ft) Kyrgyz boz üy weighs approximately <strong>150 kg (330 lbs)</strong> assembled — significantly lighter than a comparable Mongolian ger (230–900 kg) or a Western engineered yurt (often 1,000–2,000+ lbs including crating). The lighter weight translates to lower shipping costs, simpler logistics, and genuinely easier relocation if needed.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What does the tündük crown ring do — why is it significant?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>The tündük is the circular wooden crown ring at the apex of the yurt, through which all roof poles (uuk) are inserted. Structurally, it distributes load from the roof across all poles simultaneously. Culturally, it is <strong>the most sacred element of the yurt</strong> — it represents the sun, the cosmos, and the family's connection to the sky. It appears at the centre of the Kyrgyz national flag, surrounded by 40 rays representing the 40 nomad tribes.</p><p>The tündük is typically left open to sky, admitting natural light and ventilation. It can be closed in rain or cold with a felt cover (the tunduk cap) that is raised and lowered with a rope from inside.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What is UNESCO intangible cultural heritage and why does it matter?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>UNESCO's Representative List of Intangible Cultural Heritage recognises living traditions that carry outstanding cultural significance for humanity — oral traditions, performing arts, rituals, craftsmanship. Being inscribed means the practice has been formally assessed as globally significant and worthy of preservation.</p><p>Traditional knowledge and skills in making Kyrgyz and Kazakh yurts were inscribed in 2014 and expanded in 2025. This is not a museum artefact — it is a recognition of a <strong>living craft tradition</strong> still actively practised in villages like Kyzyl-Tuu. When you purchase a Tündük yurt, you are engaging with that living tradition directly.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How long does a Kyrgyz yurt last?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>With proper care, a traditional Kyrgyz yurt <strong>can last 20–50 years</strong>. The wooden frame — if kept dry and protected from sustained moisture — is extremely durable. The felt coverings are the element that requires more attention: in Central Asia's dry climate, felt lasts 15–20 years before replacement. In wetter climates, with our breathable rain cover add-on, felt lifespan is comparable.</p><p>Individual components are replaceable independently. You can replace a single felt panel, a damaged uuk pole, or the tündük cap without replacing the entire yurt. This modularity is by design — it is how nomadic families have maintained their yurts for generations.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What floor area does each size provide?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><ul><li><strong>5m (16 ft):</strong> ~19.6 m² (211 sq ft) — studio / meditation space / intimate glamping</li><li><strong>6m (20 ft):</strong> ~28.3 m² (304 sq ft) — comfortable living + sleeping / yoga studio</li><li><strong>7m (23 ft):</strong> ~38.5 m² (414 sq ft) — generous family accommodation / workshop</li><li><strong>8m (26 ft):</strong> ~50.3 m² (541 sq ft) — event space / resort centrepiece (Bespoke tier)</li></ul><p>Because there are no center poles, <strong>100% of the floor area is usable</strong> — unlike Mongolian gers where the central poles interrupt the space.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What are the three product tiers and what's the difference?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><ul><li><strong>Boz Üy Traditional ($6,000+):</strong> The authentic yurt as built in Kyzyl-Tuu. Full wool felt, natural materials, shyrdak carpet. Ideal for dry/continental climates or buyers seeking maximum authenticity.</li><li><strong>Export Suite ($8,000+):</strong> Traditional yurt plus our climate-adaptation package — breathable rain cover, enhanced insulation, stove-ready aperture, enlarged door option. Designed specifically for Western climates (Europe, North America, Australia/NZ).</li><li><strong>Bespoke ($12,000+):</strong> Fully customised — any size, premium carved door frame, custom shyrdak patterns, special felt colours or motifs. Built to your specifications after a design consultation.</li></ul></div></div>
+      </div>
+
+      <!-- ── ORDERING ── -->
+      <div class="faq-group rev" id="ordering">
+        <h2 class="fg-title">Ordering &amp; <em>Pricing</em></h2>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How does the ordering process work?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Our process has four stages:</p><ul><li><strong>Configure &amp; Quote (Week 1):</strong> Use our configurator to select tier, size, add-ons, and destination. We respond with a personalised quote within 48 hours.</li><li><strong>Quote Acceptance &amp; Deposit (Week 1–2):</strong> Accept your quote and pay a 30% deposit to begin production. We send a production confirmation with your build schedule.</li><li><strong>Production &amp; QC (Weeks 3–12):</strong> Your yurt is built by our artisan team. Before shipping, we send a full QC pack: photos, video walkthrough, and measurements of all components.</li><li><strong>Shipping &amp; Delivery:</strong> We coordinate freight, customs documentation, and final delivery. Lead times depend on destination and shipping method.</li></ul><p>The full process from order to delivery is typically <strong>10–16 weeks</strong> for standard orders.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Are the prices on your website fixed?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Prices shown are <strong>"from" prices</strong> — the base cost for the most common configuration delivered to major markets. Your final price depends on size, add-ons, quantity, destination country, and shipping method (air vs. ocean freight). We provide a fixed quoted price before you commit — no surprises after you order.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What payment methods do you accept?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>We accept international bank transfer (SWIFT/IBAN), and major credit/debit cards via Stripe. All prices are quoted in USD. Payment is structured as <strong>30% deposit on order, 70% balance before shipping</strong>. For B2B orders of 5+ units, alternative payment schedules can be arranged.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Do you offer B2B pricing for multiple units?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Yes. For orders of 5 or more units, we offer volume pricing, phased delivery scheduling, and dedicated account management. We work directly with glamping resort developers, retreat centres, eco-lodge operators, and festival companies. <a href="tunduk-contact.html">Contact our B2B team</a> to discuss your project.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Can I visit the workshop in Kyrgyzstan before ordering?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>For B2B buyers and large orders, we can arrange a visit to Kyzyl-Tuu to meet the artisan team and see yurts being built. We can also connect you with a virtual factory tour via video call. <a href="tunduk-contact.html">Reach out to arrange this.</a></p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What is your returns and warranty policy?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Every yurt undergoes pre-shipment quality inspection with photographic and video evidence provided before final payment. We offer a <strong>12-month structural warranty</strong> covering defects in the wooden frame and joinery. Felt coverings are not covered by warranty (they are a natural material subject to normal wear) but replacement felt panels can be ordered separately.</p><p>Due to the bespoke, made-to-order nature of our products, returns are not accepted after production begins. This is why the QC approval stage before shipping is critical — we ensure you are satisfied before the yurt leaves Kyrgyzstan.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Can I customise the interior decoration?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Yes, particularly on the Bespoke tier. Customisable elements include:</p><ul><li>Shyrdak carpet colour palette and motif combination</li><li>Felt wall band (decoration strip) patterns and colours</li><li>Bosogo door frame carving style and paint colours</li><li>Interior ceiling panel colour</li><li>Tündük decorative painting</li></ul><p>On Traditional and Export Suite tiers, a limited range of colour options is available (please enquire at quote stage).</p></div></div>
+      </div>
+
+      <!-- ── SHIPPING ── -->
+      <div class="faq-group rev" id="shipping">
+        <h2 class="fg-title">Shipping &amp; <em>Delivery</em></h2>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Where do you ship to?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>We ship globally. Our primary markets are the US, UK, Germany, France, Netherlands, Australia, New Zealand, and Turkey. We can also ship to most other countries — freight costs and lead times vary by destination. Use our configurator to specify your country and we'll include destination-specific shipping in your quote.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How long does shipping take?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Transit times depend on destination and shipping method:</p><ul><li><strong>Air freight (express):</strong> 10–14 days to most destinations. Higher cost but suitable for time-sensitive projects.</li><li><strong>Ocean freight (consolidated / LCL):</strong> 6–12 weeks to Europe, 8–14 weeks to North America / Australia. Most economical for larger orders.</li><li><strong>Overland + ocean (multi-modal):</strong> Kyrgyzstan is landlocked, so all ocean shipments route overland (typically via China or via Central Asian rail corridors) to a seaport before ocean transit.</li></ul><p>Lead time from order to delivery (production + transit) is typically <strong>14–20 weeks</strong> for ocean freight, or <strong>10–14 weeks</strong> for air.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What are the Incoterms — who handles customs clearance?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>We quote on <strong>DAP (Delivered at Place)</strong> terms as standard — meaning the price includes all freight, insurance, and delivery to your address. You are responsible for import duties and VAT on receipt.</p><p>We provide all required export documents: commercial invoice, packing list, certificate of origin, and phytosanitary treatment documentation for any wooden packaging (ISPM 15 compliant). We can also provide HS code guidance to help you estimate import duties in your country.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How is the yurt packaged for shipping?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Components are grouped into labelled packages by category (frame / felt / reed mats / door / accessories). Wooden components are wrapped in protective film. Felt rolls are sealed in moisture-resistant bags. All packages are numbered, photographed, and matched to a packing list you receive before shipment.</p><p>A 6m yurt typically ships as <strong>6–9 packages</strong> totalling approximately 165–200 kg gross weight and 1.8–2.4 CBM.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What happens if something is damaged in transit?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>All shipments include all-risk cargo insurance. In the event of transit damage, photograph everything on receipt before signing off with the courier, and notify us within 48 hours with photos. We will manage the insurance claim and replace damaged components. Because individual components are replaceable, a partial damage claim does not mean a full yurt replacement.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Do I need to be present for delivery?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>We recommend being present or arranging a representative, as packages are heavy and should be inspected for transit damage on receipt. Your freight forwarder will coordinate a delivery window in advance. For business deliveries, a loading dock or forklift access may be needed for larger orders.</p></div></div>
+      </div>
+
+      <!-- ── WEATHER ── -->
+      <div class="faq-group rev" id="weather">
+        <h2 class="fg-title">Weather &amp; <em>Climate</em></h2>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Can a Kyrgyz yurt handle rain? Will the felt get wet?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Traditional felt is designed for Central Asia's dry continental climate. In a wet climate (UK, Pacific Northwest, much of Europe), wool felt will absorb moisture and take time to dry — which is manageable but not ideal for permanent structures. Our solution is the <strong>Export Suite's breathable rain cover</strong>: a high-quality breathable membrane that sits over the felt, repelling liquid water while still allowing the wool to breathe and regulate humidity naturally.</p><p>The breathable membrane is <strong>strongly recommended</strong> for any yurt in a climate with more than ~600mm annual rainfall. It is included as standard in the Export Suite tier and is available as an add-on for Traditional tier orders.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How cold can it get inside in winter?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Wool felt is a remarkable natural insulator — Kyrgyz families have lived in yurts through harsh Central Asian winters (down to -30°C / -22°F). However, without active heating, the yurt will equilibrate with outdoor temperatures over time. Most clients in cold climates use a small wood-burning stove (our stove-ready add-on makes this straightforward), which can heat the interior quickly and efficiently. With a stove and our enhanced insulation add-on, a yurt is comfortable year-round in most European or North American climates.</p><div class="note-box">For winter residential use, we recommend: Export Suite + Enhanced Insulation + Stove-Ready Kit + a quality wood-burning stove rated for the interior volume.</div></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How does the yurt perform in strong wind?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>The dome shape is aerodynamically efficient — it generates very little wind resistance compared to flat-sided structures. Tension bands hold the frame together, and the felt covering is secured with additional straps. Traditional yurts have withstood steppe winds for millennia. In coastal or exposed locations, we recommend anchoring the base to a platform and adding ground pegs for the outer tension straps. We provide specific guidance in the assembly guide.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Can yurts handle snow loads?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>The curved roof naturally sheds snow, preventing accumulation. Moderate snow loads (typical for most European or North American winters) are handled well by the dome geometry. For regions with very heavy snowfall, we recommend keeping the interior heated to ensure some warmth reaches the roof surface and prevents ice buildup around the tündük seal.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Is the yurt suitable for hot climates?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Yes — the tündük is designed to function as a natural chimney effect ventilator. When the ring is open, hot air rises and exits through the top while cooler air is drawn in through the lower walls. This passive ventilation keeps interiors significantly cooler than the outside on hot days. Wool also has natural insulating properties in both directions. Many of our clients use yurts in hot Mediterranean, Middle Eastern, and Australian climates successfully.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How do I care for and maintain the felt?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Wool felt care is straightforward:</p><ul><li>Allow felt to dry thoroughly if it gets wet — ventilate the interior</li><li>Brush off debris with a soft brush before storage</li><li>Store felt rolls in a dry location if the yurt is not in use for extended periods</li><li>Check for moth damage annually and treat with appropriate natural repellents</li><li>Individual felt panels can be replaced without replacing the full set</li></ul><p>A full care and maintenance guide is included with every order.</p></div></div>
+      </div>
+
+      <!-- ── ASSEMBLY ── -->
+      <div class="faq-group rev" id="assembly">
+        <h2 class="fg-title">Assembly &amp; <em>Installation</em></h2>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How long does it take to assemble a yurt?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>An experienced team of 4–5 people can assemble a 6m yurt in approximately <strong>1 hour</strong>. For first-time assemblers with our guide and video, allow 2–3 hours. Disassembly takes slightly less time. The entire structure requires <strong>no tools</strong> — components slot, pin, and tie together.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Do I need a foundation or platform?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Traditionally, yurts are erected directly on cleared level ground. For permanent or semi-permanent Western installations, a low raised timber platform (decking) is strongly recommended for:</p><ul><li>Moisture isolation between the ground and the wooden frame</li><li>A level, clean floor surface</li><li>Improved insulation from ground cold</li><li>Easier compliance with local planning requirements</li></ul><p>A simple timber platform can be built by any competent carpenter. We can provide recommended specifications. No concrete foundations are required.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Do you provide an assembly guide and support?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Yes. Every order includes a full illustrated assembly guide and a recorded video walkthrough by Adylet, our master builder. All components are numbered and labelled to match the guide. We offer remote assembly support via video call during your first assembly at no additional charge — just book a time and we'll walk through it with you live.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Can the yurt be moved after assembly?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Absolutely — this is by design. The yurt can be disassembled, transported, and re-erected an unlimited number of times. This is how nomadic families have used them for centuries. Components are numbered and pack consistently, so disassembly and re-packing is straightforward after the first time.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Can I add electricity, plumbing, or heating?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Yes to all. Many of our clients use their yurts as year-round glamping units or home studios with full services:</p><ul><li><strong>Electricity:</strong> Cabling is typically run under the platform floor and enters through a discreet opening in the kerege base. LED strip lighting around the kerege interior and tündük ring are common.</li><li><strong>Heating:</strong> A wood-burning stove is the most traditional and effective option. Our stove-ready add-on provides a reinforced chimney aperture. Electric underfloor heating in the platform is also popular.</li><li><strong>Plumbing:</strong> Not typically inside the yurt itself, but a separate bathroom/wet room adjacent to the yurt is a common glamping configuration.</li></ul></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How many people does a 6m yurt sleep?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>A 6m yurt (28.3 m²) comfortably sleeps <strong>2–4 people</strong> as a glamping unit with a double or king bed, small seating area, and storage. Configured as a family camping unit, up to 6 people can sleep on floor mats in traditional Kyrgyz style. For yoga or meditation, the 6m comfortably accommodates 8–12 participants.</p></div></div>
+      </div>
+
+      <!-- ── PLANNING ── -->
+      <div class="faq-group rev" id="planning">
+        <h2 class="fg-title">Planning &amp; <em>Permits</em></h2>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Do I need planning permission to put up a yurt?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Regulations vary significantly by country, region, and intended use. The key variables are: whether the yurt is on your own land, whether it is for personal or commercial use, how long it will remain in place, and whether it is classified as a temporary or permanent structure.</p><p>General guidance (always verify with your local authority):</p><ul><li><strong>UK:</strong> Temporary structures on private land for up to 28 days typically don't require planning permission. Permanent / semi-permanent installations and commercial glamping often require planning consent.</li><li><strong>US:</strong> Varies by state and county. Many rural and agricultural zones permit yurts without a permit if they're below a certain floor area threshold.</li><li><strong>EU:</strong> Varies by country and municipality. Germany and France tend to require permits for structures above ~20 m².</li><li><strong>Australia/NZ:</strong> Similar to EU — check with your local council.</li></ul><div class="note-box">We maintain a country-by-country guidance document updated regularly. We'll include the relevant section in your quote pack.</div></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Can the yurt be used for commercial glamping or short-term rental?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Yes — this is one of our primary use cases. Many Tündük clients operate Airbnb listings, glamping sites, and eco-resorts with our yurts. For commercial use, we recommend the Export Suite tier with the rain cover and stove kit. B2B buyers should also check local hospitality licensing and fire safety requirements — these vary by jurisdiction and we can advise based on your location.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What is the fire safety profile of a wool yurt?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Wool is naturally fire-resistant. It is significantly harder to ignite than cotton or synthetic fabrics — it chars rather than melts, self-extinguishes, and produces less toxic smoke than synthetics. This is one of wool's most valued properties as an insulation material in commercial and residential settings. For commercial glamping use, we recommend a carbon monoxide detector and a fire extinguisher as standard (required in most jurisdictions anyway). We do not recommend leaving open flames (candles) unattended inside any fabric structure.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">Can I get building/structural certification for a Tündük yurt?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>We can provide a structural data pack with component dimensions, materials specification, and assembly methodology. However, formal structural engineering certification for building permit purposes must be obtained from a licensed engineer in your jurisdiction. Some of our B2B clients have had their yurt structures independently certified — we can provide the documentation they needed. <a href="tunduk-contact.html">Contact us</a> if you need this for a specific project.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">How do I calculate what size yurt I need?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>A useful starting point:</p><ul><li><strong>Solo / couple retreat or garden studio:</strong> 5m</li><li><strong>1–2 person glamping unit, yoga studio for 8–12:</strong> 6m</li><li><strong>Family of 4 glamping, workshop, small event:</strong> 7m</li><li><strong>Resort centrepiece, large event, commercial space:</strong> 8m (Bespoke)</li></ul><p>Remember that 100% of the circular floor area is usable — there are no center poles reducing your effective space. A 6m yurt's 28 m² is all genuinely open floor.</p></div></div>
+      </div>
+
+      <div class="faq-group rev" id="terminology">
+        <h2 class="fg-title">Kyrgyz <em>Terminology</em></h2>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What does "tündük" mean — and why is it your brand name?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Tündük is the crown ring at the apex of a Kyrgyz yurt — the circular wooden hoop through which all roof poles (uuk) radiate outward and downward to the walls. Structurally, it holds the entire dome together. Symbolically, it represents the cosmos, the sun, and the unity of the family beneath it.</p><p>It is so central to Kyrgyz identity that the tündük sits at the centre of the national flag — a red field with a yellow tündük wheel. We chose the name because the tündük is simultaneously the most structurally critical element and the most symbolically loaded. Everything radiates from it.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What is a "kerege" — and what does "6 kanat" mean?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>The kerege is a folding lattice wall panel — the accordion-like wooden grid that forms the cylindrical base of the yurt. Each panel folds flat for transport and expands to form a section of the wall circle.</p><p>Kanat (كنات‎) means "wing" in Kyrgyz — and it is the traditional unit for specifying yurt size. A "6 kanat" yurt has six kerege wall panels forming its perimeter. Our sizing follows this system: the 5m yurt is 4 kanat, the 6m is 6 kanat, the 7m is 8 kanat. The number of uuk roof poles follows proportionally: 4 kanat = 55 uuk, 6 kanat = 85 uuk, 8 kanat = 100 uuk. This is how Kyrgyz builders have specified yurts for centuries.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What are "uuk" — how are they different from regular rafters?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Uuk are the curved roof poles that radiate from the tündük crown ring down to the top of the kerege walls, creating the domed roof structure. Unlike the straight rafters used in modern Western yurts, uuk are curved — steam-bent from Turpan Tal willow over 15–20 days so that each pole holds its arc permanently without mechanical assistance.</p><p>This curvature is what makes center poles unnecessary. The dome holds itself through the geometry of compression: the uuk push outward at the kerege and upward into the tündük, creating a self-supporting structure. A 6m yurt carries 85 uuk, each cut and bent individually by hand.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What is "Turpan Tal" and why does it matter?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Turpan Tal is the specific species of willow used for all Kyrgyz yurt frames — harvested from river valleys in the Fergana and Talas regions. It is exceptionally light for its strength, naturally flexible when steamed, and resistant to splitting under tension once dried.</p><p>Not all willow is Turpan Tal. The species is selected specifically because it bends the way the uuk and kerege need to bend — holding a curve without cracking when the fibres are stressed by steam. Builders in Kyzyl-Tuu have used Turpan Tal for generations. Using any other species produces a structurally inferior frame. It is one of the reasons authentic Kyrgyz yurts from the right villages are genuinely different from imitations.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What is "kiyiz" — is it the same as felt?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Kiyiz is the Kyrgyz word for felt — but specifically the handmade wool felt produced using traditional wet-felting techniques. It is not the same as commercial or industrial felt. Kiyiz is made by washing raw sheep wool, layering it on a reed mat, drenching it with hot water, and then rolling and pressing it repeatedly — a process that takes a full day per panel and is traditionally done communally (the rolling requires multiple people working in rhythm).</p><p>A standard 6m yurt uses thirteen rolls of kiyiz: eight for the roof, five for the walls. The felt is 2–4cm thick depending on the layer and is the primary insulation, weatherproofing, and structural skin of the yurt. Unlike synthetic covers, kiyiz self-regulates humidity and temperature — it absorbs moisture when the air is damp and releases it as the air dries.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What is "gök" binding — why no nails?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Gök is rawhide — strips of untanned animal hide applied wet to every joint in the kerege lattice. As rawhide dries, it contracts and hardens, creating a joint of extraordinary compressive strength. There are no nails, no screws, no metal fasteners of any kind in an authentic Kyrgyz yurt frame.</p><p>This is not a limitation — it is a structural advantage. Gök-bound joints flex under wind load and movement rather than cracking under stress the way rigid metal-fastened joints do. The yurt is designed to move slightly, distributing force across the entire structure rather than concentrating it at fixed points. This is why traditional yurts survive the extreme wind conditions of Kyrgyz mountain passes.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What is a "shyrdak" — how is it different from "ala kiyiz"?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Both are handmade Kyrgyz felt carpets — but made using completely different techniques.</p><p><strong>Shyrdak</strong> is made by the mosaic appliqué method: two contrasting-colour felt layers are cut simultaneously with the same pattern, then the cut-out pieces are swapped and stitched together. The design is first drawn on the felt, then cut, then reassembled. Every motif is intentional and carries meaning — the ram's horn (strength), the crow's claw (lineage), the horn scroll (protection).</p><p><strong>Ala kiyiz</strong> is older and made by the rolling method: coloured wool designs are laid into raw (unfelted) wool and then the entire surface is wet-rolled together, permanently fusing the design into the fabric as the fibres bond. Unlike shyrdak, you cannot plan an ala kiyiz on paper — the entire design must exist in the maker's memory before the wool is touched, because once rolling begins, the pattern cannot be altered.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What are "chiy" and "oimo chiy"?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Chiy are woven reed mats that wrap around the kerege walls beneath the felt covering. They serve as an essential insulation and ventilation layer — separating the felt from direct contact with the lattice, creating an air gap, and providing additional thermal mass. In a properly built boz üy, you never skip the chiy layer.</p><p>Oimo chiy is the premium version: during the weaving process, coloured wool is woven into the reed surface in geometric patterns. The decoration is not applied afterward — it is integral to the structure. The standard plain chiy serves function; oimo chiy serves function and beauty simultaneously. It lines the interior of the kerege and is visible as a decorative band around the lower walls of the yurt interior.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What are "zabık bash" and what is a "bosogo"?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p><strong>Zabık bash</strong> are the decorative felt bands that ring the yurt at the wall-to-roof junction. The ichki (inner) zabık bash lines the interior where the kerege meets the uuk — an embroidered felt strip with traditional motifs in red, green, and gold. The syrtky (outer) zabık bash runs around the exterior lower edge of the yurt. Together they are the finishing detail that transforms a functional yurt into a fully dressed one. A yurt without zabık bash is like a suit without its buttons.</p><p><strong>Bosogo</strong> is the wooden door frame — typically the most visually prominent element of the yurt exterior. In a standard boz üy the bosogo is plain-painted; in the Bespoke tier it is hand-carved with ancestral motifs and painted in traditional colours by the master craftsman. The bosogo is what a guest sees first when approaching the yurt.</p></div></div>
+
+        <div class="faq-item"><div class="faq-q" onclick="toggle(this)"><span class="fq-text">What do Jailoo, Kochuu, and Ala-Too mean — and what are Ak and Oyu?</span><span class="fq-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="1" x2="6" y2="11"/><line x1="1" y1="6" x2="11" y2="6"/></svg></span></div>
+        <div class="faq-a"><p>Our three yurt models are named for Kyrgyz words that carry meaning relevant to how and where each yurt lives:</p><ul><li><strong>Jailoo</strong> (5m) — the summer alpine pasture, where nomadic families have pitched their yurts every July and August for a thousand years. Light, intimate, and made for retreat.</li><li><strong>Kochuu</strong> (6m) — the migration, the act of moving your home to follow the seasons. Our most-ordered size. Balanced between intimacy and generosity.</li><li><strong>Ala-Too</strong> (7m) — the mountain range that rings Bishkek and defines the Kyrgyz skyline. Grand, commanding, built for permanence.</li></ul><p>Within each model, the two variants are:</p><ul><li><strong>Ak</strong> (white/pure) — natural undyed kiyiz felt in cream and stone tones. No chemical treatment. The traditional palette of the steppe.</li><li><strong>Oyu</strong> (motif/ornament) — fully decorated: shyrdak carpets, oimo chiy reed mats, zabık bash felt bands, carved bosogo door frame. Everything handmade by the women and craftsmen of Kyzyl-Tuu.</li></ul></div></div>
+
+      </div>
+
+    </div><!-- /faq-content -->
+  </div><!-- /faq-layout -->
+</div><!-- /wrap -->
+
+<!-- CTA -->
+<section class="faq-cta">
+  <div class="wrap">
+    <div class="fc-in">
+      <div class="rev">
+        <h2 class="fc-h2">Still have<br><em>questions?</em></h2>
+        <p class="fc-p">Our team is based in Bishkek and typically responds within a business day. For complex projects, we're happy to jump on a video call.</p>
+      </div>
+      <div class="fc-btns rev">
+        <a href="tunduk-contact.html" class="btn-p">Contact Us Directly</a>
+        <a href="tunduk-configure.html" class="btn-g">Configure Your Yurt</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-bot">
+      <div class="foot-logo">
+        <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2.5"/><circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="2"/><line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.5"/><line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.5"/><line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.5"/></svg>
+        <span>Tündük</span>
+      </div>
+      <p class="foot-copy">© 2026 Tündük. All rights reserved.</p>
+      <div class="foot-links">
+        <a href="tunduk-homepage-v2.html">Home</a>
+        <a href="tunduk-gallery.html">Gallery</a>
+        <a href="tunduk-configure.html">Configure</a>
+        <a href="tunduk-contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);} }), {threshold:.06});
+  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+
+  function toggle(qEl) {
+    const item = qEl.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  function searchFAQ(q) {
+    const term = q.trim().toLowerCase();
+    let anyVisible = false;
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const match = !term || text.includes(term);
+      item.style.display = match ? '' : 'none';
+      if (match) anyVisible = true;
+    });
+    document.getElementById('search-empty').style.display = (!anyVisible && term) ? 'block' : 'none';
+    document.querySelectorAll('.faq-group').forEach(g => {
+      const vis = [...g.querySelectorAll('.faq-item')].some(i => i.style.display !== 'none');
+      g.style.display = vis ? '' : 'none';
+    });
+  }
+
+  // Active cat nav on scroll
+  const sections = document.querySelectorAll('.faq-group');
+  const catLinks = document.querySelectorAll('.cn-link');
+  const fsLinks  = document.querySelectorAll('.fs-links a');
+  addEventListener('scroll', () => {
+    const mid = scrollY + innerHeight * .4;
+    sections.forEach(s => {
+      if (s.offsetTop <= mid && s.offsetTop + s.offsetHeight > mid) {
+        const id = '#' + s.id;
+        catLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        fsLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+      }
+    });
+  });
+</script>
+</body>
+</html>

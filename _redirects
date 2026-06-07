@@ -1,5 +1,6 @@
 # Tündük — Netlify redirects
 /home        /index.html        200
+/trade       /tunduk-trade.html      200
 /configure   /tunduk-configure.html  200
 /heritage    /tunduk-heritage.html   200
 /gallery     /tunduk-gallery.html    200

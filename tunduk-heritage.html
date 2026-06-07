@@ -3,258 +3,361 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Heritage — Tündük Kyrgyz Yurts</title>
+  <title>The Charter — Tündük | Heritage of the Boz Üy</title>
+  <meta name="description" content="The keeping of the boz üy, documented like a reference work. Custodianship, UNESCO heritage, and the village of Kyzyl-Tuu that is the world centre of the Kyrgyz yurt-making craft.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --cream:       #FAF6EE;
-      --parchment:   #EFE6D5;
-      --terracotta:  #B85C38;
-      --terra-light: #D4785A;
-      --soil:        #1C0E06;
-      --soil-mid:    #3A1F10;
-      --sage:        #6B7B5E;
-      --gold:        #C4923A;
-      --stone:       #9A8778;
-      --stone-light: #D4C8BC;
-      --text-dark:   #1C0E06;
-      --text-mid:    #5A4035;
-      --font-d: 'Cormorant Garamond', Georgia, serif;
-      --font-b: 'Jost', system-ui, sans-serif;
-      --pad: clamp(4.5rem, 9vw, 8rem);
-      --w: 1300px;
+      --parchment:  #E8E0D1;
+      --white:      #FAF7F0;
+      --ink:        #1A1410;
+      --ink-mid:    #4A3728;
+      --ink-soft:   #8A7060;
+      --oxblood:    #6E2A24;
+      --oxblood-h:  #863429;
+      --gold:       #C4923A;
+      --line:       rgba(110,42,36,.22);
+      --line-ink:   rgba(250,247,240,.16);
+      --font-h: 'Playfair Display', Georgia, serif;
+      --font-l: 'Archivo', sans-serif;
+      --font-b: 'Cormorant Garamond', Georgia, serif;
+      --max: 1320px;
+      --gutter: clamp(1.5rem, 5vw, 5.5rem);
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-b); background: var(--cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
-    img  { display: block; max-width: 100%; }
-    a    { text-decoration: none; color: inherit; }
-    .wrap { width: 90%; max-width: var(--w); margin: 0 auto; }
 
-    /* REVEAL */
-    .rev { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s ease; }
-    .rev.in  { opacity: 1; transform: none; }
-    .d1 { transition-delay: .1s; } .d2 { transition-delay: .2s; } .d3 { transition-delay: .3s; } .d4 { transition-delay: .4s; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--font-b);
+      background: var(--parchment);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Paper grain */
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      opacity: .5; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+    section, nav, footer, header { position: relative; z-index: 2; }
 
-    /* NAV */
-    nav#nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; padding: 0 clamp(1.5rem,5vw,5rem); height: 64px; display: flex; align-items: center; justify-content: space-between; background: #FAFAF7; box-shadow: 0 1px 0 rgba(26,20,16,.07); }
-    .nav-left, .nav-right { display: flex; align-items: center; gap: 2.5rem; }
-    .nav-link { font-size: .7rem; font-weight: 400; letter-spacing: .2em; text-transform: uppercase; color: #1A1410; opacity: .55; transition: opacity .25s; text-decoration: none; }
-    .nav-link:hover, .nav-link.active { opacity: 1; }
-    nav#nav .nav-logo { position: absolute; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: .65rem; text-decoration: none; }
-    nav#nav .nav-logo svg { width: 28px; height: 28px; color: #1A1410; }
-    nav#nav .nav-logo-word { font-family: var(--font-d); font-size: 1.35rem; font-weight: 500; letter-spacing: .1em; color: #1A1410; }
-    .nav-quote { font-size: .68rem; font-weight: 400; letter-spacing: .18em; text-transform: uppercase; color: #1A1410; opacity: .55; border-bottom: 1px solid rgba(26,20,16,.2); padding-bottom: 1px; transition: opacity .25s, border-color .25s; text-decoration: none; }
-    .nav-quote:hover { opacity: 1; border-color: #B85C38; }
+    /* ── REVEAL ── */
+    .rev { opacity: 0; transform: translateY(26px); transition: opacity 1s ease, transform 1s ease; }
+    .rev.in { opacity: 1; transform: none; }
+    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s}
+    .d4{transition-delay:.4s} .d5{transition-delay:.5s}
+
+    /* ── LABEL ── */
+    .klabel {
+      font-family: var(--font-l); font-weight: 700;
+      font-size: .7rem; letter-spacing: .26em; text-transform: uppercase;
+      color: var(--oxblood);
+    }
+    .s-label {
+      font-family: var(--font-l); font-weight: 600;
+      font-size: .67rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--oxblood); display: flex; align-items: center; gap: .8rem; margin-bottom: 1.6rem;
+    }
+    .s-label::before { content: ''; width: 28px; height: 1px; background: var(--oxblood); opacity: .5; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      padding: 0 var(--gutter); height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .5s, box-shadow .5s, border-color .5s;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled { background: rgba(232,224,209,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+
+    .nav-left, .nav-right { display: flex; align-items: center; gap: 2.2rem; }
+    .nav-link {
+      font-family: var(--font-l); font-size: .68rem; font-weight: 500;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--ink-mid); transition: color .25s; position: relative;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px;
+      background: var(--oxblood); transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .nav-link:hover { color: var(--oxblood); }
+    .nav-link.active { color: var(--oxblood); }
+    .nav-link.active::after { transform: scaleX(1); }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    .nav-logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .nav-logo svg { width: 26px; height: 26px; color: var(--ink); }
+    .nav-logo-word {
+      font-family: var(--font-h); font-size: 1.4rem; font-weight: 700;
+      letter-spacing: .04em; color: var(--ink);
+    }
+    .nav-cta {
+      font-family: var(--font-l); font-size: .66rem; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--white);
+      background: var(--oxblood); padding: .7rem 1.3rem; transition: background .3s;
+    }
+    .nav-cta:hover { background: var(--oxblood-h); }
+
     /* ── MOBILE NAV ── */
     .nav-hamburger {
       display: none; cursor: pointer; z-index: 210;
-      width: 28px; height: 20px; position: relative;
+      width: 26px; height: 18px; position: relative;
       flex-direction: column; justify-content: space-between;
     }
-    .nav-hamburger span {
-      display: block; height: 1.5px; width: 100%; background: var(--ink);
-      transition: transform .3s, opacity .3s;
-    }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(9.25px) rotate(45deg); }
+    .nav-hamburger span { display: block; height: 1.5px; width: 100%; background: var(--ink); transition: transform .3s, opacity .3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(8.25px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-9.25px) rotate(-45deg); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-8.25px) rotate(-45deg); }
 
     .mobile-menu {
-      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: var(--white); z-index: 199;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 2rem; opacity: 0; pointer-events: none;
-      transition: opacity .35s ease;
+      position: fixed; inset: 0; background: var(--parchment); z-index: 199;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.8rem;
+      opacity: 0; pointer-events: none; transition: opacity .35s ease;
     }
     .mobile-menu.open { opacity: 1; pointer-events: auto; }
-    .mobile-menu a {
-      font-family: var(--font-d); font-size: 1.6rem; font-weight: 400;
-      letter-spacing: .08em; color: var(--ink); opacity: .7;
-      transition: opacity .25s;
-    }
-    .mobile-menu a:hover { opacity: 1; }
+    .mobile-menu a { font-family: var(--font-h); font-size: 1.7rem; font-weight: 600; color: var(--ink); }
     .mobile-menu .mm-cta {
-      margin-top: 1rem; font-family: var(--font-b);
-      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
-      border-bottom: 1px solid var(--terra); padding-bottom: 2px;
+      margin-top: .8rem; font-family: var(--font-l); font-size: .8rem; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--white);
+      background: var(--oxblood); padding: .8rem 1.6rem;
     }
-
-    @media(max-width:780px) {
+    @media(max-width:860px) {
       .nav-left, .nav-right { display: none; }
       .nav-hamburger { display: flex; }
     }
 
-    /* HERO */
-    .page-hero { padding: 9rem 0 var(--pad); background: var(--soil); position: relative; overflow: hidden; }
-    .ph-bg {
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 80% 50%, rgba(196,146,58,.22) 0%, transparent 60%),
-                  radial-gradient(ellipse at 10% 90%, rgba(184,92,56,.18) 0%, transparent 50%), #1C0E06;
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh; display: flex; flex-direction: column; justify-content: center;
+      padding: 8rem var(--gutter) clamp(3rem,6vw,5rem);
+      max-width: var(--max); margin: 0 auto; width: 100%;
     }
-    .ph-wheel { position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 45vw; max-width: 480px; opacity: .055; animation: spin 110s linear infinite; }
-    @keyframes spin { to { transform: translateY(-50%) rotate(360deg); } }
-    .ph-content { position: relative; z-index: 2; max-width: 780px; }
-    .ph-breadcrumb { font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(250,246,238,.38); margin-bottom: 1.5rem; display: flex; align-items: center; gap: .7rem; }
-    .ph-breadcrumb a { color: var(--gold); transition: opacity .2s; }
-    .ph-breadcrumb a:hover { opacity: .7; }
-    .ph-breadcrumb span { opacity: .4; }
-    .ph-h1 { font-family: var(--font-d); font-size: clamp(3.2rem, 9vw, 8rem); font-weight: 300; font-style: italic; color: var(--cream); line-height: .9; letter-spacing: -.02em; margin-bottom: 1.6rem; }
-    .ph-sub { font-family: var(--font-d); font-size: clamp(1.05rem, 2.2vw, 1.45rem); font-weight: 300; color: rgba(250,246,238,.62); line-height: 1.6; max-width: 540px; }
+    .hero-inner { max-width: 920px; }
+    .hero-top { display: flex; align-items: center; gap: 1.6rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+    .hero h1 {
+      font-family: var(--font-h); font-weight: 800;
+      font-size: clamp(2.8rem, 7.6vw, 6rem); line-height: .98;
+      letter-spacing: -.02em; color: var(--ink); margin: 0;
+    }
+    .hero h1 em { font-style: italic; color: var(--oxblood); }
+    .hero-lead {
+      font-size: clamp(1.1rem, 2.2vw, 1.5rem); line-height: 1.6;
+      color: var(--ink-mid); max-width: 52ch; margin-top: 1.8rem;
+    }
 
-    /* PAGE NAV (anchor links) */
-    .page-nav { background: var(--parchment); border-bottom: 1px solid var(--stone-light); position: sticky; top: 64px; z-index: 90; }
-    .pn-inner { display: flex; gap: 0; overflow-x: auto; }
-    .pn-inner a { font-size: .7rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: 1.1rem 1.5rem; color: var(--stone); white-space: nowrap; border-bottom: 2px solid transparent; transition: all .25s; }
-    .pn-inner a:hover { color: var(--terracotta); }
-    .pn-inner a.active { color: var(--terracotta); border-bottom-color: var(--terracotta); }
+    /* Seal */
+    .seal {
+      width: 116px; height: 116px; border: 1.5px solid var(--oxblood); border-radius: 50%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: var(--oxblood); text-align: center; position: relative; flex-shrink: 0;
+    }
+    .seal::before { content: ''; position: absolute; inset: 6px; border: 1px solid var(--oxblood); border-radius: 50%; opacity: .4; }
+    .seal .s-top, .seal .s-bot { font-family: var(--font-l); font-size: .42rem; letter-spacing: .2em; text-transform: uppercase; }
+    .seal .s-crown { width: 30px; height: 30px; margin: .35rem 0; }
+    .seal .s-crown svg { width: 100%; height: 100%; }
 
-    /* SECTION LABEL */
-    .s-label { font-size: .67rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1.6rem; display: flex; align-items: center; gap: .8rem; }
-    .s-label::before { content: ''; width: 28px; height: 1px; background: var(--terracotta); opacity: .5; }
+    /* ── PAGE NAV (anchor links) ── */
+    .page-nav { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(110,42,36,.03); }
+    .pn-inner { max-width: var(--max); margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+    .pn-inner a {
+      font-family: var(--font-l); font-size: .64rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+      padding: 1.05rem clamp(1rem,2.4vw,1.8rem); color: var(--ink-soft); white-space: nowrap;
+      border-bottom: 2px solid transparent; transition: color .25s, border-color .25s;
+    }
+    .pn-inner a:first-child { padding-left: var(--gutter); }
+    .pn-inner a:hover { color: var(--oxblood); }
 
-    /* ANATOMY */
-    .anatomy { padding: var(--pad) 0; background: var(--cream); }
-    .anat-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; align-items: start; }
-    @media(min-width:900px) { .anat-grid { grid-template-columns: 1fr 1.1fr; gap: 6rem; } }
+    /* ── CHARTER STATEMENT (ink) ── */
+    .statement {
+      background: var(--ink); color: var(--white);
+      padding: clamp(5rem,12vw,10rem) var(--gutter); position: relative; overflow: hidden;
+    }
+    .crown-wm {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 540px; height: 540px; opacity: .05; color: var(--gold); pointer-events: none;
+    }
+    .st-inner { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+    .st-label { font-family: var(--font-l); font-weight: 600; font-size: .68rem; letter-spacing: .26em; text-transform: uppercase; color: var(--gold); margin-bottom: 2.2rem; }
+    .st-p {
+      font-family: var(--font-h); font-weight: 400;
+      font-size: clamp(1.5rem, 3.4vw, 2.6rem); line-height: 1.4; color: var(--white);
+    }
+    .st-p em { font-style: italic; color: var(--gold); }
+    .st-sub {
+      font-size: clamp(1rem, 1.6vw, 1.18rem); color: rgba(250,247,240,.62);
+      line-height: 1.8; max-width: 60ch; margin: 2.4rem auto 0;
+    }
 
-    .anat-h2 { font-family: var(--font-d); font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 300; line-height: 1.1; color: var(--soil); margin-bottom: 1.5rem; }
-    .anat-h2 em { font-style: italic; color: var(--terracotta); }
-    .anat-intro { font-size: .9rem; color: var(--text-mid); line-height: 1.8; max-width: 460px; margin-bottom: 2.5rem; }
+    /* ── SECTION SHELL ── */
+    .sec { padding: clamp(5rem,11vw,9rem) var(--gutter); max-width: var(--max); margin: 0 auto; width: 100%; }
+    .sec-head { max-width: 760px; margin-bottom: clamp(2.5rem,5vw,3.6rem); }
+    .sec-head h2 {
+      font-family: var(--font-h); font-weight: 700; font-size: clamp(2rem,5vw,3.6rem);
+      line-height: 1.04; color: var(--ink); letter-spacing: -.01em;
+    }
+    .sec-head h2 em { font-style: italic; color: var(--oxblood); }
+    .sec-head p { font-size: 1.12rem; color: var(--ink-mid); line-height: 1.8; margin-top: 1.3rem; max-width: 60ch; }
 
-    .anat-parts { display: flex; flex-direction: column; gap: 0; }
-    .anat-part { padding: 1.35rem 0; border-top: 1px solid var(--stone-light); display: flex; gap: 1.4rem; cursor: pointer; transition: background .2s; }
-    .anat-part:last-child { border-bottom: 1px solid var(--stone-light); }
-    .anat-part:hover .ap-name { color: var(--terracotta); }
-    .ap-kyrgyz { font-family: var(--font-d); font-style: italic; font-size: 1.1rem; color: var(--gold); min-width: 90px; padding-top: .1rem; }
-    .ap-body {}
-    .ap-name { font-family: var(--font-d); font-size: 1.1rem; font-weight: 500; color: var(--soil); margin-bottom: .3rem; transition: color .2s; }
-    .ap-desc { font-size: .8rem; color: var(--stone); line-height: 1.7; }
+    /* ── ANATOMY ── */
+    .anat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem,5vw,5rem); align-items: start; }
+    @media(max-width:900px) { .anat-grid { grid-template-columns: 1fr; } }
+    .anat-h2 { font-family: var(--font-h); font-weight: 700; font-size: clamp(2rem,4.5vw,3.2rem); line-height: 1.04; color: var(--ink); letter-spacing: -.01em; }
+    .anat-h2 em { font-style: italic; color: var(--oxblood); }
+    .anat-intro { font-size: 1.1rem; color: var(--ink-mid); line-height: 1.8; margin: 1.3rem 0 2.2rem; }
+    .anat-parts { display: flex; flex-direction: column; }
+    .anat-part { display: grid; grid-template-columns: 92px 1fr; gap: 1.2rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+    .anat-part:last-child { border-bottom: 1px solid var(--line); }
+    .ap-kyrgyz { font-family: var(--font-h); font-style: italic; font-weight: 600; font-size: 1.2rem; color: var(--oxblood); }
+    .ap-name { font-family: var(--font-l); font-size: .62rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: .4rem; }
+    .ap-desc { font-size: .98rem; color: var(--ink-mid); line-height: 1.7; }
+    .anat-diagram { position: sticky; top: 100px; }
+    .anat-caption { font-family: var(--font-l); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); text-align: center; margin-top: 1rem; }
+    @media(max-width:900px) { .anat-diagram { position: static; margin-top: 2.5rem; } }
 
-    /* Yurt diagram SVG */
-    .anat-diagram { position: sticky; top: 120px; }
-
-    /* HISTORY TIMELINE */
-    .history { padding: var(--pad) 0; background: var(--soil); position: relative; overflow: hidden; }
-    .hist-deco { position: absolute; left: -8%; top: 50%; transform: translateY(-50%); width: 400px; height: 400px; border-radius: 50%; border: 1px solid rgba(196,146,58,.08); }
-    .hist-deco2 { position: absolute; left: -14%; top: 50%; transform: translateY(-50%); width: 560px; height: 560px; border-radius: 50%; border: 1px solid rgba(196,146,58,.05); }
-
-    .hist-h2 { font-family: var(--font-d); font-size: clamp(2rem, 4.5vw, 3.8rem); font-weight: 300; color: var(--cream); line-height: 1.1; margin-bottom: 3.5rem; }
-    .hist-h2 em { font-style: italic; color: rgba(250,246,238,.42); }
-
-    .timeline { position: relative; padding-left: 2.5rem; }
-    .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 1px; background: linear-gradient(to bottom, var(--gold), rgba(196,146,58,.1)); }
-
-    .tl-item { position: relative; padding-bottom: 3.25rem; }
+    /* ── HISTORY (ink) ── */
+    .history { background: var(--ink); color: var(--white); padding: clamp(5rem,11vw,9rem) var(--gutter); position: relative; overflow: hidden; }
+    .history-inner { max-width: var(--max); margin: 0 auto; position: relative; z-index: 2; }
+    .history .s-label { color: var(--gold); }
+    .history .s-label::before { background: var(--gold); }
+    .history h2 { font-family: var(--font-h); font-weight: 700; font-size: clamp(2rem,5vw,3.6rem); line-height: 1.04; color: var(--white); letter-spacing: -.01em; margin-bottom: clamp(2.5rem,5vw,3.6rem); }
+    .history h2 em { font-style: italic; color: var(--gold); }
+    .timeline { position: relative; padding-left: 2.5rem; max-width: 720px; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: .4rem; bottom: .4rem; width: 1px; background: linear-gradient(to bottom, var(--gold), rgba(196,146,58,.1)); }
+    .tl-item { position: relative; padding-bottom: 3rem; }
     .tl-item:last-child { padding-bottom: 0; }
-    .tl-dot { position: absolute; left: -2.9rem; top: .3rem; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
-    .tl-date { font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .55rem; }
-    .tl-title { font-family: var(--font-d); font-size: 1.35rem; font-weight: 400; color: var(--cream); margin-bottom: .65rem; }
-    .tl-text { font-size: .84rem; color: rgba(250,246,238,.55); line-height: 1.8; max-width: 480px; }
+    .tl-dot { position: absolute; left: -2.9rem; top: .35rem; width: 9px; height: 9px; border-radius: 50%; background: var(--gold); }
+    .tl-date { font-family: var(--font-l); font-size: .64rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; }
+    .tl-title { font-family: var(--font-h); font-weight: 600; font-size: 1.5rem; color: var(--white); margin-bottom: .7rem; }
+    .tl-text { font-size: 1.02rem; color: rgba(250,247,240,.6); line-height: 1.8; }
 
-    .hist-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; }
-    @media(min-width:900px) { .hist-grid { grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; } }
+    /* ── VILLAGE / KYZYL-TUU ── */
+    .village-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem,5vw,5rem); align-items: center; }
+    @media(max-width:900px) { .village-grid { grid-template-columns: 1fr; } }
+    .village-map { border: 1px solid var(--line); background: var(--white); padding: clamp(1.5rem,3vw,2.5rem); }
+    .village-stat { display: flex; gap: clamp(2rem,4vw,3.2rem); margin-top: 2rem; flex-wrap: wrap; }
+    .vs b { display: block; font-family: var(--font-h); font-weight: 700; font-size: clamp(1.8rem,3vw,2.4rem); color: var(--oxblood); line-height: 1; }
+    .vs span { display: block; font-family: var(--font-l); font-size: .62rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin-top: .55rem; }
 
-    .flag-section { position: relative; }
-    .flag-h3 { font-family: var(--font-d); font-size: 1.65rem; font-weight: 300; color: var(--cream); margin-bottom: 1.1rem; margin-top: 2.5rem; }
-    .flag-p { font-size: .85rem; color: rgba(250,246,238,.56); line-height: 1.82; }
-    .flag-p strong { color: rgba(250,246,238,.88); }
+    /* ── UNESCO (records) ── */
+    .records { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--line); }
+    @media(max-width:820px) { .records { grid-template-columns: 1fr; } }
+    .record { padding: clamp(2rem,4vw,2.8rem) clamp(1.6rem,3vw,2.4rem) clamp(2rem,4vw,2.8rem) 0; border-right: 1px solid var(--line); }
+    .record:last-child { border-right: none; padding-right: 0; }
+    @media(max-width:820px) { .record { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; } .record:last-child { border-bottom: none; } }
+    .record-no { font-family: var(--font-l); font-size: .62rem; font-weight: 600; letter-spacing: .2em; color: var(--ink-soft); }
+    .record h3 { font-family: var(--font-h); font-weight: 600; font-size: 1.45rem; color: var(--ink); margin: .9rem 0 .8rem; }
+    .record p { font-size: 1.04rem; color: var(--ink-mid); line-height: 1.7; }
 
-    .flag-box { margin-top: 2.2rem; padding: 2.2rem; background: rgba(250,246,238,.04); border: 1px solid rgba(196,146,58,.2); }
-    .flag-q { font-family: var(--font-d); font-style: italic; font-size: 1.08rem; color: rgba(250,246,238,.75); line-height: 1.58; }
-    .flag-cite { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-top: .8rem; display: block; }
+    /* ── SPECIMEN ── */
+    .specimen { background: var(--white); }
+    .sp-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2.5rem,5vw,5rem); align-items: center; }
+    @media(max-width:820px) { .sp-grid { grid-template-columns: 1fr; } }
+    .sp-img { border: 1px solid var(--line); overflow: hidden; position: relative; }
+    .sp-img img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/3; }
+    .sp-plate { position: absolute; top: 1rem; left: 1rem; font-family: var(--font-l); font-size: .58rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--white); background: rgba(26,20,16,.66); padding: .4rem .8rem; }
+    .sp-text h2 { font-family: var(--font-h); font-weight: 700; font-size: clamp(1.9rem,4vw,3rem); line-height: 1.06; color: var(--ink); margin: 1rem 0 1.3rem; letter-spacing: -.01em; }
+    .sp-text h2 em { font-style: italic; color: var(--oxblood); }
+    .sp-text p { font-size: 1.1rem; color: var(--ink-mid); line-height: 1.8; }
 
-    /* KYZYL-TUU */
-    .kyzyl { padding: var(--pad) 0; background: var(--parchment); }
-    .kyz-grid { display: grid; grid-template-columns: 1fr; gap: 4rem; }
-    @media(min-width:900px) { .kyz-grid { grid-template-columns: 1fr 1fr; gap: 5.5rem; align-items: center; } }
+    /* ── GLOSSARY ── */
+    .glos-head h2 { font-family: var(--font-h); font-weight: 700; font-size: clamp(2rem,5vw,3.6rem); line-height: 1.04; color: var(--ink); letter-spacing: -.01em; margin-bottom: clamp(2.2rem,4vw,3rem); }
+    .glos-head h2 em { font-style: italic; color: var(--oxblood); }
+    .glos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    @media(max-width:680px) { .glos-grid { grid-template-columns: 1fr; } }
+    .glos-cell { background: var(--parchment); padding: 1.7rem 1.8rem; }
+    .glos-cell:nth-child(4n+2), .glos-cell:nth-child(4n+3) { background: var(--white); }
+    .glos-term { font-family: var(--font-h); font-style: italic; font-weight: 600; font-size: 1.5rem; color: var(--oxblood); margin-bottom: .35rem; }
+    .glos-role { font-family: var(--font-l); font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: .7rem; }
+    .glos-def { font-size: .98rem; color: var(--ink-mid); line-height: 1.78; }
+    .glos-foot { margin-top: 2rem; text-align: center; font-family: var(--font-l); font-size: .7rem; letter-spacing: .04em; }
+    .glos-foot a { color: var(--oxblood); border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: border-color .25s; }
+    .glos-foot a:hover { border-color: var(--oxblood); }
 
-    .kyz-h2 { font-family: var(--font-d); font-size: clamp(1.9rem, 4.2vw, 3.4rem); font-weight: 300; color: var(--soil); line-height: 1.1; margin-bottom: 1.4rem; }
-    .kyz-h2 em { font-style: italic; color: var(--terracotta); }
-    .kyz-p { font-size: .87rem; color: var(--text-mid); line-height: 1.82; margin-bottom: 1.1rem; }
-    .kyz-p strong { color: var(--soil); }
+    /* ── CLOSING (ink) ── */
+    .closing { background: var(--ink); color: var(--white); padding: clamp(5rem,12vw,10rem) var(--gutter); text-align: center; position: relative; overflow: hidden; }
+    .closing .crown-wm { width: 460px; height: 460px; opacity: .06; }
+    .closing-inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 2; }
+    .closing .seal { margin: 0 auto 2.4rem; border-color: var(--gold); color: var(--gold); }
+    .closing .seal::before { border-color: var(--gold); }
+    .closing h2 { font-family: var(--font-h); font-weight: 700; font-style: italic; font-size: clamp(2rem,4.6vw,3.4rem); line-height: 1.15; color: var(--white); }
+    .closing p { font-size: 1.1rem; color: rgba(250,247,240,.6); line-height: 1.8; margin: 1.8rem auto 0; max-width: 50ch; }
+    .btn-primary {
+      font-family: var(--font-l); font-size: .72rem; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--white);
+      background: var(--oxblood); padding: 1.05rem 2rem; transition: background .3s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--oxblood-h); }
+    .closing .btn-primary { margin-top: 2.6rem; }
 
-    .kyz-craft { margin-top: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--stone-light); }
-    .kc { background: var(--cream); padding: 1.5rem 1.3rem; }
-    .kc-role { font-size: .63rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--terracotta); margin-bottom: .5rem; }
-    .kc-title { font-family: var(--font-d); font-size: 1.05rem; font-weight: 500; color: var(--soil); margin-bottom: .4rem; }
-    .kc-p { font-size: .77rem; color: var(--stone); line-height: 1.65; }
+    /* ── FOOTER ── */
+    footer { background: var(--ink); color: rgba(250,247,240,.6); padding: clamp(3.5rem,7vw,5.5rem) var(--gutter) 2.5rem; }
+    .ft-inner { max-width: var(--max); margin: 0 auto; }
+    .ft-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(2rem,4vw,4rem); margin-bottom: 3.5rem; }
+    @media(max-width:768px) { .ft-grid { grid-template-columns: 1fr 1fr; } }
+    @media(max-width:480px) { .ft-grid { grid-template-columns: 1fr; } }
+    .ft-brand-logo { display: flex; align-items: center; gap: .6rem; margin-bottom: 1.1rem; }
+    .ft-brand-logo svg { width: 24px; height: 24px; color: var(--gold); }
+    .ft-brand-logo span { font-family: var(--font-h); font-size: 1.25rem; font-weight: 700; color: var(--white); }
+    .ft-brand-p { font-size: 1rem; line-height: 1.7; max-width: 260px; }
+    .ft-col-h { font-family: var(--font-l); font-size: .6rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
+    .ft-col-links { list-style: none; }
+    .ft-col-links li { margin-bottom: .55rem; }
+    .ft-col-links a { font-size: 1rem; color: rgba(250,247,240,.6); transition: color .25s; }
+    .ft-col-links a:hover { color: var(--white); }
+    .ft-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .9rem; padding-top: 1.8rem; border-top: 1px solid var(--line-ink); }
+    .ft-copy, .ft-made { font-family: var(--font-l); font-size: .68rem; letter-spacing: .04em; color: rgba(250,247,240,.4); }
 
-    /* Villages map placeholder */
-    .kyz-map { background: var(--soil); border: 1px solid rgba(250,246,238,.06); aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; position: relative; overflow: hidden; }
-    .map-label { font-family: var(--font-d); font-style: italic; font-size: 1.05rem; color: rgba(250,246,238,.4); }
-    .map-sub { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(250,246,238,.22); }
-
-    /* UNESCO */
-    .unesco { padding: var(--pad) 0; background: var(--cream); }
-    .unes-inner { max-width: 820px; margin: 0 auto; text-align: center; }
-    .unes-badge { width: 80px; height: 80px; background: var(--terracotta); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; }
-    .unes-badge span { font-family: var(--font-d); font-size: .85rem; font-weight: 600; color: #fff; letter-spacing: .04em; }
-    .unes-h2 { font-family: var(--font-d); font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 300; color: var(--soil); line-height: 1.15; margin-bottom: 1.5rem; }
-    .unes-h2 em { font-style: italic; color: var(--terracotta); }
-    .unes-p { font-size: .88rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 1.2rem; }
-    .unes-q { margin: 2.8rem 0; padding: 2rem 2.5rem; background: var(--parchment); border-left: 3px solid var(--terracotta); text-align: left; }
-    .unes-q p { font-family: var(--font-d); font-style: italic; font-size: 1.15rem; color: var(--soil); line-height: 1.62; }
-    .unes-q cite { display: block; margin-top: .8rem; font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--stone); font-style: normal; }
-    .unes-years { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem; }
-    .uy { text-align: center; }
-    .uy-num { font-family: var(--font-d); font-size: 2.2rem; font-weight: 300; font-style: italic; color: var(--terracotta); }
-    .uy-lbl { font-size: .73rem; color: var(--stone); letter-spacing: .08em; margin-top: .2rem; }
-
-    /* ARTISANS */
-    .artisans { padding: var(--pad) 0; background: var(--parchment); }
-    .art-h2 { font-family: var(--font-d); font-size: clamp(1.9rem, 4.2vw, 3.4rem); font-weight: 300; color: var(--soil); line-height: 1.1; margin-bottom: 3.5rem; }
-    .art-h2 em { font-style: italic; color: var(--terracotta); }
-    .art-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    @media(min-width:900px) { .art-grid { grid-template-columns: repeat(4, 1fr); } }
-    .art-card { background: var(--cream); padding: 2rem 1.7rem; }
-    .art-icon { width: 42px; height: 2px; background: var(--terracotta); margin-bottom: 1.5rem; }
-    .art-role { font-size: .63rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: .55rem; }
-    .art-title { font-family: var(--font-d); font-size: 1.15rem; font-weight: 500; color: var(--soil); margin-bottom: .65rem; }
-    .art-p { font-size: .8rem; color: var(--text-mid); line-height: 1.75; }
-
-    /* CTA strip */
-    .heritage-cta { padding: 5rem 0; background: var(--soil); }
-    .hcta-in { display: flex; justify-content: space-between; align-items: center; gap: 3rem; flex-wrap: wrap; }
-    .hcta-h2 { font-family: var(--font-d); font-size: clamp(1.7rem, 3.8vw, 3rem); font-weight: 300; color: var(--cream); line-height: 1.15; }
-    .hcta-h2 em { font-style: italic; color: rgba(250,246,238,.45); }
-    .hcta-p { font-size: .84rem; color: rgba(250,246,238,.45); max-width: 380px; line-height: 1.7; margin-top: .85rem; }
-    .hcta-btns { display: flex; gap: 1rem; flex-wrap: wrap; flex-shrink: 0; }
-    .btn-p { font-size: .78rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: 1rem 2.2rem; background: var(--terracotta); color: var(--cream); display: inline-block; transition: background .3s; }
-    .btn-p:hover { background: var(--terra-light); }
-    .btn-g { font-size: .78rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: 1rem 2.2rem; border: 1px solid rgba(250,246,238,.25); color: rgba(250,246,238,.7); display: inline-block; transition: all .3s; }
-    .btn-g:hover { border-color: var(--cream); color: var(--cream); }
-
-    /* FOOTER */
-    footer { background: #100700; padding: 2.5rem 0; }
-    .foot-bot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .9rem; }
-    .foot-logo { display: flex; align-items: center; gap: .7rem; }
-    .foot-logo svg { width: 26px; height: 26px; color: var(--terracotta); }
-    .foot-logo span { font-family: var(--font-d); font-size: 1.2rem; font-weight: 500; color: var(--cream); }
-    .foot-copy { font-size: .73rem; color: rgba(250,246,238,.22); }
-    .foot-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .foot-links a { font-size: .73rem; color: rgba(250,246,238,.38); transition: color .2s; }
-    .foot-links a:hover { color: var(--cream); }
+    /* ── BACK TO TOP ── */
+    .btt { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; width: 42px; height: 42px; background: var(--oxblood); border-radius: 50%; display: flex; align-items: center; justify-content: center; opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s; cursor: pointer; }
+    .btt.show { opacity: 1; transform: none; }
+    .btt svg { width: 14px; height: 14px; color: var(--white); }
   </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ══ NAV ═══════════════════════════════════ -->
 <nav id="nav">
   <div class="nav-left">
-    <a href="tunduk-homeware.html" class="nav-link">Homeware</a>
-    <a href="tunduk-story.html" class="nav-link">Our Story</a>
     <a href="tunduk-heritage.html" class="nav-link active">Heritage</a>
+    <a href="tunduk-story.html" class="nav-link">Our Story</a>
+    <a href="tunduk-craft.html" class="nav-link">The Craft</a>
   </div>
-  <a href="tunduk-homepage-v2.html" class="nav-logo">
-    <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/><circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="1.5"/><line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="45" x2="69.44" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="48.66" x2="57" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="48.66" x2="23" y2="69.44" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="45" x2="10.56" y2="57" stroke="currentColor" stroke-width="1.2"/><line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.2"/><line x1="31.34" y1="35" x2="10.56" y2="23" stroke="currentColor" stroke-width="1.2"/><line x1="35" y1="31.34" x2="23" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="45" y1="31.34" x2="57" y2="10.56" stroke="currentColor" stroke-width="1.2"/><line x1="48.66" y1="35" x2="69.44" y2="23" stroke="currentColor" stroke-width="1.2"/></svg>
+
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none">
+      <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/>
+      <circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="48.66" y1="45" x2="69.44" y2="57" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="45" y1="48.66" x2="57" y2="69.44" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="35" y1="48.66" x2="23" y2="69.44" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="31.34" y1="45" x2="10.56" y2="57" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="31.34" y1="35" x2="10.56" y2="23" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="35" y1="31.34" x2="23" y2="10.56" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="45" y1="31.34" x2="57" y2="10.56" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="48.66" y1="35" x2="69.44" y2="23" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
     <span class="nav-logo-word">Tündük</span>
   </a>
+
   <div class="nav-right">
     <a href="tunduk-gallery.html" class="nav-link">Gallery</a>
-    <a href="tunduk-configure.html" class="nav-quote">Configure a Yurt</a>
+    <a href="tunduk-trade.html" class="nav-link">For Hotels &amp; Resorts</a>
+    <a href="tunduk-trade.html#quote" class="nav-cta">Request a Quote</a>
   </div>
 
   <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open');">
@@ -263,540 +366,480 @@
 </nav>
 
 <div class="mobile-menu" id="mobile-menu">
-  <a href="tunduk-homeware.html">Homeware</a>
-  <a href="tunduk-story.html">Our Story</a>
   <a href="tunduk-heritage.html">Heritage</a>
+  <a href="tunduk-story.html">Our Story</a>
+  <a href="tunduk-craft.html">The Craft</a>
   <a href="tunduk-gallery.html">Gallery</a>
-  <a href="tunduk-configure.html" class="mm-cta">Configure a Yurt</a>
+  <a href="tunduk-trade.html">For Hotels &amp; Resorts</a>
+  <a href="tunduk-trade.html#quote" class="mm-cta">Request a Quote</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="ph-bg"></div>
-  <svg class="ph-wheel" viewBox="0 0 400 400" fill="none">
-    <circle cx="200" cy="200" r="185" stroke="white" stroke-width="2.5"/>
-    <circle cx="200" cy="200" r="100" stroke="white" stroke-width="2"/>
-    <circle cx="200" cy="200" r="40" stroke="white" stroke-width="2"/>
-    <line x1="240" y1="200" x2="385" y2="200" stroke="white" stroke-width="1.5"/>
-    <line x1="231" y1="231" x2="339" y2="339" stroke="white" stroke-width="1.5"/>
-    <line x1="200" y1="240" x2="200" y2="385" stroke="white" stroke-width="1.5"/>
-    <line x1="169" y1="231" x2="61"  y2="339" stroke="white" stroke-width="1.5"/>
-    <line x1="160" y1="200" x2="15"  y2="200" stroke="white" stroke-width="1.5"/>
-    <line x1="169" y1="169" x2="61"  y2="61"  stroke="white" stroke-width="1.5"/>
-    <line x1="200" y1="160" x2="200" y2="15"  stroke="white" stroke-width="1.5"/>
-    <line x1="231" y1="169" x2="339" y2="61"  stroke="white" stroke-width="1.5"/>
+<!-- ══ HERO ══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div class="seal">
+        <span class="s-top">Keepers of</span>
+        <span class="s-crown">
+          <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2.4">
+            <circle cx="40" cy="40" r="30"/><circle cx="40" cy="40" r="9"/>
+            <line x1="49" y1="40" x2="70" y2="40"/><line x1="40" y1="49" x2="40" y2="70"/>
+            <line x1="31" y1="40" x2="10" y2="40"/><line x1="40" y1="31" x2="40" y2="10"/>
+            <line x1="47" y1="33" x2="63" y2="17"/><line x1="33" y1="33" x2="17" y2="17"/>
+            <line x1="47" y1="47" x2="63" y2="63"/><line x1="33" y1="47" x2="17" y2="63"/>
+          </svg>
+        </span>
+        <span class="s-bot">The Boz Üy</span>
+      </div>
+      <span class="klabel">The Charter · Heritage</span>
+    </div>
+
+    <h1>The keeping of<br>the <em>boz üy.</em></h1>
+    <p class="hero-lead">We did not invent the Kyrgyz tent. We answer for it. This is the record of the craft we keep: its parts, its language, its village, and the recognition the world has given it.</p>
+  </div>
+</section>
+
+<!-- ══ PAGE NAV ══════════════════════════════ -->
+<div class="page-nav">
+  <div class="pn-inner">
+    <a href="#anatomy">The Structure</a>
+    <a href="#history">History</a>
+    <a href="#kyzyl-tuu">Kyzyl-Tuu</a>
+    <a href="#unesco">UNESCO</a>
+    <a href="#glossary">Glossary</a>
+  </div>
+</div>
+
+<!-- ══ CHARTER STATEMENT ═════════════════════ -->
+<section class="statement">
+  <svg class="crown-wm" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.2">
+    <circle cx="40" cy="40" r="34"/><circle cx="40" cy="40" r="10"/>
+    <line x1="50" y1="40" x2="74" y2="40"/><line x1="40" y1="50" x2="40" y2="74"/>
+    <line x1="30" y1="40" x2="6" y2="40"/><line x1="40" y1="30" x2="40" y2="6"/>
+    <line x1="48.66" y1="45" x2="69.44" y2="57"/><line x1="31.34" y1="45" x2="10.56" y2="57"/>
+    <line x1="48.66" y1="35" x2="69.44" y2="23"/><line x1="31.34" y1="35" x2="10.56" y2="23"/>
   </svg>
-  <div class="wrap">
-    <div class="ph-content">
-      <p class="ph-breadcrumb"><a href="tunduk-homepage-v2.html">Tündük</a><span>/</span> Heritage</p>
-      <h1 class="ph-h1">The Boz Üy<br>Story</h1>
-      <p class="ph-sub">Thousands of years of portable architecture — built entirely from wool, wood, and reed. Not a product. A living cultural tradition inscribed by UNESCO as Heritage of Humanity.</p>
+  <div class="st-inner rev">
+    <p class="st-label">The Charter</p>
+    <p class="st-p">The boz üy is not a building. It is a thousand years of nomadic life, held in willow, felt and rawhide. The people who make it have never stopped making it. <em>To keep the craft is to keep them.</em></p>
+    <p class="st-sub">What follows is documented the way a reference work is documented: precisely, in the maker's own language, so that a buyer in another country can know exactly what they are receiving, and a craft that lives in one village can be read by the whole world.</p>
+  </div>
+</section>
+
+<!-- ══ ANATOMY ═══════════════════════════════ -->
+<section class="sec" id="anatomy">
+  <div class="anat-grid">
+    <div>
+      <p class="s-label rev">The Structure</p>
+      <h2 class="anat-h2 rev">Seven components.<br><em>Zero nails.</em></h2>
+      <p class="anat-intro rev">A traditional Kyrgyz yurt is assembled entirely from natural, renewable materials, wood, reeds, sheep wool and rawhide, with no metal fasteners, no screws, no nails. Every component has a name, a purpose, and a place in Kyrgyz cosmology.</p>
+
+      <div class="anat-parts rev">
+        <div class="anat-part"><div class="ap-kyrgyz">Tündük</div><div class="ap-body"><div class="ap-name">Crown Ring</div><div class="ap-desc">The circular wooden ring at the apex, the most sacred element, representing the sun and the cosmos. So significant it appears at the centre of the Kyrgyz national flag. Roof poles radiate outward from it.</div></div></div>
+        <div class="anat-part"><div class="ap-kyrgyz">Uuk</div><div class="ap-body"><div class="ap-name">Roof Poles</div><div class="ap-desc">Curved wooden poles that radiate from the tündük down to the lattice walls. The curvature, achieved by steaming the wood, is what creates the distinctive domed silhouette and makes centre poles unnecessary.</div></div></div>
+        <div class="anat-part"><div class="ap-kyrgyz">Kerege</div><div class="ap-body"><div class="ap-name">Lattice Walls</div><div class="ap-desc">Accordion-folding lattice of interlocking wooden beams bound by rawhide strips. Each beam and diamond opening is identically sized for structural consistency. Folds flat for transport.</div></div></div>
+        <div class="anat-part"><div class="ap-kyrgyz">Bosogo</div><div class="ap-body"><div class="ap-name">Door Frame</div><div class="ap-desc">An elaborately carved and painted wooden door frame, often the most decorative element, adorned with traditional motifs representing family heritage and prosperity.</div></div></div>
+        <div class="anat-part"><div class="ap-kyrgyz">Chiy</div><div class="ap-body"><div class="ap-name">Reed Mats</div><div class="ap-desc">Woven reed mats wrapped around the lattice walls before the felt covering. Provide a critical insulation and ventilation layer. Reeds may be decorated with coloured wool in geometric patterns.</div></div></div>
+        <div class="anat-part"><div class="ap-kyrgyz">Kiyiz</div><div class="ap-body"><div class="ap-name">Felt Covering</div><div class="ap-desc">Thirteen rolls of handmade sheep wool felt cover the entire structure, eight for the roof, five for the walls. Provides insulation and weather protection. Each roll is made by hand by the women of the family.</div></div></div>
+        <div class="anat-part"><div class="ap-kyrgyz">Shyrdak</div><div class="ap-body"><div class="ap-name">Interior Carpet</div><div class="ap-desc">Ornamental felt carpets laid on the floor with traditional motifs, the ram's horn for strength, the crow's claw for leaving a trace. No two shyrdak are identical.</div></div></div>
+      </div>
+    </div>
+
+    <!-- SVG yurt anatomy diagram (Charter palette) -->
+    <div class="anat-diagram rev">
+      <svg width="100%" viewBox="0 0 520 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ground shadow -->
+        <ellipse cx="230" cy="476" rx="168" ry="12" fill="#1A1410" opacity=".06"/>
+        <!-- Floor / shyrdak -->
+        <ellipse cx="230" cy="462" rx="160" ry="14" fill="#C4923A" opacity=".15" stroke="#C4923A" stroke-width="1" stroke-dasharray="5 4"/>
+
+        <!-- Kerege left -->
+        <rect x="76"  y="350" width="78" height="108" rx="3" fill="none" stroke="#6E2A24" stroke-width="1.5"/>
+        <line x1="89"  y1="350" x2="76"  y2="458" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="102" y1="350" x2="76"  y2="432" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="115" y1="350" x2="76"  y2="406" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="128" y1="350" x2="76"  y2="380" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="76"  y1="371" x2="154" y2="350" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="76"  y1="397" x2="154" y2="370" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="76"  y1="423" x2="154" y2="395" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="76"  y1="449" x2="154" y2="421" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <!-- Kerege right -->
+        <rect x="308" y="350" width="78" height="108" rx="3" fill="none" stroke="#6E2A24" stroke-width="1.5"/>
+        <line x1="321" y1="350" x2="308" y2="458" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="334" y1="350" x2="308" y2="432" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="347" y1="350" x2="308" y2="406" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="360" y1="350" x2="308" y2="380" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="308" y1="371" x2="386" y2="350" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="308" y1="397" x2="386" y2="370" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="308" y1="423" x2="386" y2="395" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+        <line x1="308" y1="449" x2="386" y2="421" stroke="#6E2A24" stroke-width=".8" opacity=".5"/>
+
+        <!-- Door frame (bosogo) -->
+        <rect x="176" y="372" width="108" height="90" rx="4" fill="#E8E0D1" stroke="#4A3728" stroke-width="2"/>
+        <rect x="182" y="378" width="96"  height="82" rx="3" fill="none" stroke="#4A3728" stroke-width=".8" stroke-dasharray="3 3"/>
+        <line x1="200" y1="378" x2="200" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
+        <line x1="218" y1="378" x2="218" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
+        <line x1="236" y1="378" x2="236" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
+        <line x1="254" y1="378" x2="254" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
+        <line x1="272" y1="378" x2="272" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
+
+        <!-- Felt wall covering (kiyiz) -->
+        <path d="M76 350 Q90 340 115 338 Q152 334 175 333" stroke="#8A7060" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round"/>
+        <path d="M285 333 Q310 334 345 338 Q370 340 386 350" stroke="#8A7060" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round"/>
+
+        <!-- Roof silhouette fill -->
+        <path d="M76 350 Q100 200 230 120 Q360 200 386 350 L308 350 L176 350 Z" fill="#E8E0D1" stroke="none" opacity=".35"/>
+
+        <!-- Roof poles (uuk) -->
+        <path d="M230 138 Q185 200 154 350" stroke="#6E2A24" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M230 138 Q200 215 176 350" stroke="#6E2A24" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M230 138 Q230 260 230 350" stroke="#6E2A24" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M230 138 Q260 215 284 350" stroke="#6E2A24" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M230 138 Q275 200 308 350" stroke="#6E2A24" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M230 138 Q160 190 100 320" stroke="#6E2A24" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".6"/>
+        <path d="M230 138 Q298 190 360 320" stroke="#6E2A24" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".6"/>
+
+        <!-- Dome outline -->
+        <path d="M76 350 Q100 200 230 120 Q360 200 386 350" stroke="#1A1410" stroke-width="2" fill="none" opacity=".25"/>
+
+        <!-- Tündük (crown ring) -->
+        <circle cx="230" cy="130" r="26" fill="#FAF7F0" stroke="#C4923A" stroke-width="2.5"/>
+        <circle cx="230" cy="130" r="14" fill="none" stroke="#C4923A" stroke-width="1.5"/>
+        <circle cx="230" cy="130" r="4"  fill="#C4923A"/>
+        <line x1="230" y1="116" x2="230" y2="104" stroke="#C4923A" stroke-width="1.2"/>
+        <line x1="230" y1="144" x2="230" y2="156" stroke="#C4923A" stroke-width="1.2"/>
+        <line x1="216" y1="130" x2="204" y2="130" stroke="#C4923A" stroke-width="1.2"/>
+        <line x1="244" y1="130" x2="256" y2="130" stroke="#C4923A" stroke-width="1.2"/>
+        <line x1="220.1" y1="120.1" x2="212.6" y2="112.6" stroke="#C4923A" stroke-width="1"/>
+        <line x1="239.9" y1="120.1" x2="247.4" y2="112.6" stroke="#C4923A" stroke-width="1"/>
+        <line x1="220.1" y1="139.9" x2="212.6" y2="147.4" stroke="#C4923A" stroke-width="1"/>
+        <line x1="239.9" y1="139.9" x2="247.4" y2="147.4" stroke="#C4923A" stroke-width="1"/>
+
+        <!-- CALLOUT LABELS -->
+        <line x1="256" y1="118" x2="310" y2="72"  stroke="#C4923A" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
+        <circle cx="256" cy="118" r="2.5" fill="#C4923A"/>
+        <text x="316" y="68"  font-family="'Cormorant Garamond',serif" font-style="italic" font-size="13" fill="#6E2A24">Tündük</text>
+        <text x="316" y="82"  font-family="'Archivo',sans-serif" font-size="9" letter-spacing="1" fill="#8A7060">CROWN RING</text>
+
+        <line x1="290" y1="230" x2="348" y2="190" stroke="#6E2A24" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
+        <circle cx="290" cy="230" r="2.5" fill="#6E2A24"/>
+        <text x="354" y="186" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="13" fill="#6E2A24">Uuk</text>
+        <text x="354" y="200" font-family="'Archivo',sans-serif" font-size="9" letter-spacing="1" fill="#8A7060">ROOF POLES</text>
+
+        <line x1="366" y1="395" x2="416" y2="345" stroke="#6E2A24" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
+        <circle cx="366" cy="395" r="2.5" fill="#6E2A24"/>
+        <text x="420" y="341" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="13" fill="#6E2A24">Kerege</text>
+        <text x="420" y="355" font-family="'Archivo',sans-serif" font-size="9" letter-spacing="1" fill="#8A7060">LATTICE WALLS</text>
+
+        <line x1="176" y1="415" x2="130" y2="460" stroke="#4A3728" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
+        <circle cx="176" cy="415" r="2.5" fill="#4A3728"/>
+        <text x="14"  y="456" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="13" fill="#6E2A24">Bosogo</text>
+        <text x="14"  y="470" font-family="'Archivo',sans-serif" font-size="9" letter-spacing="1" fill="#8A7060">DOOR FRAME</text>
+
+        <line x1="270" y1="462" x2="300" y2="506" stroke="#C4923A" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
+        <circle cx="270" cy="462" r="2.5" fill="#C4923A"/>
+        <text x="304" y="502" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="13" fill="#6E2A24">Shyrdak</text>
+        <text x="304" y="516" font-family="'Archivo',sans-serif" font-size="9" letter-spacing="1" fill="#8A7060">INTERIOR CARPET</text>
+
+        <text x="230" y="550" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="9" fill="#8A7060" letter-spacing="1.4">ASSEMBLED IN ~1 HOUR · NO TOOLS REQUIRED</text>
+      </svg>
+      <p class="anat-caption">Plate I · The anatomy of a boz üy</p>
     </div>
   </div>
 </section>
 
-<!-- PAGE NAV -->
-<nav class="page-nav">
-  <div class="wrap">
-    <div class="pn-inner">
-      <a href="#anatomy" class="active">Anatomy</a>
-      <a href="#history">History</a>
-      <a href="#kyzyl-tuu">Kyzyl-Tuu</a>
-      <a href="#unesco">UNESCO</a>
-      <a href="#artisans">Craft &amp; Artisans</a>
-      <a href="#glossary">Glossary</a>
-      <a href="tunduk-craft.html">The Craft →</a>
-    </div>
-  </div>
-</nav>
-
-<!-- ══ ANATOMY ════════════════════════════ -->
-<section class="anatomy" id="anatomy">
-  <div class="wrap">
-    <div class="anat-grid">
-      <div>
-        <p class="s-label rev">The Structure</p>
-        <h2 class="anat-h2 rev">Seven components.<br><em>Zero nails.</em></h2>
-        <p class="anat-intro rev">A traditional Kyrgyz yurt is assembled entirely from natural, renewable materials — wood, reeds, sheep wool, and rawhide — with no metal fasteners, no screws, no nails. Every component has a name, a purpose, and a place in Kyrgyz cosmology.</p>
-
-        <div class="anat-parts rev">
-          <div class="anat-part"><div class="ap-kyrgyz">Tündük</div><div class="ap-body"><div class="ap-name">Crown Ring</div><div class="ap-desc">The circular wooden ring at the apex — the most sacred element, representing the sun and the cosmos. So significant it appears at the centre of the Kyrgyz national flag. Roof poles radiate outward from it.</div></div></div>
-          <div class="anat-part"><div class="ap-kyrgyz">Uuk</div><div class="ap-body"><div class="ap-name">Roof Poles</div><div class="ap-desc">Curved wooden poles that radiate from the tündük down to the lattice walls. The curvature — achieved by steaming the wood — is what creates the distinctive domed silhouette and makes center poles unnecessary.</div></div></div>
-          <div class="anat-part"><div class="ap-kyrgyz">Kerege</div><div class="ap-body"><div class="ap-name">Lattice Walls</div><div class="ap-desc">Accordion-folding lattice of interlocking wooden beams bound by rawhide strips. Each beam and diamond opening is identically sized for structural consistency. Folds flat for transport.</div></div></div>
-          <div class="anat-part"><div class="ap-kyrgyz">Bosogo</div><div class="ap-body"><div class="ap-name">Door Frame</div><div class="ap-desc">An elaborately carved and painted wooden door frame — often the most decorative element, adorned with traditional motifs representing family heritage and prosperity.</div></div></div>
-          <div class="anat-part"><div class="ap-kyrgyz">Chiy</div><div class="ap-body"><div class="ap-name">Reed Mats</div><div class="ap-desc">Woven reed mats wrapped around the lattice walls before the felt covering. Provide a critical insulation and ventilation layer. Reeds may be decorated with colored wool in geometric patterns.</div></div></div>
-          <div class="anat-part"><div class="ap-kyrgyz">Kiyiz</div><div class="ap-body"><div class="ap-name">Felt Covering</div><div class="ap-desc">Thirteen rolls of handmade sheep wool felt cover the entire structure — eight for the roof, five for the walls. Provides insulation and weather protection. Each roll is made by hand by the women of the family.</div></div></div>
-          <div class="anat-part"><div class="ap-kyrgyz">Shyrdak</div><div class="ap-body"><div class="ap-name">Interior Carpet</div><div class="ap-desc">Ornamental felt carpets laid on the floor with traditional motifs — the ram's horn (for strength), the crow's claw (for leaving a trace). No two shyrdak are identical.</div></div></div>
-        </div>
-      </div>
-
-      <!-- SVG yurt anatomy diagram -->
-      <div class="anat-diagram rev">
-        <svg width="100%" viewBox="0 0 520 580" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </marker>
-          </defs>
-
-          <!-- Ground shadow -->
-          <ellipse cx="230" cy="476" rx="168" ry="12" fill="#1C0E06" opacity=".06"/>
-
-          <!-- Floor / shyrdak -->
-          <ellipse cx="230" cy="462" rx="160" ry="14" fill="#C4923A" opacity=".15" stroke="#C4923A" stroke-width="1" stroke-dasharray="5 4"/>
-
-          <!-- Kerege (lattice walls) — two sides -->
-          <!-- left wall section -->
-          <rect x="76"  y="350" width="78" height="108" rx="3" fill="none" stroke="#B85C38" stroke-width="1.5"/>
-          <!-- lattice lines left -->
-          <line x1="89"  y1="350" x2="76"  y2="458" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="102" y1="350" x2="76"  y2="432" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="115" y1="350" x2="76"  y2="406" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="128" y1="350" x2="76"  y2="380" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="76"  y1="371" x2="154" y2="350" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="76"  y1="397" x2="154" y2="370" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="76"  y1="423" x2="154" y2="395" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="76"  y1="449" x2="154" y2="421" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <!-- right wall section -->
-          <rect x="308" y="350" width="78" height="108" rx="3" fill="none" stroke="#B85C38" stroke-width="1.5"/>
-          <line x1="321" y1="350" x2="308" y2="458" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="334" y1="350" x2="308" y2="432" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="347" y1="350" x2="308" y2="406" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="360" y1="350" x2="308" y2="380" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="308" y1="371" x2="386" y2="350" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="308" y1="397" x2="386" y2="370" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="308" y1="423" x2="386" y2="395" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-          <line x1="308" y1="449" x2="386" y2="421" stroke="#B85C38" stroke-width=".8" opacity=".5"/>
-
-          <!-- Door frame (bosogo) -->
-          <rect x="176" y="372" width="108" height="90" rx="4" fill="#EFE6D5" stroke="#6B7B5E" stroke-width="2"/>
-          <rect x="182" y="378" width="96"  height="82" rx="3" fill="none" stroke="#6B7B5E" stroke-width=".8" stroke-dasharray="3 3"/>
-          <!-- door decoration lines -->
-          <line x1="200" y1="378" x2="200" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
-          <line x1="218" y1="378" x2="218" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
-          <line x1="236" y1="378" x2="236" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
-          <line x1="254" y1="378" x2="254" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
-          <line x1="272" y1="378" x2="272" y2="462" stroke="#C4923A" stroke-width=".6" opacity=".6"/>
-
-          <!-- Felt wall covering (kiyiz) -->
-          <path d="M76 350 Q90 340 115 338 Q152 334 175 333" stroke="#9A8778" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round"/>
-          <path d="M285 333 Q310 334 345 338 Q370 340 386 350" stroke="#9A8778" stroke-width="3" fill="none" opacity=".7" stroke-linecap="round"/>
-
-          <!-- Roof silhouette fill (dome) -->
-          <path d="M76 350 Q100 200 230 120 Q360 200 386 350 L308 350 L176 350 Z" fill="#EFE6D5" stroke="none" opacity=".35"/>
-
-          <!-- Roof poles (uuk) — radiating curved lines -->
-          <path d="M230 138 Q185 200 154 350" stroke="#B85C38" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M230 138 Q200 215 176 350" stroke="#B85C38" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M230 138 Q230 260 230 350" stroke="#B85C38" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M230 138 Q260 215 284 350" stroke="#B85C38" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <path d="M230 138 Q275 200 308 350" stroke="#B85C38" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-          <!-- outer poles -->
-          <path d="M230 138 Q160 190 100 320" stroke="#B85C38" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".6"/>
-          <path d="M230 138 Q298 190 360 320" stroke="#B85C38" stroke-width="1.4" fill="none" stroke-linecap="round" opacity=".6"/>
-
-          <!-- Dome outline -->
-          <path d="M76 350 Q100 200 230 120 Q360 200 386 350" stroke="#1C0E06" stroke-width="2" fill="none" opacity=".25"/>
-
-          <!-- Tündük (crown ring) -->
-          <circle cx="230" cy="130" r="26" fill="#FAF6EE" stroke="#C4923A" stroke-width="2.5"/>
-          <circle cx="230" cy="130" r="14" fill="none" stroke="#C4923A" stroke-width="1.5"/>
-          <circle cx="230" cy="130" r="4"  fill="#C4923A"/>
-          <!-- tündük spokes -->
-          <line x1="230" y1="116" x2="230" y2="104" stroke="#C4923A" stroke-width="1.2"/>
-          <line x1="230" y1="144" x2="230" y2="156" stroke="#C4923A" stroke-width="1.2"/>
-          <line x1="216" y1="130" x2="204" y2="130" stroke="#C4923A" stroke-width="1.2"/>
-          <line x1="244" y1="130" x2="256" y2="130" stroke="#C4923A" stroke-width="1.2"/>
-          <line x1="220.1" y1="120.1" x2="212.6" y2="112.6" stroke="#C4923A" stroke-width="1"/>
-          <line x1="239.9" y1="120.1" x2="247.4" y2="112.6" stroke="#C4923A" stroke-width="1"/>
-          <line x1="220.1" y1="139.9" x2="212.6" y2="147.4" stroke="#C4923A" stroke-width="1"/>
-          <line x1="239.9" y1="139.9" x2="247.4" y2="147.4" stroke="#C4923A" stroke-width="1"/>
-
-          <!-- CALLOUT LABELS (right side) -->
-          <!-- Tündük -->
-          <line x1="256" y1="118" x2="310" y2="72"  stroke="#C4923A" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
-          <circle cx="256" cy="118" r="2.5" fill="#C4923A"/>
-          <text x="316" y="68"  font-family="'Cormorant Garamond',serif" font-style="italic" font-size="12" fill="#C4923A">Tündük</text>
-          <text x="316" y="82"  font-family="'Jost',sans-serif" font-size="10" fill="#9A8778">Crown ring</text>
-
-          <!-- Uuk -->
-          <line x1="290" y1="230" x2="348" y2="190" stroke="#B85C38" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
-          <circle cx="290" cy="230" r="2.5" fill="#B85C38"/>
-          <text x="354" y="186" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="12" fill="#B85C38">Uuk</text>
-          <text x="354" y="200" font-family="'Jost',sans-serif" font-size="10" fill="#9A8778">Roof poles</text>
-
-          <!-- Kerege -->
-          <line x1="366" y1="395" x2="416" y2="345" stroke="#B85C38" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
-          <circle cx="366" cy="395" r="2.5" fill="#B85C38"/>
-          <text x="420" y="341" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="12" fill="#B85C38">Kerege</text>
-          <text x="420" y="355" font-family="'Jost',sans-serif" font-size="10" fill="#9A8778">Lattice walls</text>
-
-          <!-- Bosogo -->
-          <line x1="176" y1="415" x2="130" y2="460" stroke="#6B7B5E" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
-          <circle cx="176" cy="415" r="2.5" fill="#6B7B5E"/>
-          <text x="14"  y="456" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="12" fill="#6B7B5E">Bosogo</text>
-          <text x="14"  y="470" font-family="'Jost',sans-serif" font-size="10" fill="#9A8778">Door frame</text>
-
-          <!-- Shyrdak -->
-          <line x1="270" y1="462" x2="300" y2="506" stroke="#C4923A" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
-          <circle cx="270" cy="462" r="2.5" fill="#C4923A"/>
-          <text x="304" y="502" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="12" fill="#C4923A">Shyrdak</text>
-          <text x="304" y="516" font-family="'Jost',sans-serif" font-size="10" fill="#9A8778">Interior carpet</text>
-
-          <!-- Assembly note -->
-          <text x="230" y="550" text-anchor="middle" font-family="'Jost',sans-serif" font-size="10" fill="#9A8778" letter-spacing=".08em">ASSEMBLED IN ~1 HOUR · NO TOOLS REQUIRED</text>
-        </svg>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ HISTORY ════════════════════════════ -->
+<!-- ══ HISTORY ═══════════════════════════════ -->
 <section class="history" id="history">
-  <div class="hist-deco"></div>
-  <div class="hist-deco2"></div>
-  <div class="wrap">
-    <h2 class="hist-h2 rev">A thousand years<br><em>of continuity.</em></h2>
-    <div class="hist-grid">
-      <div class="timeline">
-        <div class="tl-item rev">
-          <div class="tl-dot"></div>
-          <p class="tl-date">Antiquity — 10th century</p>
-          <h3 class="tl-title">Origins on the Steppe</h3>
-          <p class="tl-text">The boz üy — "grey house" in Old Turkish — emerges across Central Asian nomadic societies. The word "boz" (steppe/open area) combined with "üy" (house) describes a structure built for the open landscape: rapid assembly, reliable shelter, total portability.</p>
-        </div>
-        <div class="tl-item rev">
-          <div class="tl-dot"></div>
-          <p class="tl-date">10th — 18th century</p>
-          <h3 class="tl-title">Cosmological Architecture</h3>
-          <p class="tl-text">The yurt evolves beyond shelter into a complete cosmological model. The circular floor represents the earth. The domed roof, the sky. The tündük crown ring is the sun. Family hierarchy is encoded in spatial position — the place of honor opposite the door, the women's domain to the right, men's to the left.</p>
-        </div>
-        <div class="tl-item rev">
-          <div class="tl-dot"></div>
-          <p class="tl-date">Soviet era, 1920s–1991</p>
-          <h3 class="tl-title">The Kyzyl-Tuu Cooperative</h3>
-          <p class="tl-text">During the Soviet period, the village of Kyzyl-Tuu organized a formal cooperative teaching specialized skills and producing yurts at scale for sale in Bishkek. This institutionalized the craft while keeping the knowledge alive through a difficult political period.</p>
-        </div>
-        <div class="tl-item rev">
-          <div class="tl-dot"></div>
-          <p class="tl-date">2014</p>
-          <h3 class="tl-title">UNESCO Inscription</h3>
-          <p class="tl-text">Traditional knowledge and skills in making Kyrgyz and Kazakh yurts inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity — one of the world's highest cultural honours.</p>
-        </div>
-        <div class="tl-item rev">
-          <div class="tl-dot"></div>
-          <p class="tl-date">2025</p>
-          <h3 class="tl-title">Expanded Recognition</h3>
-          <p class="tl-text">The inscription is expanded to include Karakalpak yurts, jointly nominated by Kazakhstan, Kyrgyzstan, and Uzbekistan — reinforcing the shared Central Asian cultural heritage and the living vitality of the tradition today.</p>
-        </div>
+  <svg class="crown-wm" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.2" style="left:auto;right:-8%;width:480px;height:480px;">
+    <circle cx="40" cy="40" r="34"/><circle cx="40" cy="40" r="10"/>
+    <line x1="50" y1="40" x2="74" y2="40"/><line x1="40" y1="50" x2="40" y2="74"/>
+    <line x1="30" y1="40" x2="6" y2="40"/><line x1="40" y1="30" x2="40" y2="6"/>
+    <line x1="48.66" y1="45" x2="69.44" y2="57"/><line x1="31.34" y1="45" x2="10.56" y2="57"/>
+    <line x1="48.66" y1="35" x2="69.44" y2="23"/><line x1="31.34" y1="35" x2="10.56" y2="23"/>
+  </svg>
+  <div class="history-inner">
+    <p class="s-label rev">The Record</p>
+    <h2 class="rev">A craft with a <em>thousand-year record.</em></h2>
+    <div class="timeline">
+      <div class="tl-item rev">
+        <div class="tl-dot"></div>
+        <p class="tl-date">Antiquity — 10th century</p>
+        <h3 class="tl-title">Origins on the Steppe</h3>
+        <p class="tl-text">The boz üy, "grey house" in Old Turkic, emerges across Central Asian nomadic societies. The word "boz" (steppe, open ground) combined with "üy" (house) describes a structure built for the open landscape: rapid assembly, reliable shelter, total portability.</p>
       </div>
-
-      <div>
-        <div class="flag-section rev">
-          <svg width="100%" viewBox="0 0 320 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Flag background -->
-            <rect width="320" height="210" rx="4" fill="#E8001D"/>
-            <!-- 40 rays from center -->
-            <g opacity=".85">
-              <line x1="160" y1="105" x2="160" y2="50"  stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="196" y2="56"  stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="224" y2="72"  stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="240" y2="98"  stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="240" y2="128" stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="224" y2="152" stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="196" y2="168" stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="160" y2="174" stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="126" y2="168" stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="100" y2="152" stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="84"  y2="128" stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="84"  y2="98"  stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="100" y2="72"  stroke="#FFCB00" stroke-width="2.2"/>
-              <line x1="160" y1="105" x2="126" y2="56"  stroke="#FFCB00" stroke-width="2.2"/>
-            </g>
-            <!-- Tündük ring -->
-            <circle cx="160" cy="105" r="44" stroke="#FFCB00" stroke-width="2.5" fill="none"/>
-            <circle cx="160" cy="105" r="26" stroke="#FFCB00" stroke-width="1.8" fill="none"/>
-            <circle cx="160" cy="105" r="10" stroke="#FFCB00" stroke-width="1.5" fill="none"/>
-            <circle cx="160" cy="105" r="3.5" fill="#FFCB00"/>
-            <!-- inner spokes -->
-            <line x1="160" y1="79" x2="160" y2="95" stroke="#FFCB00" stroke-width="1.3"/>
-            <line x1="160" y1="115" x2="160" y2="131" stroke="#FFCB00" stroke-width="1.3"/>
-            <line x1="134" y1="105" x2="150" y2="105" stroke="#FFCB00" stroke-width="1.3"/>
-            <line x1="170" y1="105" x2="186" y2="105" stroke="#FFCB00" stroke-width="1.3"/>
-            <line x1="141.6" y1="86.6" x2="152.3" y2="97.3" stroke="#FFCB00" stroke-width="1"/>
-            <line x1="178.4" y1="86.6" x2="167.7" y2="97.3" stroke="#FFCB00" stroke-width="1"/>
-            <line x1="141.6" y1="123.4" x2="152.3" y2="112.7" stroke="#FFCB00" stroke-width="1"/>
-            <line x1="178.4" y1="123.4" x2="167.7" y2="112.7" stroke="#FFCB00" stroke-width="1"/>
-          </svg>
-          <h3 class="flag-h3 rev">The tündük on the national flag</h3>
-          <p class="flag-p rev">The tündük crown ring sits at the centre of the Kyrgyz national flag, surrounded by <strong>40 rays representing the 40 nomad tribes</strong> from the epic of Manas — the founding myth of the Kyrgyz people. The moment the tündük is hoisted during yurt assembly is considered a symbol of peace and fortune.</p>
-          <p class="flag-p rev" style="margin-top:.85rem">When you buy a Tündük yurt, you bring a symbol of national identity into your space — one that carries meaning far beyond architecture.</p>
-          <div class="flag-box rev">
-            <p class="flag-q">"The tündük represents the cosmic order — the sun above, the family below, the 40 tribes surrounding them."</p>
-            <span class="flag-cite">— Kyrgyz cultural tradition</span>
-          </div>
-        </div>
+      <div class="tl-item rev">
+        <div class="tl-dot"></div>
+        <p class="tl-date">10th — 18th century</p>
+        <h3 class="tl-title">Cosmological Architecture</h3>
+        <p class="tl-text">The yurt evolves beyond shelter into a complete cosmological model. The circular floor represents the earth. The domed roof, the sky. The tündük crown ring is the sun. Family hierarchy is encoded in spatial position, the place of honour opposite the door, the women's domain to the right, men's to the left.</p>
+      </div>
+      <div class="tl-item rev">
+        <div class="tl-dot"></div>
+        <p class="tl-date">Soviet era, 1920s–1991</p>
+        <h3 class="tl-title">The Kyzyl-Tuu Cooperative</h3>
+        <p class="tl-text">During the Soviet period, the village of Kyzyl-Tuu organised a formal cooperative teaching specialised skills and producing yurts at scale for sale in Bishkek. This institutionalised the craft while keeping the knowledge alive through a difficult political period.</p>
+      </div>
+      <div class="tl-item rev">
+        <div class="tl-dot"></div>
+        <p class="tl-date">2014</p>
+        <h3 class="tl-title">UNESCO Inscription</h3>
+        <p class="tl-text">Traditional knowledge and skills in making Kyrgyz and Kazakh yurts inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity, one of the world's highest cultural honours.</p>
+      </div>
+      <div class="tl-item rev">
+        <div class="tl-dot"></div>
+        <p class="tl-date">December 2025</p>
+        <h3 class="tl-title">Expanded Recognition</h3>
+        <p class="tl-text">The inscription is expanded to include Karakalpak yurts, jointly nominated by Kazakhstan, Kyrgyzstan and Uzbekistan, reinforcing the shared Central Asian cultural heritage and the living vitality of the tradition today.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ KYZYL-TUU ══════════════════════════ -->
-<section class="kyzyl" id="kyzyl-tuu">
-  <div class="wrap">
-    <div class="kyz-grid">
-      <div>
-        <p class="s-label rev">The Village</p>
-        <h2 class="kyz-h2 rev">Kyzyl-Tuu.<br><em>Where every yurt begins.</em></h2>
-        <p class="kyz-p rev">On the southern shore of Lake Issyk-Kul — one of the world's largest alpine lakes — sits the village of Kyzyl-Tuu. Here, almost every family is engaged in yurt-making. Not as a side business. As a way of life inherited across generations.</p>
-        <p class="kyz-p rev">The village is the acknowledged global centre of Kyrgyz yurt production. During the Soviet era, a cooperative formalized the training and production here. Today, with rising orders from Europe, North America, and beyond, the economic incentives for the trade are growing — and the craft with them.</p>
-        <p class="kyz-p rev"><strong>Kyrgyzstan preserves nearly all known felt-making techniques</strong> — a depth of craft knowledge unmatched anywhere on earth. Other countries retain one or two methods; Kyrgyzstan retains them all.</p>
-        <p class="kyz-p rev">Every Tündük yurt is sourced directly from Kyzyl-Tuu master craftsmen. No intermediaries. No factories. We know the people who build your yurt by name.</p>
-        <div class="kyz-craft rev">
-          <div class="kc"><div class="kc-role">Men's Craft</div><div class="kc-title">The Wooden Frame</div><div class="kc-p">Kerege lattice, uuk roof poles, tündük crown ring, bosogo door frame. Wood is steamed and bent over 15–20 days.</div></div>
-          <div class="kc"><div class="kc-role">Women's Craft</div><div class="kc-title">Felt &amp; Decoration</div><div class="kc-p">All felt coverings, tension bands, shyrdak carpets, and decorative elements. Passed from mother to daughter.</div></div>
-        </div>
+<!-- ══ KYZYL-TUU ═════════════════════════════ -->
+<section class="sec" id="kyzyl-tuu">
+  <div class="village-grid">
+    <div>
+      <p class="s-label rev">The Village</p>
+      <h2 class="rev" style="font-family:var(--font-h);font-weight:700;font-size:clamp(2rem,5vw,3.6rem);line-height:1.04;color:var(--ink);letter-spacing:-.01em;">One village.<br><em style="font-style:italic;color:var(--oxblood);">The whole craft.</em></h2>
+      <p class="rev" style="font-size:1.12rem;color:var(--ink-mid);line-height:1.8;margin-top:1.3rem;max-width:52ch;">On the southern shore of Lake Issyk-Kul sits Kyzyl-Tuu, a village of a few hundred people that is the recognised world centre of Kyrgyz yurt-making. Almost every household builds. The skill passes from hand to hand, parent to child, and has never been broken.</p>
+      <div class="village-stat rev">
+        <div class="vs"><b>Issyk-Kul</b><span>Southern shore</span></div>
+        <div class="vs"><b>Generations</b><span>Unbroken transmission</span></div>
+        <div class="vs"><b>By hand</b><span>Every frame, every felt</span></div>
       </div>
-
-      <!-- Map placeholder with SVG landscape -->
-      <div class="rev">
-        <div class="kyz-map">
-          <svg width="92%" viewBox="0 0 380 260" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Mountains silhouette -->
-            <path d="M0 180 L40 90 L80 140 L120 50 L165 120 L200 40 L240 110 L280 70 L320 130 L360 80 L380 120 L380 260 L0 260 Z" fill="#3A1F10" opacity=".4"/>
-            <path d="M0 200 L50 130 L90 170 L130 100 L175 155 L215 110 L255 150 L300 120 L340 155 L380 130 L380 260 L0 260 Z" fill="#3A1F10" opacity=".3"/>
-            <!-- Lake Issyk-Kul -->
-            <ellipse cx="190" cy="192" rx="130" ry="28" fill="#1C0E06" opacity=".5"/>
-            <text x="190" y="196" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="10" fill="rgba(250,246,238,.3)">Lake Issyk-Kul</text>
-            <!-- Kyzyl-Tuu dot -->
-            <circle cx="230" cy="178" r="5" fill="#C4923A"/>
-            <circle cx="230" cy="178" r="10" fill="#C4923A" opacity=".25"/>
-            <text x="244" y="176" font-family="'Jost',sans-serif" font-size="9" fill="rgba(250,246,238,.75)" letter-spacing=".05em">KYZYL-TUU</text>
-            <!-- Bishkek dot -->
-            <circle cx="95" cy="130" r="3.5" fill="rgba(250,246,238,.35)"/>
-            <text x="102" y="128" font-family="'Jost',sans-serif" font-size="8" fill="rgba(250,246,238,.35)">BISHKEK</text>
-          </svg>
-          <p class="map-sub">Kyzyl-Tuu · Issyk-Kul Oblast · Kyrgyzstan</p>
-        </div>
-      </div>
+    </div>
+    <div class="village-map rev">
+      <svg width="100%" viewBox="0 0 380 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Lake Issyk-Kul -->
+        <path d="M40 120 Q90 92 170 96 Q260 100 330 122 Q345 130 330 150 Q255 176 165 172 Q88 168 48 148 Q33 138 40 120 Z" fill="#6E2A24" opacity=".10" stroke="#6E2A24" stroke-width="1" stroke-opacity=".4"/>
+        <text x="186" y="138" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="15" fill="#6E2A24" opacity=".75">Lake Issyk-Kul</text>
+        <!-- Kyzyl-Tuu marker -->
+        <circle cx="150" cy="178" r="5" fill="#C4923A"/>
+        <circle cx="150" cy="178" r="11" fill="none" stroke="#C4923A" stroke-width="1" opacity=".6"/>
+        <line x1="150" y1="189" x2="150" y2="214" stroke="#C4923A" stroke-width=".8" stroke-dasharray="3 3" opacity=".7"/>
+        <text x="150" y="230" text-anchor="middle" font-family="'Cormorant Garamond',serif" font-style="italic" font-size="14" fill="#1A1410">Kyzyl-Tuu</text>
+        <text x="150" y="245" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="8" letter-spacing="1.4" fill="#8A7060">WORLD CENTRE OF THE CRAFT</text>
+        <!-- compass -->
+        <text x="338" y="40" text-anchor="middle" font-family="'Archivo',sans-serif" font-size="9" letter-spacing="1" fill="#8A7060">N</text>
+        <line x1="338" y1="44" x2="338" y2="64" stroke="#8A7060" stroke-width=".8"/>
+        <path d="M335 50 L338 44 L341 50" fill="none" stroke="#8A7060" stroke-width=".8"/>
+      </svg>
+      <p style="font-family:var(--font-l);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);text-align:center;margin-top:1rem;">Plate II · Where the craft lives</p>
     </div>
   </div>
 </section>
 
-<!-- ══ UNESCO ══════════════════════════════ -->
-<section class="unesco" id="unesco">
-  <div class="wrap">
-    <div class="unes-inner">
-      <div class="unes-badge rev"><span>UNESCO ICH</span></div>
-      <h2 class="unes-h2 rev">Inscribed as <em>Heritage<br>of Humanity.</em></h2>
-      <p class="unes-p rev">In 2014, traditional knowledge and skills in making Kyrgyz and Kazakh yurts were inscribed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity — one of the most significant cultural recognitions in the world. The inscription was expanded in December 2025 to include Karakalpak yurts, jointly nominated by Kazakhstan, Kyrgyzstan, and Uzbekistan.</p>
-      <p class="unes-p rev">This is not a certificate on a wall. It is formal global recognition that the living practice of yurt-making — the knowledge, the techniques, the intergenerational transmission — is part of humanity's shared cultural heritage and must be preserved.</p>
-      <div class="unes-q rev">
-        <p>"For the Kyrgyz, Kazakhs and Karakalpaks, the yurt is not only a dwelling and a model of the universe, but also a symbol of their national identity."</p>
-        <cite>— UNESCO Intangible Cultural Heritage Nomination File, 2014/2025</cite>
-      </div>
-      <p class="unes-p rev">When Tündük sells a yurt, a portion of every sale goes directly to supporting the artisan families of Kyzyl-Tuu — ensuring the economic viability of the craft for the next generation.</p>
-      <div class="unes-years rev">
-        <div class="uy"><p class="uy-num">2014</p><p class="uy-lbl">Original inscription</p></div>
-        <div class="uy"><p class="uy-num">2025</p><p class="uy-lbl">Expanded inscription</p></div>
-        <div class="uy"><p class="uy-num">3</p><p class="uy-lbl">Countries · KG, KZ, UZ</p></div>
-        <div class="uy"><p class="uy-num">180+</p><p class="uy-lbl">Countries in UNESCO ICH</p></div>
-      </div>
+<!-- ══ UNESCO ════════════════════════════════ -->
+<section class="sec" id="unesco" style="padding-top:0;">
+  <div class="sec-head rev">
+    <p class="s-label">Recognition</p>
+    <h2>Inscribed by the world.<br><em>Kept by a few.</em></h2>
+    <p>The craft holds one of the highest cultural honours there is. But a UNESCO listing is shared across borders. Our claim is narrower, and it is the one that matters to a buyer: the specific masters of Kyzyl-Tuu, building today.</p>
+  </div>
+  <div class="records">
+    <div class="record rev">
+      <span class="record-no">No. 01</span>
+      <h3>UNESCO inscribed</h3>
+      <p>Listed on UNESCO's Representative List of the Intangible Cultural Heritage of Humanity in 2014, and expanded in December 2025. A craft the world has formally agreed is worth protecting.</p>
+    </div>
+    <div class="record rev d1">
+      <span class="record-no">No. 02</span>
+      <h3>Shared, but specific</h3>
+      <p>The inscription is held jointly across Kazakhstan, Kyrgyzstan and Uzbekistan, including the Karakalpak tradition. We do not speak for all of it. We answer for one village, and the masters in it whom we work with by name.</p>
+    </div>
+    <div class="record rev d2">
+      <span class="record-no">No. 03</span>
+      <h3>Living, not archived</h3>
+      <p>This is not a museum piece. The skill is in use every week, in the same village, by people who learned it from the generation before. Heritage that is still being made is heritage you can still buy.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ ARTISANS ════════════════════════════ -->
-<section class="artisans" id="artisans">
-  <div class="wrap">
-    <p class="s-label rev">The Craft</p>
-    <h2 class="art-h2 rev">Built by hand.<br><em>Every detail.</em></h2>
-    <div class="art-grid">
-      <div class="art-card rev d1">
-        <div class="art-icon"></div>
-        <p class="art-role">Frame Making</p>
-        <h3 class="art-title">Wood Steaming</h3>
-        <p class="art-p">The tündük crown ring is made by steaming a thick log over 15–20 days until it can be bent into a perfect circle, then drilling precisely spaced square holes for the roof poles. Each hole must be identical.</p>
-      </div>
-      <div class="art-card rev d2">
-        <div class="art-icon"></div>
-        <p class="art-role">Felt Making</p>
-        <h3 class="art-title">Hand-Rolled Wool</h3>
-        <p class="art-p">Thirteen rolls of felt are made from raw sheep wool — carded, layered, wetted and rolled repeatedly until the fibres lock together. A full set of felt for one 6m yurt requires weeks of collective work.</p>
-      </div>
-      <div class="art-card rev d3">
-        <div class="art-icon"></div>
-        <p class="art-role">Textile Art</p>
-        <h3 class="art-title">Shyrdak Patterns</h3>
-        <p class="art-p">The felt interior carpets are made using appliqué and mosaic techniques. Every motif carries meaning: the ram's horn for strength and prosperity, the crow's claw for legacy, the horn scroll for protection.</p>
-      </div>
-      <div class="art-card rev d4">
-        <div class="art-icon"></div>
-        <p class="art-role">Binding</p>
-        <h3 class="art-title">Rawhide Joinery</h3>
-        <p class="art-p">The kerege lattice is bound entirely with rawhide strips — no nails, no screws. Applied wet, the rawhide shrinks as it dries to create joints of extraordinary strength and flexibility that absorb wind and movement.</p>
-      </div>
+<!-- ══ SPECIMEN ══════════════════════════════ -->
+<section class="sec specimen" style="max-width:none;">
+  <div class="sp-grid" style="max-width:var(--max);margin:0 auto;">
+    <div class="sp-img rev">
+      <span class="sp-plate">Plate III · The interior</span>
+      <img src="founders.jpg" alt="Inside a finished boz üy, the lattice walls, felt and crown ring seen from within">
+    </div>
+    <div class="sp-text rev d1">
+      <p class="s-label">From Inside</p>
+      <h2>Read it like a <em>reference work.</em></h2>
+      <p>Every element on this page exists in this one frame: the kerege lattice, the felt skin, the crown ring overhead, the shyrdak underfoot. This is what a buyer receives. Not a render, not a likeness. The real thing, photographed from inside one we built.</p>
     </div>
   </div>
 </section>
 
-<!-- ══ GLOSSARY ══════════════════════════ -->
-<section style="padding: var(--pad) 0; background: var(--cream);" id="glossary">
-  <div class="wrap">
-    <p class="s-label rev">The Language</p>
-    <h2 class="rev" style="font-family:var(--font-d);font-size:clamp(2rem,4.5vw,3.8rem);font-weight:300;color:var(--soil);line-height:1.1;margin-bottom:3rem;">The words <em>every boz üy carries.</em></h2>
-    <div style="display:grid;grid-template-columns:1fr;gap:1px;background:var(--stone-light);" class="rev">
-
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--stone-light);">
-        <div style="background:var(--cream);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Tündük</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Crown Ring · The apex</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">The circular wooden ring at the top of every yurt, through which all roof poles radiate. The sun, the cosmos, the skylight. So sacred it sits at the centre of the Kyrgyz national flag. All structural load flows through it.</p>
-        </div>
-        <div style="background:var(--parchment);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Kerege</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Lattice Wall · The panels</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">The accordion-folding lattice wall panels that form the cylinder of the yurt. Bound entirely with rawhide strips (gök) — no nails. A standard 6m yurt has 6 kerege panels. Each folds flat for transport.</p>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--stone-light);">
-        <div style="background:var(--cream);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Uuk</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Roof Poles · The ribs</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">The curved roof poles that radiate from the tündük down to the kerege walls. Their curvature — achieved by steam-bending Turpan Tal willow — is what creates the dome and makes center poles unnecessary. A 6m yurt carries 85 uuk.</p>
-        </div>
-        <div style="background:var(--parchment);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Bosogo</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Door Frame · The threshold</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">The carved and often painted wooden door frame. Frequently the most decorated element of the yurt — adorned with traditional motifs signifying the family's lineage and prosperity. In the Khan's configuration, the bosogo is the first thing a guest sees.</p>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--stone-light);">
-        <div style="background:var(--cream);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Kiyiz</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Felt Covering · The skin</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">Thirteen rolls of handmade sheep wool felt — eight for the roof, five for the walls. Made entirely by the women of the artisan family. Wool is the original insulation: warm in winter, cool in summer, breathable year-round. Lasts 15–20 years with proper care.</p>
-        </div>
-        <div style="background:var(--parchment);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Chiy</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Reed Mat · The insulation layer</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">Woven reed mats wrapped around the kerege beneath the felt covering, providing a critical insulation and ventilation layer. The premium version — oimo chiy — is decorated with coloured wool woven into geometric patterns during the weaving process.</p>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--stone-light);">
-        <div style="background:var(--cream);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Shyrdak</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Mosaic Felt Carpet · The floor</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">Felt carpet made by the mosaic appliqué technique — two contrasting layers cut simultaneously and swapped. Every motif carries meaning: the ram's horn for strength, the crow's claw for legacy, the horn scroll for protection. No two shyrdak are ever identical.</p>
-        </div>
-        <div style="background:var(--parchment);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Ala Kiyiz</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Rolled Felt Rug · The older tradition</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">Older than shyrdak. Coloured wool designs are pressed into raw felt during rolling — permanently fused as the fibres bond. Unlike shyrdak, you cannot draw on ala kiyiz first: the design must exist entirely in the maker's mind before the wool is touched.</p>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--stone-light);">
-        <div style="background:var(--cream);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Kanat</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Wing / Section · The sizing unit</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">The traditional Kyrgyz unit for measuring yurt size — by the number of kerege wall sections (kanat = wing). A 6m yurt is a "6 kanat" yurt. The number of uuk roof poles follows: a 6 kanat yurt carries 85 uuk. This is how builders have specified yurts for centuries.</p>
-        </div>
-        <div style="background:var(--parchment);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Turpan Tal</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Willow Species · The wood</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">The specific willow species used for all Kyrgyz yurt frames — light, flexible, and ideal for steam-bending. The tündük ring is steamed and bent over 15–20 days. The uuk poles are steam-curved. Naturally resistant to splitting under tension. The only wood that bends the way a yurt needs to bend.</p>
-        </div>
-      </div>
-
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--stone-light);">
-        <div style="background:var(--cream);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Zabık Bash</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Decorative Felt Bands · The finish</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">Ornamental felt strips with embroidered motifs that ring the interior wall-to-roof junction (ichki zabık bash) and the exterior lower edge (syrtky zabık bash). The finishing detail that transforms a functional yurt into a fully dressed one.</p>
-        </div>
-        <div style="background:var(--parchment);padding:1.6rem 1.8rem;">
-          <p style="font-family:var(--font-d);font-style:italic;font-size:1.5rem;color:var(--terracotta);margin-bottom:.3rem;">Gök</p>
-          <p style="font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);margin-bottom:.6rem;">Rawhide Binding · The joinery</p>
-          <p style="font-size:.84rem;color:var(--text-mid);line-height:1.78;">The rawhide strips that bind every joint in the kerege lattice — applied wet, shrunk tight as they dry. No nails. No screws. No metal fasteners of any kind. The gök binding creates joints of extraordinary strength that flex under wind and movement rather than crack under stress.</p>
-        </div>
-      </div>
-
-    </div>
-    <p class="rev" style="margin-top:2rem;font-size:.78rem;color:var(--stone);text-align:center;">
-      <a href="tunduk-configure.html" style="color:var(--terracotta);border-bottom:1px solid rgba(184,92,56,.3);padding-bottom:1px;">Configure your yurt using these components →</a> &nbsp;·&nbsp; <a href="tunduk-craft.html" style="color:var(--terracotta);border-bottom:1px solid rgba(184,92,56,.3);padding-bottom:1px;">Read: The Craft →</a>
-    </p>
+<!-- ══ GLOSSARY ══════════════════════════════ -->
+<section class="sec" id="glossary">
+  <div class="glos-head rev">
+    <p class="s-label">The Language</p>
+    <h2>The words every <em>boz üy carries.</em></h2>
   </div>
-</section>
-
-<!-- ══ CTA ════════════════════════════════ -->
-<section class="heritage-cta">
-  <div class="wrap">
-    <div class="hcta-in">
-      <div>
-        <h2 class="hcta-h2 rev">Ready to bring this<br><em>heritage home?</em></h2>
-        <p class="hcta-p rev">Configure your yurt — choose size, tier, and options — and receive a personalised quote from our team within 48 hours.</p>
-      </div>
-      <div class="hcta-btns rev">
-        <a href="tunduk-configure.html" class="btn-p">Configure Your Yurt</a>
-        <a href="#" class="btn-g">View Gallery</a>
-      </div>
+  <div class="glos-grid rev">
+    <div class="glos-cell">
+      <p class="glos-term">Tündük</p>
+      <p class="glos-role">Crown Ring · The apex</p>
+      <p class="glos-def">The circular wooden ring at the top of every yurt, through which all roof poles radiate. The sun, the cosmos, the skylight. So sacred it sits at the centre of the Kyrgyz national flag. All structural load flows through it.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Kerege</p>
+      <p class="glos-role">Lattice Wall · The panels</p>
+      <p class="glos-def">The accordion-folding lattice wall panels that form the cylinder of the yurt. Bound entirely with rawhide strips (gök), no nails. A standard 6m yurt has 6 kerege panels. Each folds flat for transport.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Uuk</p>
+      <p class="glos-role">Roof Poles · The ribs</p>
+      <p class="glos-def">The curved roof poles that radiate from the tündük down to the kerege walls. Their curvature, achieved by steam-bending Turpan Tal willow, is what creates the dome and makes centre poles unnecessary. A 6m yurt carries 85 uuk.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Bosogo</p>
+      <p class="glos-role">Door Frame · The threshold</p>
+      <p class="glos-def">The carved and often painted wooden door frame. Frequently the most decorated element of the yurt, adorned with traditional motifs signifying the family's lineage and prosperity. It is the first thing a guest sees.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Kiyiz</p>
+      <p class="glos-role">Felt Covering · The skin</p>
+      <p class="glos-def">Thirteen rolls of handmade sheep wool felt, eight for the roof, five for the walls. Made entirely by the women of the artisan family. Wool is the original insulation: warm in winter, cool in summer, breathable year-round. Lasts 15–20 years with proper care.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Chiy</p>
+      <p class="glos-role">Reed Mat · The insulation layer</p>
+      <p class="glos-def">Woven reed mats wrapped around the kerege beneath the felt covering, providing a critical insulation and ventilation layer. The premium version, oimo chiy, is decorated with coloured wool woven into geometric patterns during the weaving process.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Shyrdak</p>
+      <p class="glos-role">Mosaic Felt Carpet · The floor</p>
+      <p class="glos-def">Felt carpet made by the mosaic appliqué technique, two contrasting layers cut simultaneously and swapped. Every motif carries meaning: the ram's horn for strength, the crow's claw for legacy, the horn scroll for protection. No two shyrdak are ever identical.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Ala Kiyiz</p>
+      <p class="glos-role">Rolled Felt Rug · The older tradition</p>
+      <p class="glos-def">Older than shyrdak. Coloured wool designs are pressed into raw felt during rolling, permanently fused as the fibres bond. Unlike shyrdak, you cannot draw on ala kiyiz first: the design must exist entirely in the maker's mind before the wool is touched.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Kanat</p>
+      <p class="glos-role">Wing / Section · The sizing unit</p>
+      <p class="glos-def">The traditional Kyrgyz unit for measuring yurt size, by the number of kerege wall sections (kanat = wing). A 6m yurt is a "6 kanat" yurt. The number of uuk roof poles follows: a 6 kanat yurt carries 85 uuk. This is how builders have specified yurts for centuries.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Turpan Tal</p>
+      <p class="glos-role">Willow Species · The wood</p>
+      <p class="glos-def">The specific willow species used for all Kyrgyz yurt frames, light, flexible, and ideal for steam-bending. The tündük ring is steamed and bent over 15–20 days. The uuk poles are steam-curved. Naturally resistant to splitting under tension. The only wood that bends the way a yurt needs to bend.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Zabık Bash</p>
+      <p class="glos-role">Decorative Felt Bands · The finish</p>
+      <p class="glos-def">Ornamental felt strips with embroidered motifs that ring the interior wall-to-roof junction (ichki zabık bash) and the exterior lower edge (syrtky zabık bash). The finishing detail that transforms a functional yurt into a fully dressed one.</p>
+    </div>
+    <div class="glos-cell">
+      <p class="glos-term">Gök</p>
+      <p class="glos-role">Rawhide Binding · The joinery</p>
+      <p class="glos-def">The rawhide strips that bind every joint in the kerege lattice, applied wet, shrunk tight as they dry. No nails. No screws. No metal fasteners of any kind. The gök binding creates joints of extraordinary strength that flex under wind and movement rather than crack under stress.</p>
     </div>
   </div>
+  <p class="glos-foot rev">
+    <a href="tunduk-configure.html">Configure a yurt using these components →</a> &nbsp;·&nbsp; <a href="tunduk-craft.html">Read: The Craft →</a>
+  </p>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-bot">
-      <div class="foot-logo">
-        <svg viewBox="0 0 80 80" fill="none">
-          <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2.5"/>
-          <circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="2"/>
-          <line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="30" y1="40" x2="6"  y2="40" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="40" y1="30" x2="40" y2="6"  stroke="currentColor" stroke-width="1.5"/>
-          <line x1="48.66" y1="45" x2="69.44" y2="57" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="31.34" y1="45" x2="10.56" y2="57" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="48.66" y1="35" x2="69.44" y2="23" stroke="currentColor" stroke-width="1.5"/>
-          <line x1="31.34" y1="35" x2="10.56" y2="23" stroke="currentColor" stroke-width="1.5"/>
+<!-- ══ CLOSING ═══════════════════════════════ -->
+<section class="closing">
+  <svg class="crown-wm" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.2">
+    <circle cx="40" cy="40" r="34"/><circle cx="40" cy="40" r="10"/>
+    <line x1="50" y1="40" x2="74" y2="40"/><line x1="40" y1="50" x2="40" y2="74"/>
+    <line x1="30" y1="40" x2="6" y2="40"/><line x1="40" y1="30" x2="40" y2="6"/>
+    <line x1="48.66" y1="45" x2="69.44" y2="57"/><line x1="31.34" y1="45" x2="10.56" y2="57"/>
+    <line x1="48.66" y1="35" x2="69.44" y2="23"/><line x1="31.34" y1="35" x2="10.56" y2="23"/>
+  </svg>
+  <div class="closing-inner rev">
+    <div class="seal">
+      <span class="s-top">Keepers of</span>
+      <span class="s-crown">
+        <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2.4">
+          <circle cx="40" cy="40" r="30"/><circle cx="40" cy="40" r="9"/>
+          <line x1="49" y1="40" x2="70" y2="40"/><line x1="40" y1="49" x2="40" y2="70"/>
+          <line x1="31" y1="40" x2="10" y2="40"/><line x1="40" y1="31" x2="40" y2="10"/>
+          <line x1="47" y1="33" x2="63" y2="17"/><line x1="33" y1="33" x2="17" y2="17"/>
+          <line x1="47" y1="47" x2="63" y2="63"/><line x1="33" y1="47" x2="17" y2="63"/>
         </svg>
-        <span>Tündük</span>
+      </span>
+      <span class="s-bot">The Boz Üy</span>
+    </div>
+    <h2>The craft is kept.<br>Now it is built for you.</h2>
+    <p>Read the record, then put it to work. Furnish a resort with the real thing, or commission a single boz üy of your own.</p>
+    <a href="tunduk-trade.html#quote" class="btn-primary">Request a quote</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════ -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-brand-logo">
+          <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="40" cy="40" r="30"/><circle cx="40" cy="40" r="9"/>
+            <line x1="49" y1="40" x2="70" y2="40"/><line x1="40" y1="49" x2="40" y2="70"/>
+            <line x1="31" y1="40" x2="10" y2="40"/><line x1="40" y1="31" x2="40" y2="10"/>
+            <line x1="47" y1="33" x2="63" y2="17"/><line x1="33" y1="33" x2="17" y2="17"/>
+            <line x1="47" y1="47" x2="63" y2="63"/><line x1="33" y1="47" x2="17" y2="63"/>
+          </svg>
+          <span>Tündük</span>
+        </div>
+        <p class="ft-brand-p">Keepers of the boz üy. Built in Kyzyl-Tuu, on the shore of Lake Issyk-Kul, and supplied to the world.</p>
       </div>
-      <p class="foot-copy">© 2026 Tündük. All rights reserved.</p>
-      <div class="foot-links">
-        <a href="tunduk-homepage-v2.html">Home</a>
-        <a href="tunduk-gallery.html">Gallery</a>
-        <a href="tunduk-heritage.html">Heritage</a>
-        <a href="tunduk-craft.html">The Craft</a>
-        <a href="tunduk-configure.html">Configure</a>
-        <a href="tunduk-contact.html">Contact</a>
-        <a href="tunduk-faq.html">FAQ</a>
+      <div>
+        <p class="ft-col-h">The Charter</p>
+        <ul class="ft-col-links">
+          <li><a href="tunduk-heritage.html">Heritage</a></li>
+          <li><a href="tunduk-story.html">Our Story</a></li>
+          <li><a href="tunduk-craft.html">The Craft</a></li>
+          <li><a href="tunduk-gallery.html">Gallery</a></li>
+        </ul>
       </div>
+      <div>
+        <p class="ft-col-h">Order</p>
+        <ul class="ft-col-links">
+          <li><a href="tunduk-trade.html">For Hotels &amp; Resorts</a></li>
+          <li><a href="tunduk-configure.html">Configure a Yurt</a></li>
+          <li><a href="tunduk-trade.html#quote">Request a Quote</a></li>
+          <li><a href="tunduk-homeware.html">Homeware</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="ft-col-h">Contact</p>
+        <ul class="ft-col-links">
+          <li><a href="tunduk-contact.html">Get in touch</a></li>
+          <li><a href="tunduk-faq.html">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span class="ft-copy">© 2026 Tündük. Keepers of the boz üy.</span>
+      <span class="ft-made">Made in Kyrgyzstan · Shipped worldwide</span>
     </div>
   </div>
 </footer>
 
-<script>
-  const obs = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);} }), {threshold:.07});
-  document.querySelectorAll('.rev').forEach(el => obs.observe(el));
+<div class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="2,9 7,4 12,9"/></svg>
+</div>
 
-  // Page nav active state on scroll
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.pn-inner a');
-  const pageNav = document.querySelector('.page-nav');
-  addEventListener('scroll', () => {
-    const top = scrollY + pageNav.offsetTop + pageNav.offsetHeight + 40;
-    sections.forEach(s => {
-      if (s.offsetTop <= top && s.offsetTop + s.offsetHeight > top) {
-        navLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + s.id); });
-      }
-    });
+<script>
+  const nav = document.getElementById('nav');
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 40);
+    btt.classList.toggle('show', y > 600);
   });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll('.rev').forEach(el => io.observe(el));
 </script>
+
 </body>
 </html>

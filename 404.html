@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not found — Tündük | Keepers of the Boz Üy</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400;1,600&family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --parchment:#E8E0D1; --white:#FAF7F0; --ink:#1A1410; --ink-mid:#4A3728; --ink-soft:#8A7060;
+      --oxblood:#6E2A24; --oxblood-h:#863429; --gold:#C4923A; --line:rgba(110,42,36,.22);
+      --font-h:'Playfair Display',Georgia,serif; --font-l:'Archivo',sans-serif; --font-b:'Cormorant Garamond',Georgia,serif;
+      --gutter:clamp(1.5rem,6vw,7rem);
+    }
+    html { font-size:16px; }
+    body { font-family:var(--font-b); background:var(--parchment); color:var(--ink); line-height:1.6; min-height:100vh; display:flex; flex-direction:column; position:relative; overflow-x:hidden; }
+    body::before {
+      content:''; position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    }
+    a { text-decoration:none; color:inherit; }
+    main { position:relative; z-index:2; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:6rem var(--gutter); }
+    .crown { width:88px; height:88px; color:var(--oxblood); opacity:.55; margin-bottom:2.2rem; }
+    .klabel { font-family:var(--font-l); font-weight:700; font-size:.7rem; letter-spacing:.26em; text-transform:uppercase; color:var(--oxblood); margin-bottom:1.4rem; }
+    h1 { font-family:var(--font-h); font-weight:800; font-size:clamp(2.6rem,7vw,5rem); line-height:1; letter-spacing:-.02em; color:var(--ink); }
+    h1 em { font-style:italic; color:var(--oxblood); }
+    p.lead { font-size:clamp(1.1rem,2vw,1.35rem); color:var(--ink-mid); line-height:1.7; max-width:48ch; margin:1.5rem auto 0; }
+    .actions { display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:2.6rem; }
+    .btn-solid { font-family:var(--font-l); font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; padding:1.05rem 2rem; background:var(--oxblood); color:var(--white); transition:background .3s; }
+    .btn-solid:hover { background:var(--oxblood-h); }
+    .btn-ghost { font-family:var(--font-l); font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; padding:1.05rem 2rem; border:1px solid var(--line); color:var(--ink); transition:border-color .3s,color .3s; }
+    .btn-ghost:hover { border-color:var(--oxblood); color:var(--oxblood); }
+    .links { margin-top:3rem; display:flex; gap:1.4rem; flex-wrap:wrap; justify-content:center; }
+    .links a { font-family:var(--font-l); font-size:.66rem; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft); transition:color .2s; }
+    .links a:hover { color:var(--oxblood); }
+  </style>
+</head>
+<body>
+  <main>
+    <svg class="crown" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="40" cy="40" r="34"/><circle cx="40" cy="40" r="10"/><line x1="50" y1="40" x2="74" y2="40"/><line x1="40" y1="50" x2="40" y2="74"/><line x1="30" y1="40" x2="6" y2="40"/><line x1="40" y1="30" x2="40" y2="6"/><line x1="48.66" y1="35" x2="69.44" y2="23"/><line x1="31.34" y1="35" x2="10.56" y2="23"/><line x1="48.66" y1="45" x2="69.44" y2="57"/><line x1="31.34" y1="45" x2="10.56" y2="57"/></svg>
+    <p class="klabel">Error 404</p>
+    <h1>This page <em>folded away.</em></h1>
+    <p class="lead">Like a boz üy struck for the next migration, what you were looking for is not here. Let us point you back to solid ground.</p>
+    <div class="actions">
+      <a href="/index.html" class="btn-solid">Return home</a>
+      <a href="/tunduk-trade.html" class="btn-ghost">For hotels &amp; resorts</a>
+    </div>
+    <div class="links">
+      <a href="/tunduk-heritage.html">Heritage</a>
+      <a href="/tunduk-story.html">Our Story</a>
+      <a href="/tunduk-craft.html">The Craft</a>
+      <a href="/tunduk-gallery.html">Gallery</a>
+      <a href="/tunduk-faq.html">FAQ</a>
+      <a href="/tunduk-contact.html">Contact</a>
+    </div>
+  </main>
+</body>
+</html>

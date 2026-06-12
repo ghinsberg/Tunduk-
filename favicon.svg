@@ -1,15 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
-  <rect width="80" height="80" rx="15" fill="#6E2A24"/>
-  <g fill="none" stroke="#FAF7F0" stroke-width="3.4" stroke-linecap="round">
-    <circle cx="40" cy="40" r="23"/>
-    <circle cx="40" cy="40" r="7"/>
-    <line x1="47" y1="40" x2="63" y2="40"/>
-    <line x1="40" y1="47" x2="40" y2="63"/>
-    <line x1="33" y1="40" x2="17" y2="40"/>
-    <line x1="40" y1="33" x2="40" y2="17"/>
-    <line x1="45.2" y1="34.8" x2="56.5" y2="23.5"/>
-    <line x1="34.8" y1="34.8" x2="23.5" y2="23.5"/>
-    <line x1="45.2" y1="45.2" x2="56.5" y2="56.5"/>
-    <line x1="34.8" y1="45.2" x2="23.5" y2="56.5"/>
+  <rect width="80" height="80" rx="15" fill="#14100B"/>
+  <g fill="none" stroke="#C4923A" stroke-linecap="round">
+    <circle cx="40" cy="40" r="28" stroke-width="4"/>
+    <circle cx="40" cy="40" r="8" stroke-width="3"/>
+    <g stroke-width="3.5">
+      <line x1="48" y1="40" x2="68" y2="40"/>
+      <line x1="40" y1="48" x2="40" y2="68"/>
+      <line x1="32" y1="40" x2="12" y2="40"/>
+      <line x1="40" y1="32" x2="40" y2="12"/>
+      <line x1="45.66" y1="45.66" x2="59.8" y2="59.8"/>
+      <line x1="34.34" y1="45.66" x2="20.2" y2="59.8"/>
+      <line x1="45.66" y1="34.34" x2="59.8" y2="20.2"/>
+      <line x1="34.34" y1="34.34" x2="20.2" y2="20.2"/>
+    </g>
   </g>
 </svg>

@@ -245,6 +245,15 @@
     .allin-col li::before { content:''; position:absolute; left:0; top:1.25rem; width:6px; height:6px; border-radius:50%; }
     .allin-col.them li::before { background:var(--ink-soft); }
     .allin-col.us li::before { background:var(--gold); }
+
+    /* FINISHED SUITE [renders of the configured product] */
+    .suite-grid { margin-top:clamp(2.5rem,5vw,4rem); display:grid; grid-template-columns:1fr; gap:8px; }
+    @media(min-width:680px) { .suite-grid { grid-template-columns:1fr 1fr; } }
+    .suite { margin:0; position:relative; overflow:hidden; border:1px solid var(--line); background:var(--ink); }
+    .suite img { width:100%; height:100%; aspect-ratio:4/3; object-fit:cover; display:block; transition:transform .7s ease; }
+    .suite:hover img { transform:scale(1.035); }
+    .suite figcaption { position:absolute; left:0; right:0; bottom:0; padding:2rem 1.3rem .95rem; font-family:var(--font-l); font-size:.6rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--white); background:linear-gradient(to top, rgba(26,20,16,.78), transparent); }
+    .suite-note { font-size:1rem; color:var(--ink-soft); font-style:italic; margin-top:1.2rem; }
   </style>
 </head>
 <body>
@@ -319,6 +328,32 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- FINISHED SUITE [renders of the configured product] -->
+<section class="sec">
+  <p class="sec-eyebrow klabel rev">The finished suite</p>
+  <h2 class="sec-h2 rev">What your guest <em>walks into.</em></h2>
+  <p class="sec-lead rev">The boz üy is the shell, a thousand years perfected. Configured for hospitality, it becomes a suite a guest does not forget. This is the interior we build toward.</p>
+  <div class="suite-grid">
+    <figure class="suite rev">
+      <img src="khanat-interior-01.webp" alt="A boz üy configured as a luxury hospitality suite, the open tündük overhead">
+      <figcaption>The suite, the tündük open overhead</figcaption>
+    </figure>
+    <figure class="suite rev d1">
+      <img src="manas-interior-02.webp" alt="Boz üy suite interior with felt walls, a woven floor, and warm light">
+      <figcaption>Felt walls, woven floor, warm light</figcaption>
+    </figure>
+    <figure class="suite rev">
+      <img src="khanat-interior-04.webp" alt="Bedroom suite inside a boz üy beneath the domed roof">
+      <figcaption>A bedroom suite under the dome</figcaption>
+    </figure>
+    <figure class="suite rev d1">
+      <img src="manas-interior-04.webp" alt="A boz üy finished and dressed for hospitality guests">
+      <figcaption>Finished, dressed, ready for guests</figcaption>
+    </figure>
+  </div>
+  <p class="suite-note rev">Configured suites, shown as visualisations. Documented installation photography to follow.</p>
 </section>
 
 <!-- BUILT FOR HOSPITALITY -->

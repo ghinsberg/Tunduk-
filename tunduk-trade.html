@@ -205,6 +205,46 @@
     .ft-links { display:flex; gap:1.4rem; flex-wrap:wrap; }
     .ft-links a { font-family:var(--font-l); font-size:.66rem; letter-spacing:.08em; text-transform:uppercase; color:rgba(250,247,240,.5); transition:color .2s; }
     .ft-links a:hover { color:var(--white); }
+
+    /* SPEC TABLE [competitor-inspired] */
+    .spec-wrap { overflow-x:auto; margin-top:clamp(2.5rem,5vw,4rem); }
+    .spectable { width:100%; border-collapse:collapse; min-width:560px; }
+    .spectable th, .spectable td { text-align:left; padding:1rem 1.2rem; border-bottom:1px solid var(--line); }
+    .spectable thead th { font-family:var(--font-l); font-size:.58rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--oxblood); }
+    .spectable tbody td { font-size:1.05rem; color:var(--ink-mid); }
+    .spectable tbody td:first-child { font-family:var(--font-h); font-weight:600; color:var(--ink); font-size:1.18rem; }
+    .spectable tbody tr:last-child td { border-bottom:none; }
+    .spec-foot { font-size:1.02rem; color:var(--ink-soft); margin-top:1.3rem; font-style:italic; max-width:60ch; line-height:1.7; }
+
+    /* WHAT'S INCLUDED [competitor-inspired] */
+    .incl-grid { display:grid; grid-template-columns:1fr; margin-top:clamp(2.5rem,5vw,4rem); border-top:1px solid var(--line); }
+    @media(min-width:760px) { .incl-grid { grid-template-columns:1fr 1fr; } }
+    .incl { padding:1.4rem 0 1.4rem 1.7rem; border-bottom:1px solid var(--line); position:relative; }
+    @media(min-width:760px) { .incl:nth-child(odd) { padding-right:2.5rem; } .incl:nth-child(even) { padding-left:2.7rem; } }
+    .incl::before { content:''; position:absolute; left:0; top:1.85rem; width:7px; height:7px; background:var(--oxblood); border-radius:50%; }
+    .incl-t { font-family:var(--font-h); font-size:1.25rem; font-weight:600; color:var(--ink); margin-bottom:.35rem; }
+    .incl-p { font-size:1.02rem; color:var(--ink-soft); line-height:1.7; }
+
+    /* ALL-IN CONTRAST [competitor-inspired] */
+    .allin { background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .allin-inner { max-width:var(--max); margin:0 auto; padding:clamp(4rem,8vw,7rem) var(--gutter); }
+    .allin-grid { display:grid; grid-template-columns:1fr; margin-top:clamp(2.5rem,5vw,4rem); border:1px solid var(--line); }
+    @media(min-width:760px) { .allin-grid { grid-template-columns:1fr 1fr; } }
+    .allin-col { padding:clamp(2rem,3.5vw,2.8rem); }
+    .allin-col.them { border-bottom:1px solid var(--line); }
+    @media(min-width:760px) { .allin-col.them { border-bottom:none; border-right:1px solid var(--line); } }
+    .allin-col.us { background:var(--ink); }
+    .allin-tag { font-family:var(--font-l); font-size:.6rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; margin-bottom:1.3rem; }
+    .allin-col.them .allin-tag { color:var(--ink-soft); }
+    .allin-col.us .allin-tag { color:var(--gold); }
+    .allin-col ul { list-style:none; }
+    .allin-col li { font-size:1.05rem; line-height:1.55; padding:.8rem 0 .8rem 1.5rem; position:relative; border-bottom:1px solid var(--line); }
+    .allin-col li:last-child { border-bottom:none; }
+    .allin-col.them li { color:var(--ink-soft); }
+    .allin-col.us li { color:rgba(250,247,240,.82); border-bottom-color:var(--line-ink); }
+    .allin-col li::before { content:''; position:absolute; left:0; top:1.25rem; width:6px; height:6px; border-radius:50%; }
+    .allin-col.them li::before { background:var(--ink-soft); }
+    .allin-col.us li::before { background:var(--gold); }
   </style>
 </head>
 <body>
@@ -310,6 +350,59 @@
   </div>
 </section>
 
+<!-- SPECIFICATION [competitor-inspired: spec table] -->
+<section class="sec">
+  <p class="sec-eyebrow klabel rev">The specification</p>
+  <h2 class="sec-h2 rev">Four sizes, <em>named for the land.</em></h2>
+  <p class="sec-lead rev">Every unit is sized in the traditional way, by the number of lattice walls. The figures below are the structure your project team can plan around.</p>
+  <div class="spec-wrap rev">
+    <table class="spectable">
+      <thead>
+        <tr><th>Size</th><th>Lattice walls (kanat)</th><th>Roof poles (uuk)</th><th>Floor area</th><th>Suited to</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Jailoo · 5m</td><td>4</td><td>55</td><td>19.6 m² (211 sq ft)</td><td>A studio, a retreat, an intimate suite</td></tr>
+        <tr><td>Kochuu · 6m</td><td>6</td><td>85</td><td>28.3 m² (304 sq ft)</td><td>The standard guest suite</td></tr>
+        <tr><td>Ala-Too · 7m</td><td>8</td><td>100</td><td>38.5 m² (414 sq ft)</td><td>A family suite, a wellness space</td></tr>
+        <tr><td>8m</td><td>by spec</td><td>by spec</td><td>50.3 m² (541 sq ft)</td><td>A restaurant, a lobby, an event centre</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="spec-foot rev">No centre pole, so the full floor is usable in every size. A 6m unit travels at roughly 150 kg and around 2 cubic metres packed; larger sizes scale up, confirmed per build. Delivered DAP, all-in to your door, or FOB from the airport if your team runs the freight.</p>
+</section>
+
+<!-- WHAT'S INCLUDED [competitor-inspired: itemised inclusions] -->
+<section class="sec" style="padding-top:0">
+  <p class="sec-eyebrow klabel rev">In every order</p>
+  <h2 class="sec-h2 rev">What arrives <em>on your site.</em></h2>
+  <div class="incl-grid">
+    <div class="incl rev">
+      <p class="incl-t">The frame</p>
+      <p class="incl-p">The tündük crown ring, the curved uuk roof poles, the kerege lattice walls, and the bosogo door frame with its door. Steam-bent willow, rawhide-bound, no metal.</p>
+    </div>
+    <div class="incl rev d1">
+      <p class="incl-t">The felt skin</p>
+      <p class="incl-p">Handmade wool felt for the roof and the walls, over a woven reed (chiy) insulation layer. Carded, rolled, and sewn by hand in the village.</p>
+    </div>
+    <div class="incl rev">
+      <p class="incl-t">The weather cover</p>
+      <p class="incl-p">A breathable weatherproof outer cover for wet climates, repelling rain while letting the wool breathe. Not a plastic tarp over the craft.</p>
+    </div>
+    <div class="incl rev d1">
+      <p class="incl-t">The interior</p>
+      <p class="incl-p">In the decorated Oyu finish, hand-cut shyrdak carpets, woven zabık bash bands, and the traditional tassels and detail of a fully dressed yurt.</p>
+    </div>
+    <div class="incl rev">
+      <p class="incl-t">The spares for assembly</p>
+      <p class="incl-p">Additional roof poles and the central raising prop (bakan) used to lift the crown, so the first assembly goes up without improvisation.</p>
+    </div>
+    <div class="incl rev d1">
+      <p class="incl-t">The documentation</p>
+      <p class="incl-p">An illustrated assembly guide, Adylet's recorded QC walkthrough of your actual unit, and the full export papers your freight needs.</p>
+    </div>
+  </div>
+</section>
+
 <!-- PROCESS FLOW -->
 <section class="sec-wide flow">
   <div class="flow-inner">
@@ -365,6 +458,37 @@
     <div class="plate rev d1">
       <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="40" cy="40" r="30"/><circle cx="40" cy="40" r="9"/><line x1="49" y1="40" x2="70" y2="40"/><line x1="40" y1="49" x2="40" y2="70"/><line x1="31" y1="40" x2="10" y2="40"/><line x1="40" y1="31" x2="40" y2="10"/><line x1="47" y1="33" x2="63" y2="17"/><line x1="33" y1="33" x2="17" y2="17"/><line x1="47" y1="47" x2="63" y2="63"/><line x1="33" y1="47" x2="17" y2="63"/></svg>
       <p class="plate-cap">Plate I · A finished boz üy suite, hand-woven carpets and warm light. Documented installation, to be added.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ALL-IN CONTRAST [competitor-inspired: freight/turnkey contrast] -->
+<section class="allin">
+  <div class="allin-inner">
+    <p class="sec-eyebrow klabel rev">The difference that matters</p>
+    <h2 class="sec-h2 rev">A unit in a crate is <em>not a finished suite.</em></h2>
+    <p class="sec-lead rev">Buy a single yurt from a marketplace and the price on the screen is the easy part. What follows is yours to solve. We took all of it onto our side of the line.</p>
+    <div class="allin-grid">
+      <div class="allin-col them rev">
+        <p class="allin-tag">Buying a unit online</p>
+        <ul>
+          <li>You arrange and pay the freight separately, often a heavy share of the price again</li>
+          <li>You clear customs and handle the export and import paperwork yourself</li>
+          <li>It arrives as a flat-pack of numbered parts and a manual</li>
+          <li>You find a crew and raise it yourself, hoping the first attempt holds</li>
+          <li>If something is short or wrong, you are an ocean away from the maker</li>
+        </ul>
+      </div>
+      <div class="allin-col us rev d1">
+        <p class="allin-tag">Working with Tündük</p>
+        <ul>
+          <li>One contract covers the structure, the certified interior, freight, and customs documentation</li>
+          <li>Delivered DAP to your door, or FOB if you would rather run your own freight</li>
+          <li>Our own installation team raises every unit on site, on your schedule</li>
+          <li>Each unit is filmed and approved before it leaves Kyrgyzstan, so nothing surprises you on arrival</li>
+          <li>One named contact, accountable from the quote to the opening</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>

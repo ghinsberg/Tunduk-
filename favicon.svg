@@ -1,17 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
-  <rect width="80" height="80" rx="15" fill="#14100B"/>
-  <g fill="none" stroke="#C4923A" stroke-linecap="round">
-    <circle cx="40" cy="40" r="28" stroke-width="4"/>
-    <circle cx="40" cy="40" r="8" stroke-width="3"/>
-    <g stroke-width="3.5">
-      <line x1="48" y1="40" x2="68" y2="40"/>
-      <line x1="40" y1="48" x2="40" y2="68"/>
-      <line x1="32" y1="40" x2="12" y2="40"/>
-      <line x1="40" y1="32" x2="40" y2="12"/>
-      <line x1="45.66" y1="45.66" x2="59.8" y2="59.8"/>
-      <line x1="34.34" y1="45.66" x2="20.2" y2="59.8"/>
-      <line x1="45.66" y1="34.34" x2="59.8" y2="20.2"/>
-      <line x1="34.34" y1="34.34" x2="20.2" y2="20.2"/>
-    </g>
+  <rect width="80" height="80" rx="15" fill="#100B07"/>
+  <circle cx="40" cy="40" r="25" fill="none" stroke="#C4923A" stroke-width="4"/>
+  <g fill="none" stroke="#C4923A" stroke-width="3.4" stroke-linecap="round">
+    <path d="M20 40 Q40 28 60 40"/>
+    <path d="M20 40 Q40 52 60 40"/>
+    <path d="M40 20 Q28 40 40 60"/>
+    <path d="M40 20 Q52 40 40 60"/>
   </g>
 </svg>

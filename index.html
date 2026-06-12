@@ -338,6 +338,31 @@
     }
     .btt.show { opacity: 1; transform: none; }
     .btt svg { width: 14px; height: 14px; color: var(--white); }
+
+    /* HERO RENDER SHOWCASE */
+    .hero { min-height: 84vh; }
+    .hero-show { width: 100%; margin-top: clamp(1.5rem, 3.5vw, 3rem); }
+    .hero-show img { width: 100%; aspect-ratio: 16/8; object-fit: cover; display: block; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    @media(max-width: 600px) { .hero-show img { aspect-ratio: 4/3; } }
+    .hero-show-cap { max-width: var(--max); margin: 0 auto; padding: .9rem var(--gutter) 0; font-family: var(--font-l); font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+
+    /* PHILOSOPHY: culture vs architecture */
+    .philo { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .philo-inner { max-width: var(--max); margin: 0 auto; padding: clamp(5rem,10vw,8rem) var(--gutter); }
+    .philo h2 { font-family: var(--font-h); font-weight: 800; font-size: clamp(2rem,4.6vw,3.6rem); color: var(--ink); line-height: 1.05; letter-spacing: -.01em; max-width: 20ch; margin-top: 1rem; }
+    .philo h2 em { font-style: italic; color: var(--oxblood); }
+    .philo-lead { font-family: var(--font-b); font-size: clamp(1.15rem,1.9vw,1.45rem); color: var(--ink-mid); line-height: 1.7; max-width: 58ch; margin-top: 1.6rem; }
+    .philo-split { display: grid; grid-template-columns: 1fr; gap: 8px; margin: clamp(2.5rem,5vw,4rem) 0; }
+    @media(min-width: 720px) { .philo-split { grid-template-columns: 1fr 1fr; } }
+    .philo-fig { margin: 0; border: 1px solid var(--line); background: var(--ink); overflow: hidden; }
+    .philo-fig img { width: 100%; aspect-ratio: 4/5; object-fit: cover; display: block; }
+    .philo-cap { padding: 1.1rem 1.3rem 1.2rem; }
+    .philo-cap b { font-family: var(--font-l); font-size: .6rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .45rem; }
+    .philo-cap span { font-family: var(--font-b); font-size: 1.02rem; color: rgba(250,247,240,.75); line-height: 1.55; }
+    .philo-body { max-width: 64ch; }
+    .philo-body p { font-size: 1.12rem; color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.2rem; }
+    .philo-body p:last-child { margin-bottom: 0; }
+    .philo-body strong { color: var(--ink); font-weight: 600; }
   </style>
 </head>
 <body>
@@ -420,6 +445,12 @@
   </div>
 </section>
 
+<!-- ══ HERO RENDER SHOWCASE ════════════════════ -->
+<div class="hero-show rev">
+  <img src="khanat-interior-01.webp" alt="A boz üy configured as a luxury hospitality suite, the open tündük overhead">
+</div>
+<p class="hero-show-cap rev">The boz üy, configured for hospitality · a suite we build</p>
+
 <!-- ══ PROOF BAR ══════════════════════════════ -->
 <div class="proof">
   <div class="proof-grid">
@@ -429,6 +460,32 @@
     <div class="proof-cell rev d3"><b>5&ndash;25 units</b><span>Built to order, to spec</span></div>
   </div>
 </div>
+
+<!-- ══ PHILOSOPHY: culture vs architecture ════ -->
+<section class="philo">
+  <div class="philo-inner">
+    <span class="klabel rev">The philosophy</span>
+    <h2 class="rev">We export the architecture, <em>not the culture.</em></h2>
+    <p class="philo-lead rev">A boz üy dressed in its tassels, its painted frame, its bright shyrdak is one of the most powerful ethnic expressions on earth. It belongs in Kyrgyzstan. We do not believe it belongs, whole, in a resort in Greece, or France, or Illinois.</p>
+
+    <div class="philo-split">
+      <figure class="philo-fig rev">
+        <img src="yossi-museum-bozuy.jpg" alt="Yossi beside a museum-grade traditional Kyrgyz boz üy, fully decorated">
+        <figcaption class="philo-cap"><b>Cultural expression</b><span>The authentic boz üy, museum-grade and fully dressed. It is home in Kyrgyzstan, and we keep it there.</span></figcaption>
+      </figure>
+      <figure class="philo-fig rev d1">
+        <img src="manas-interior-02.webp" alt="A boz üy configured as a clean modern hospitality suite, stripped of ethnic ornament">
+        <figcaption class="philo-cap"><b>Architectural expression</b><span>The same thousand-year form, stripped to the architecture. Clean, quiet, made to travel.</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="philo-body rev">
+      <p>Lift a fully decorated boz üy out of its country and set it on foreign ground, and something is lost in the carrying. A cultural expression that strong, lived in by people who are not of that culture, in a place it was never meant for, stops being homage. We do not do that, and we would not advise a resort to.</p>
+      <p>What we send into the world is the <strong>architecture</strong>: the timeless geometry of the boz üy, perfected over a thousand years, stripped of the ethnic ornament so the grandeur of the space speaks on its own. No symbols, no ribbons, no tassels. The dome does the work.</p>
+      <p>And the tradition is kept where it should be kept, in the village, by giving its makers the one thing they actually need, which is the work. <strong>The culture stays home. The architecture travels.</strong> As far as we can tell, no one else is drawing that line, and it is the whole of what we do.</p>
+    </div>
+  </div>
+</section>
 
 <!-- ══ MANIFESTO ══════════════════════════════ -->
 <section class="manifesto">

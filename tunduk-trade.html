@@ -595,27 +595,26 @@
   <div class="quote-inner">
     <div class="quote-grid">
       <div class="quote-aside">
-        <p class="sec-eyebrow klabel rev">Request a quote</p>
-        <h2 class="sec-h2 rev">Tell us what you are <em>building.</em></h2>
+        <p class="sec-eyebrow klabel rev">Start the conversation</p>
+        <h2 class="sec-h2 rev">We quote on a call, <em>not a web form.</em></h2>
         <ul class="rev d1">
-          <li>The number of units and the sizes you have in mind</li>
-          <li>Your site location and climate</li>
-          <li>Your target opening date</li>
-          <li>The kind of property, resort, glamping, wellness, private estate</li>
+          <li>Your website, so we know who we are talking to</li>
+          <li>Where the project is, the country and the site</li>
+          <li>The kind of property, and where you are in the plan</li>
         </ul>
-        <p class="sec-lead rev d2" style="margin-top:2rem">We answer with a real plan, not a brochure. A named contact, a brief call to settle the pricing against your spec, and the next step.</p>
+        <p class="sec-lead rev d2" style="margin-top:2rem">An order here starts at five units and runs into six figures, so it is settled in conversation, not at a checkout. Send the basics and a person replies within 24 hours to set up a call. The spec, the timeline, and the price are scoped there, against your actual project.</p>
       </div>
       <div class="rev d1">
         <!-- FORMSPREE: "Tündük · Trade Enquiries" form. Submissions land in the Formspree dashboard and the form's notification email. -->
         <form class="qf" action="https://formspree.io/f/xjgdvpkg" method="POST">
-          <input type="hidden" name="_subject" value="New Tündük trade enquiry">
+          <input type="hidden" name="_subject" value="New Tündük project enquiry (call request)">
           <div>
             <label for="name">Name</label>
             <input type="text" id="name" name="name" required>
           </div>
           <div>
-            <label for="company">Company</label>
-            <input type="text" id="company" name="company">
+            <label for="company">Company or brand</label>
+            <input type="text" id="company" name="company" required>
           </div>
           <div>
             <label for="email">Email</label>
@@ -625,21 +624,17 @@
             <label for="phone">Phone</label>
             <input type="tel" id="phone" name="phone">
           </div>
-          <div>
-            <label for="units">Number of units</label>
-            <input type="text" id="units" name="units" placeholder="e.g. 12">
+          <div class="full">
+            <label for="website">Your website</label>
+            <input type="url" id="website" name="website" placeholder="https://" required>
+          </div>
+          <div class="full">
+            <label for="location">Where is the project?</label>
+            <input type="text" id="location" name="location" placeholder="City and country, and the site if you have one" required>
           </div>
           <div>
-            <label for="location">Site location</label>
-            <input type="text" id="location" name="location" placeholder="Country / region">
-          </div>
-          <div>
-            <label for="opening">Target opening date</label>
-            <input type="text" id="opening" name="opening" placeholder="e.g. Spring 2027">
-          </div>
-          <div>
-            <label for="type">Project type</label>
-            <select id="type" name="project_type">
+            <label for="type">Type of property</label>
+            <select id="type" name="property_type">
               <option value="">Select one</option>
               <option>Resort / hotel</option>
               <option>Glamping site</option>
@@ -648,12 +643,20 @@
               <option>Other</option>
             </select>
           </div>
+          <div>
+            <label for="opening">Target opening</label>
+            <input type="text" id="opening" name="opening" placeholder="e.g. Spring 2027">
+          </div>
           <div class="full">
-            <label for="message">Tell us about the project</label>
-            <textarea id="message" name="message"></textarea>
+            <label for="units">Number of units, if you have a figure in mind (optional)</label>
+            <input type="text" id="units" name="units" placeholder="Five to twenty-five">
+          </div>
+          <div class="full">
+            <label for="message">Tell us about the project, and about you</label>
+            <textarea id="message" name="message" placeholder="The property, the vision, where you are in the plan, anything that helps us prepare for the call."></textarea>
           </div>
           <div class="qf-submit">
-            <button type="submit" class="qf-btn">Send enquiry</button>
+            <button type="submit" class="qf-btn">Request a call</button>
           </div>
         </form>
       </div>

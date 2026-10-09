@@ -345,9 +345,8 @@
 
     /* HERO RENDER SHOWCASE */
     .hero { min-height: 84vh; }
-    .hero-show { width: 100%; margin-top: clamp(1.5rem, 3.5vw, 3rem); }
-    .hero-show img { width: 100%; aspect-ratio: 16/8; object-fit: cover; display: block; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    @media(max-width: 600px) { .hero-show img { aspect-ratio: 4/3; } }
+    .hero-show { width: 100%; max-width: var(--max); margin: clamp(1.5rem, 3.5vw, 3rem) auto 0; padding: 0 var(--gutter); }
+    .hero-show img { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
     .hero-show-cap { max-width: var(--max); margin: 0 auto; padding: .9rem var(--gutter) 0; font-family: var(--font-l); font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
 
     /* PHILOSOPHY: culture vs architecture */

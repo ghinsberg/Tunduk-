@@ -455,7 +455,7 @@
 <div class="hero-show rev">
   <div class="hero-media">
     <img src="hero-uuk-sea.webp" alt="Adylet standing amid a vast field of willow uuk poles drying below the mountains">
-    <video class="hero-vid" muted loop playsinline preload="auto" poster="hero-uuk-sea.webp" aria-hidden="true">
+    <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero-uuk-sea.webp" aria-hidden="true">
       <source src="hero-uuk.mp4" type="video/mp4">
     </video>
   </div>
@@ -684,14 +684,20 @@
   }, { threshold: .12 });
   document.querySelectorAll('.rev').forEach(el => io.observe(el));
 
-  // Hero: slow dissolve from the still into the uuk video
+  // Hero: slow dissolve from the still into the uuk video, once it is actually playing
   (function(){
     var v = document.querySelector('.hero-vid');
     if (!v) return;
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    function reveal(){ setTimeout(function(){ v.classList.add('playing'); }, 900); }
-    if (v.readyState >= 3) reveal(); else v.addEventListener('canplay', reveal, { once: true });
-    var p = v.play(); if (p && p.catch) p.catch(function(){});
+    var revealed = false;
+    function reveal(){ if (revealed) return; revealed = true; v.classList.add('playing'); }
+    v.addEventListener('playing', function(){ setTimeout(reveal, 700); }, { once: true });
+    setTimeout(reveal, 4000); // fallback: reveal even if autoplay is blocked
+    function tryplay(){ var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+    tryplay();
+    ['pointerdown','scroll','touchstart','keydown'].forEach(function(ev){
+      window.addEventListener(ev, tryplay, { once: true, passive: true });
+    });
   })();
 </script>
 

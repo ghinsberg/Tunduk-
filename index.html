@@ -350,6 +350,8 @@
     .hero-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.6s ease-in-out; z-index: 1; pointer-events: none; }
     .hero-layer.active { opacity: 1; z-index: 2; }
     .hero-show-cap { max-width: var(--max); margin: 0 auto; padding: .9rem var(--gutter) 0; font-family: var(--font-l); font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+    .hero-seq-title { max-width: var(--max); margin: clamp(1.8rem,4.5vw,3.2rem) auto 0; padding: 0 var(--gutter); font-family: var(--font-h); font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.1; letter-spacing: -.015em; color: var(--ink); }
+    .hero-seq-title em { font-style: italic; color: var(--oxblood); }
 
     /* PHILOSOPHY: culture vs architecture */
     .philo { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -451,6 +453,7 @@
 </section>
 
 <!-- ══ HERO SHOWCASE ════════════════════ -->
+<p class="hero-seq-title rev">It Takes a Village to <em>Raise a Boz Üy</em></p>
 <div class="hero-show rev">
   <div class="hero-media" id="heroSeq">
     <img class="hero-layer active" src="hero-uuk-sea.webp" alt="Adylet standing amid a vast field of willow uuk poles drying below the mountains">

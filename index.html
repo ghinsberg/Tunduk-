@@ -469,9 +469,10 @@
     <video class="hero-layer" muted loop playsinline preload="auto" aria-hidden="true">
       <source src="rolling-chiy.mp4" type="video/mp4">
     </video>
+    <img class="hero-layer" src="becoming.webp" alt="A boz üy half-raised, lattice, roof poles, felt and the decorated cap coming together in Kyzyl-Tuu">
   </div>
 </div>
-<p class="hero-show-cap rev">A boz üy, made by hand in Kyzyl-Tuu · from willow to felt</p>
+<p class="hero-show-cap rev">A boz üy, made by hand in Kyzyl-Tuu · from willow to the raising</p>
 
 <!-- ══ PROOF BAR ══════════════════════════════ -->
 <div class="proof">
@@ -701,7 +702,7 @@
     var layers = Array.prototype.slice.call(box.querySelectorAll('.hero-layer'));
     if (layers.length < 2) return;
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; // leave first layer showing
-    var holds = [3800, 11000, 5000, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 7000]; // ms each layer holds before dissolving to the next (video gets its full play)
+    var holds = [3800, 11000, 5000, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 7000, 5500]; // ms each layer holds before dissolving to the next (video gets its full play)
     var i = 0;
     function activate(n){
       layers.forEach(function(l, idx){ l.classList.toggle('active', idx === n); });

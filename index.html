@@ -485,9 +485,10 @@
     <video class="hero-layer" muted loop playsinline preload="auto" aria-hidden="true">
       <source src="adylet-jumps.mp4" type="video/mp4">
     </video>
+    <img class="hero-layer" src="finished-bozuy.webp" alt="The finished boz üy, white felt dressed in black Kyrgyz ornament, standing in Kyzyl-Tuu">
   </div>
 </div>
-<p class="hero-show-cap rev">A boz üy, made by hand in Kyzyl-Tuu · from willow to the raising</p>
+<p class="hero-show-cap rev">A boz üy, made by hand in Kyzyl-Tuu · from willow to home</p>
 
 <!-- ══ PROOF BAR ══════════════════════════════ -->
 <div class="proof">
@@ -717,7 +718,7 @@
     var layers = Array.prototype.slice.call(box.querySelectorAll('.hero-layer'));
     if (layers.length < 2) return;
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; // leave first layer showing
-    var holds = [3800, 11000, 5000, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 3500, 5500, 8500, 10500, 10500, 15500, 10500]; // ms each layer holds before dissolving to the next (video gets its full play)
+    var holds = [3800, 11000, 5000, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 4500, 3500, 5500, 8500, 10500, 10500, 15500, 10500, 6000]; // ms each layer holds before dissolving to the next (video gets its full play)
     var i = 0;
     function activate(n){
       layers.forEach(function(l, idx){ l.classList.toggle('active', idx === n); });

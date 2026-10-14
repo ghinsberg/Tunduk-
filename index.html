@@ -346,7 +346,10 @@
     /* HERO RENDER SHOWCASE */
     .hero { min-height: 84vh; }
     .hero-show { width: 100%; max-width: var(--max); margin: clamp(1.5rem, 3.5vw, 3rem) auto 0; padding: 0 var(--gutter); }
-    .hero-show img { width: 100%; height: auto; display: block; border: 1px solid var(--line); }
+    .hero-show img { width: 100%; height: auto; display: block; }
+    .hero-media { position: relative; border: 1px solid var(--line); line-height: 0; overflow: hidden; }
+    .hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.8s ease-in-out; pointer-events: none; }
+    .hero-vid.playing { opacity: 1; }
     .hero-show-cap { max-width: var(--max); margin: 0 auto; padding: .9rem var(--gutter) 0; font-family: var(--font-l); font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
 
     /* PHILOSOPHY: culture vs architecture */
@@ -450,9 +453,14 @@
 
 <!-- ══ HERO SHOWCASE ════════════════════ -->
 <div class="hero-show rev">
-  <img src="hero-uuk-sea.webp" alt="Adylet standing amid a vast field of willow uuk poles drying below the mountains">
+  <div class="hero-media">
+    <img src="hero-uuk-sea.webp" alt="Adylet standing amid a vast field of willow uuk poles drying below the mountains">
+    <video class="hero-vid" muted loop playsinline preload="auto" poster="hero-uuk-sea.webp" aria-hidden="true">
+      <source src="hero-uuk.mp4" type="video/mp4">
+    </video>
+  </div>
 </div>
-<p class="hero-show-cap rev">Adylet in the sea of uuk · the willow that becomes the dome</p>
+<p class="hero-show-cap rev">The uuk, becoming · willow steam-bent into the dome's curved ribs</p>
 
 <!-- ══ PROOF BAR ══════════════════════════════ -->
 <div class="proof">
@@ -675,6 +683,16 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: .12 });
   document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+  // Hero: slow dissolve from the still into the uuk video
+  (function(){
+    var v = document.querySelector('.hero-vid');
+    if (!v) return;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    function reveal(){ setTimeout(function(){ v.classList.add('playing'); }, 900); }
+    if (v.readyState >= 3) reveal(); else v.addEventListener('canplay', reveal, { once: true });
+    var p = v.play(); if (p && p.catch) p.catch(function(){});
+  })();
 </script>
 
 </body>

@@ -346,10 +346,9 @@
     /* HERO RENDER SHOWCASE */
     .hero { min-height: 84vh; }
     .hero-show { width: 100%; max-width: var(--max); margin: clamp(1.5rem, 3.5vw, 3rem) auto 0; padding: 0 var(--gutter); }
-    .hero-show img { width: 100%; height: auto; display: block; }
-    .hero-media { position: relative; border: 1px solid var(--line); line-height: 0; overflow: hidden; }
-    .hero-vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.8s ease-in-out; pointer-events: none; }
-    .hero-vid.playing { opacity: 1; }
+    .hero-media { position: relative; aspect-ratio: 1.42 / 1; border: 1px solid var(--line); overflow: hidden; background: var(--ink); }
+    .hero-layer { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 2.6s ease-in-out; z-index: 1; pointer-events: none; }
+    .hero-layer.active { opacity: 1; z-index: 2; }
     .hero-show-cap { max-width: var(--max); margin: 0 auto; padding: .9rem var(--gutter) 0; font-family: var(--font-l); font-size: .6rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
 
     /* PHILOSOPHY: culture vs architecture */
@@ -453,14 +452,15 @@
 
 <!-- ══ HERO SHOWCASE ════════════════════ -->
 <div class="hero-show rev">
-  <div class="hero-media">
-    <img src="hero-uuk-sea.webp" alt="Adylet standing amid a vast field of willow uuk poles drying below the mountains">
-    <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="hero-uuk-sea.webp" aria-hidden="true">
+  <div class="hero-media" id="heroSeq">
+    <img class="hero-layer active" src="hero-uuk-sea.webp" alt="Adylet standing amid a vast field of willow uuk poles drying below the mountains">
+    <video class="hero-layer" muted loop playsinline preload="auto" aria-hidden="true">
       <source src="hero-uuk2.mp4" type="video/mp4">
     </video>
+    <img class="hero-layer" src="boz-uy-door.webp" alt="A freshly made wooden boz üy door standing in the Kyzyl-Tuu workshop">
   </div>
 </div>
-<p class="hero-show-cap rev">The uuk, becoming · the willow shaped by hand in Kyzyl-Tuu</p>
+<p class="hero-show-cap rev">A boz üy, made by hand · from willow to door, Kyzyl-Tuu</p>
 
 <!-- ══ PROOF BAR ══════════════════════════════ -->
 <div class="proof">
@@ -684,20 +684,25 @@
   }, { threshold: .12 });
   document.querySelectorAll('.rev').forEach(el => io.observe(el));
 
-  // Hero: slow dissolve from the still into the uuk video, once it is actually playing
+  // Hero build-sequence: slow cross-dissolve through the stages (still -> video -> still -> ...), looping
   (function(){
-    var v = document.querySelector('.hero-vid');
-    if (!v) return;
-    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var revealed = false;
-    function reveal(){ if (revealed) return; revealed = true; v.classList.add('playing'); }
-    v.addEventListener('playing', function(){ setTimeout(reveal, 700); }, { once: true });
-    setTimeout(reveal, 4000); // fallback: reveal even if autoplay is blocked
-    function tryplay(){ var p = v.play(); if (p && p.catch) p.catch(function(){}); }
-    tryplay();
-    ['pointerdown','scroll','touchstart','keydown'].forEach(function(ev){
-      window.addEventListener(ev, tryplay, { once: true, passive: true });
-    });
+    var box = document.getElementById('heroSeq'); if (!box) return;
+    var layers = Array.prototype.slice.call(box.querySelectorAll('.hero-layer'));
+    if (layers.length < 2) return;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; // leave first layer showing
+    var holds = [3800, 11000, 5000]; // ms each layer holds before dissolving to the next (video gets its full play)
+    var i = 0;
+    function activate(n){
+      layers.forEach(function(l, idx){ l.classList.toggle('active', idx === n); });
+      var el = layers[n];
+      if (el.tagName === 'VIDEO'){ try { el.currentTime = 0; } catch(e){} var p = el.play(); if (p && p.catch) p.catch(function(){}); }
+    }
+    function step(){ i = (i + 1) % layers.length; activate(i); setTimeout(step, holds[i] || 4500); }
+    layers.forEach(function(l){ if (l.tagName === 'VIDEO') l.load(); });
+    setTimeout(step, holds[0]);
+    // help strict autoplay: retry the active video on first user gesture
+    function kick(){ var el = layers[i]; if (el && el.tagName === 'VIDEO'){ var p = el.play(); if (p && p.catch) p.catch(function(){}); } }
+    ['pointerdown','scroll','touchstart','keydown'].forEach(function(ev){ window.addEventListener(ev, kick, { once: true, passive: true }); });
   })();
 </script>
 

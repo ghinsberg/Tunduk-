@@ -461,9 +461,11 @@
     <img class="hero-layer" src="enter-tunduk-1.webp" alt="The tündük crown ring, drilled for the uuk poles, in the Kyzyl-Tuu yard">
     <img class="hero-layer" src="enter-tunduk-2.webp" alt="A craftsman of Kyzyl-Tuu in the workshop yard">
     <img class="hero-layer" src="enter-tunduk-3.webp" alt="The tündük crown raised with its uuk ribs, the dome taking shape">
+    <img class="hero-layer" src="kerege.webp" alt="The kerege lattice wall of a boz üy, folded and ready, in Kyzyl-Tuu">
+    <img class="hero-layer" src="frame-parts.webp" alt="The uuk poles, tündük crown and kerege, the whole boz üy frame ready to raise">
   </div>
 </div>
-<p class="hero-show-cap rev">A boz üy, made by hand in Kyzyl-Tuu · from willow to crown</p>
+<p class="hero-show-cap rev">A boz üy, made by hand in Kyzyl-Tuu · from willow to frame</p>
 
 <!-- ══ PROOF BAR ══════════════════════════════ -->
 <div class="proof">
@@ -693,7 +695,7 @@
     var layers = Array.prototype.slice.call(box.querySelectorAll('.hero-layer'));
     if (layers.length < 2) return;
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; // leave first layer showing
-    var holds = [3800, 11000, 5000, 4500, 4500, 4500]; // ms each layer holds before dissolving to the next (video gets its full play)
+    var holds = [3800, 11000, 5000, 4500, 4500, 4500, 4500, 4500]; // ms each layer holds before dissolving to the next (video gets its full play)
     var i = 0;
     function activate(n){
       layers.forEach(function(l, idx){ l.classList.toggle('active', idx === n); });

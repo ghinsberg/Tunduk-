@@ -458,9 +458,12 @@
       <source src="hero-uuk2.mp4" type="video/mp4">
     </video>
     <img class="hero-layer" src="boz-uy-door.webp" alt="A freshly made wooden boz üy door standing in the Kyzyl-Tuu workshop">
+    <img class="hero-layer" src="enter-tunduk-1.webp" alt="The tündük crown ring, drilled for the uuk poles, in the Kyzyl-Tuu yard">
+    <img class="hero-layer" src="enter-tunduk-2.webp" alt="A craftsman of Kyzyl-Tuu in the workshop yard">
+    <img class="hero-layer" src="enter-tunduk-3.webp" alt="The tündük crown raised with its uuk ribs, the dome taking shape">
   </div>
 </div>
-<p class="hero-show-cap rev">A boz üy, made by hand · from willow to door, Kyzyl-Tuu</p>
+<p class="hero-show-cap rev">A boz üy, made by hand in Kyzyl-Tuu · from willow to crown</p>
 
 <!-- ══ PROOF BAR ══════════════════════════════ -->
 <div class="proof">
@@ -690,7 +693,7 @@
     var layers = Array.prototype.slice.call(box.querySelectorAll('.hero-layer'));
     if (layers.length < 2) return;
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return; // leave first layer showing
-    var holds = [3800, 11000, 5000]; // ms each layer holds before dissolving to the next (video gets its full play)
+    var holds = [3800, 11000, 5000, 4500, 4500, 4500]; // ms each layer holds before dissolving to the next (video gets its full play)
     var i = 0;
     function activate(n){
       layers.forEach(function(l, idx){ l.classList.toggle('active', idx === n); });

@@ -228,10 +228,29 @@
   </div>
 </section>
 
-<!-- PHOTO: the Kyrgyz land -->
-<div class="rev" style="max-width:var(--max); margin:0 auto; padding:clamp(1rem,3vw,2.5rem) var(--gutter) 0;">
-  <img src="kyrgyz-herd.webp" alt="A village horse herd driven down a golden autumn lane in Kyrgyzstan" style="display:block; width:100%; max-width:720px; height:auto; border:1px solid var(--line); margin:0 auto;">
-  <p style="font-family:var(--font-l); font-size:.6rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin-top:.9rem; text-align:center;">The Kyrgyz countryside, where the craft is kept</p>
+<!-- COLLAGE: Kyrgyzstan, the land, the people, the craft -->
+<style>
+  .ky-collage-wrap { max-width:var(--max); margin:0 auto; padding:clamp(1.4rem,3vw,2.8rem) var(--gutter) 0; }
+  .ky-cap { font-family:var(--font-l); font-size:.6rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 1rem; }
+  .ky-collage { column-count:3; column-gap:.6rem; }
+  .ky-collage figure { break-inside:avoid; margin:0 0 .6rem; position:relative; overflow:hidden; border:1px solid var(--line); background:var(--line); }
+  .ky-collage img, .ky-collage video { width:100%; height:auto; display:block; }
+  @media(max-width:860px){ .ky-collage { column-count:2; } }
+  @media(max-width:460px){ .ky-collage { column-count:2; column-gap:.4rem; } .ky-collage figure { margin-bottom:.4rem; } }
+</style>
+<div class="ky-collage-wrap rev">
+  <p class="ky-cap">Kyrgyzstan · the land and its horsemen</p>
+  <div class="ky-collage">
+    <figure><video src="horses.mp4" poster="horses.webp" muted loop autoplay playsinline preload="metadata"></video></figure>
+    <figure><img src="kyrgyz-land.webp" alt="The Kyrgyz high country under snow-capped mountains" loading="lazy"></figure>
+    <figure><img src="kokoru_01.jpg" alt="Kok-boru, the horseback game at the heart of Kyrgyz life" loading="lazy"></figure>
+    <figure><img src="lake-issykkul.webp" alt="Lake Issyk-Kul, high in the Tian Shan mountains" loading="lazy"></figure>
+    <figure><img src="kokoru_05.jpg" alt="Riders contest the kok-boru on a dust field" loading="lazy"></figure>
+    <figure><img src="kyrgyz-herd.webp" alt="A village horse herd on a golden autumn lane" loading="lazy"></figure>
+    <figure><img src="kokoru_08.jpg" alt="Kok-boru horsemen against the mountains" loading="lazy"></figure>
+    <figure><img src="kokoru_09.jpg" alt="The charge of the kok-boru, Kyrgyzstan" loading="lazy"></figure>
+  </div>
+  <p class="ky-cap" style="margin:1rem 0 0;">The country Yossi came to see, and never left</p>
 </div>
 
 <!-- PULL QUOTE -->

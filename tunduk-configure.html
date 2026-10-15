@@ -439,13 +439,14 @@
           <div class="field">
             <label>Primary intended use</label>
             <div class="radio-group" id="use-group">
-              <label class="radio-item"><input type="radio" name="use" value="backyard"> <span>Backyard / garden room / home office</span></label>
-              <label class="radio-item"><input type="radio" name="use" value="holiday-let"> <span>Holiday let</span></label>
-              <label class="radio-item"><input type="radio" name="use" value="retreat"> <span>Yoga / meditation / wellness retreat</span></label>
-              <label class="radio-item"><input type="radio" name="use" value="resort"> <span>Resort / eco-lodge (multiple units)</span></label>
-              <label class="radio-item"><input type="radio" name="use" value="event"> <span>Events / festivals</span></label>
-              <label class="radio-item"><input type="radio" name="use" value="other"> <span>Other</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="backyard" onchange="toggleUseOther()"> <span>Backyard / garden room / home office</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="holiday-let" onchange="toggleUseOther()"> <span>Holiday let</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="retreat" onchange="toggleUseOther()"> <span>Yoga / meditation / wellness retreat</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="resort" onchange="toggleUseOther()"> <span>Resort / eco-lodge (multiple units)</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="event" onchange="toggleUseOther()"> <span>Events / festivals</span></label>
+              <label class="radio-item"><input type="radio" name="use" value="other" onchange="toggleUseOther()"> <span>Other</span></label>
             </div>
+            <input type="text" id="use-other" placeholder="Tell us what you have in mind" style="display:none;margin-top:.6rem">
           </div>
           <div class="field">
             <label>Destination country</label>
@@ -706,6 +707,13 @@
     const ok = document.getElementById('fn').value.trim() && document.getElementById('ln').value.trim() && document.getElementById('em').value.includes('@');
     document.getElementById('submit-btn').disabled = !ok;
   }
+  function toggleUseOther() {
+    const other = document.querySelector('input[name="use"][value="other"]');
+    const box = document.getElementById('use-other');
+    if (other && other.checked) { box.style.display = 'block'; box.focus(); }
+    else { box.style.display = 'none'; box.value = ''; }
+  }
+
   function submitForm() {
     const ref = 'TDK-' + Date.now().toString(36).toUpperCase();
     document.getElementById('success-ref').textContent = 'Reference: ' + ref;

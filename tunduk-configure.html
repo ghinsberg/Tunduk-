@@ -6,7 +6,7 @@
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <title>Configure Your Yurt — Tündük</title>
+  <title>Configure Your Boz Üy — Tündük</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -137,6 +137,7 @@
     .opt-feat { font-size: .77rem; color: var(--text-mid); line-height: 1.65; }
     .opt-price{ font-family: var(--font-d); font-size: 1.5rem; font-weight: 300; color: var(--terracotta); margin-top: .9rem; }
     .opt-price span { font-size: .75rem; color: var(--stone); font-family: var(--font-b); }
+    #step-2 .opt-price, .addon-p, .sum-total-row { display: none !important; }
 
     /* CHECK ADD-ONS */
     .addon-grid { display: flex; flex-direction: column; gap: .9rem; margin-top: .5rem; }
@@ -233,7 +234,7 @@
   </a>
   <div class="nav-right">
     <a href="tunduk-gallery.html" class="nav-link">Gallery</a>
-    <a href="tunduk-configure.html" class="nav-quote">Configure a Yurt</a>
+    <a href="tunduk-configure.html" class="nav-quote">Configure a Boz Üy</a>
   </div>
 
   <div class="nav-hamburger" id="hamburger" onclick="document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobile-menu').classList.toggle('open');">
@@ -246,7 +247,7 @@
   <a href="tunduk-story.html">Our Story</a>
   <a href="tunduk-heritage.html">Heritage</a>
   <a href="tunduk-gallery.html">Gallery</a>
-  <a href="tunduk-configure.html" class="mm-cta">Configure a Yurt</a>
+  <a href="tunduk-configure.html" class="mm-cta">Configure a Boz Üy</a>
 </div>
 
 <!-- PAGE HERO -->
@@ -255,7 +256,7 @@
   <div class="wrap">
     <div class="ph-content">
       <p class="ph-breadcrumb"><a href="tunduk-homepage-v2.html">Tündük</a><span>/</span> Configure</p>
-      <h1 class="ph-h1">Configure<br>Your Yurt</h1>
+      <h1 class="ph-h1">Configure<br>Your Boz Üy</h1>
       <p class="ph-sub">Select your tier, size, and add-ons. We'll build your personalised quote and respond within 48 hours.</p>
     </div>
   </div>
@@ -298,15 +299,15 @@
             <p class="opt-name">Boz Üy</p>
             <p class="opt-dim">Full traditional yurt</p>
             <p class="opt-feat">Turpan Tal willow frame · handmade wool felt (kiyiz) · chiy reed mats · rawhide joinery. Zero nails, zero metal fasteners. The original Boz Üy.</p>
-            <p class="opt-price">from $6,000 <span>delivered</span></p>
+            <p class="opt-price">Priced on a call</p>
           </div>
 
           <div class="opt-card" id="tier-export" onclick="selectTier('export','Export Suite','Heritage + Climate Ready',8000)">
             <p class="opt-tag" style="color:var(--terracotta)">★ Most Popular</p>
             <p class="opt-name">Export Suite</p>
             <p class="opt-dim">Traditional + weather-ready</p>
-            <p class="opt-feat">Everything in Traditional, plus breathable rain cover, enhanced insulation layer, stove chimney aperture, and full pre-shipment QC. Built for European and North American climates.</p>
-            <p class="opt-price">from $8,000 <span>delivered</span></p>
+            <p class="opt-feat">Everything in Traditional, plus breathable rain cover, enhanced insulation layer, and full pre-shipment QC. Built for European and North American climates.</p>
+            <p class="opt-price">Priced on a call</p>
           </div>
 
           <div class="opt-card" id="tier-bespoke" onclick="selectTier('bespoke','Bespoke','Made to Order',12000)">
@@ -314,7 +315,7 @@
             <p class="opt-name">Bespoke</p>
             <p class="opt-dim">Fully customised</p>
             <p class="opt-feat">Custom diameter, carved & painted bosogo door frame, bespoke shyrdak & ala kiyiz patterns, zabık bash decorative bands, oimo chiy reed mats. Every detail to your brief.</p>
-            <p class="opt-price">from $12,000 <span>+ consultation</span></p>
+            <p class="opt-price">Priced on a call</p>
           </div>
 
         </div>
@@ -382,7 +383,7 @@
           <p>Step 3 of 5</p>
           <h2>Enhance your <em>yurt.</em></h2>
         </div>
-        <p style="font-size:.84rem;color:var(--stone);margin-bottom:1.5rem;line-height:1.7">Select any add-ons for your configuration. All are optional — we'll confirm availability and exact pricing in your quote.</p>
+        <p style="font-size:.84rem;color:var(--stone);margin-bottom:1.5rem;line-height:1.7">Climate options for your site. Both are optional, and we'll confirm the right specification with you.</p>
         <div class="addon-grid">
           <div class="addon-item" id="ao-rain" onclick="toggleAddon('rain','Breathable Rain Cover',650)">
             <div class="addon-cb"></div>
@@ -393,41 +394,6 @@
             <div class="addon-cb"></div>
             <div class="addon-body"><p class="addon-name">Enhanced Insulation Layer</p><p class="addon-desc">Additional wool felt layer between the chiy reed mats and outer felt. Recommended for cold climates (below 5°C winters).</p></div>
             <p class="addon-p">+$480</p>
-          </div>
-          <div class="addon-item" id="ao-stove" onclick="toggleAddon('stove','Stove-Ready Chimney Kit',380)">
-            <div class="addon-cb"></div>
-            <div class="addon-body"><p class="addon-name">Stove-Ready Chimney Kit</p><p class="addon-desc">Reinforced chimney aperture through the felt roof with heat-resistant lining and sealing ring. Compatible with most standard wood-burning stoves.</p></div>
-            <p class="addon-p">+$380</p>
-          </div>
-          <div class="addon-item" id="ao-door" onclick="toggleAddon('door','Carved & Painted Bosogo',740)">
-            <div class="addon-cb"></div>
-            <div class="addon-body"><p class="addon-name">Carved &amp; Painted Bosogo (Door Frame)</p><p class="addon-desc">Upgrade the bosogo with traditional Kyrgyz hand-carved and painted decoration. Each frame is unique — ancestral motifs chosen by Adylet. Includes ichki and syrtky zabık bash decorative felt bands.</p></div>
-            <p class="addon-p">+$740</p>
-          </div>
-          <div class="addon-item" id="ao-shyrdak" onclick="toggleAddon('shyrdak','Shyrdak & Ala Kiyiz Floor Set',920)">
-            <div class="addon-cb"></div>
-            <div class="addon-body"><p class="addon-name">Shyrdak &amp; Ala Kiyiz Floor Set</p><p class="addon-desc">Full floor coverage combining shyrdak (mosaic felt appliqué carpets) and ala kiyiz (rolled felt rugs) in complementary traditional motifs. Colour palette customisable. Made by the women of the Kyzyl-Tuu artisan family.</p></div>
-            <p class="addon-p">+$920</p>
-          </div>
-          <div class="addon-item" id="ao-chiy" onclick="toggleAddon('chiy','Oimo Chiy — Patterned Reed Mats',320)">
-            <div class="addon-cb"></div>
-            <div class="addon-body"><p class="addon-name">Oimo Chiy — Patterned Reed Mats</p><p class="addon-desc">Upgrade the standard chiy reed insulation mats to oimo chiy — hand-decorated with coloured wool woven into geometric patterns. Lines the interior kerege walls with an additional layer of beauty.</p></div>
-            <p class="addon-p">+$320</p>
-          </div>
-          <div class="addon-item" id="ao-zabik" onclick="toggleAddon('zabik','Zabık Bash — Decorative Felt Bands',280)">
-            <div class="addon-cb"></div>
-            <div class="addon-body"><p class="addon-name">Zabık Bash — Decorative Felt Bands</p><p class="addon-desc">Traditional ornamental felt strips that ring the interior wall-to-roof junction (ichki zabık bash) and exterior lower edge (syrtky zabık bash). Hand-embroidered with ancestral motifs in red, green, and gold.</p></div>
-            <p class="addon-p">+$280</p>
-          </div>
-          <div class="addon-item" id="ao-toshok" onclick="toggleAddon('toshok','Toshok — Floor Cushion Set',480)">
-            <div class="addon-cb"></div>
-            <div class="addon-body"><p class="addon-name">Toshok — Traditional Floor Cushions</p><p class="addon-desc">Set of traditional Kyrgyz floor cushions/mattresses in national fabric with ornamental covers. The authentic alternative to chairs — how nomadic families have sat in the yurt for centuries.</p></div>
-            <p class="addon-p">+$480</p>
-          </div>
-          <div class="addon-item" id="ao-install" onclick="toggleAddon('install','Assembly &amp; Installation Guide',0)">
-            <div class="addon-cb"></div>
-            <div class="addon-body"><p class="addon-name">Detailed Assembly Guide + Video</p><p class="addon-desc">Full illustrated step-by-step assembly guide plus a recorded video walkthrough by our master builder. Included with all Export Suite and Bespoke orders at no charge.</p></div>
-            <p class="addon-p" style="color:var(--sage)">Free</p>
           </div>
         </div>
         <div class="step-nav">
@@ -545,7 +511,7 @@
     <div class="summary-panel">
       <div class="sum-box">
         <p class="sum-title">Your Configuration</p>
-        <p class="sum-yurt-name" id="sum-name">Your Yurt</p>
+        <p class="sum-yurt-name" id="sum-name">Your Boz Üy</p>
         <p class="sum-kyrgyz" id="sum-kyrgyz">Select a tier to begin</p>
 
         <div class="sum-divider"></div>
@@ -562,7 +528,7 @@
           <span class="sum-total-lbl">Estimated from</span>
           <span class="sum-total-val" id="sum-total">—</span>
         </div>
-        <p class="sum-note">This is an indicative estimate. Your personalised quote will include exact pricing, lead time, and shipping to your destination.</p>
+        <p class="sum-note">We price every order on a call, not a cart. Send your configuration and a person comes back with a quote: the spec, the lead time, and delivery to your destination.</p>
 
         <!-- Tiny yurt diagram -->
         <div class="sum-diagram">
@@ -694,7 +660,7 @@
   // ── Qty / Dest ──
   function updateQty(v) {
     S.qty = parseInt(v) || 1;
-    document.getElementById('sd-qty').textContent = v + ' yurt' + (v!='1'?'s':'');
+    document.getElementById('sd-qty').textContent = v + ' Boz Üy' + (v!='1'?'s':'');
     updateTotal();
   }
   function updateDest(v) {

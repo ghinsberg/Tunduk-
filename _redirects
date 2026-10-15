@@ -7,5 +7,8 @@
 /faq         /tunduk-faq.html        200
 /contact     /tunduk-contact.html    200
 /story       /tunduk-story.html      200
-/homeware    /tunduk-homeware.html   200
 /craft       /tunduk-craft.html      200
+
+# Homeware shop retired, send old links home
+/homeware             /    301
+/tunduk-homeware.html /    301

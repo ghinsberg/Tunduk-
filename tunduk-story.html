@@ -256,7 +256,7 @@
     <!-- TOP: serene pasture video, assaulted by kok-boru action -->
     <figure class="ky-top">
       <video class="ky-layer ky-calm" src="horses-kyrgyz.mp4" poster="horses-kyrgyz.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Horses and a cow grazing on a Kyrgyz hillside"></video>
-      <img class="ky-layer ky-wild" id="kyWild" src="kokoru_09.jpg" alt="Kok-boru, the horseback game, in full action">
+      <video class="ky-layer ky-wild" id="kyWild" src="kokboru.mp4" poster="kokboru.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Kok-boru, the horseback game, in full action"></video>
     </figure>
     <!-- BOTTOM: kok-boru stills at rest, pasture stills in action -->
     <div class="ky-bottom">
@@ -279,15 +279,10 @@
 <script>
 (function(){
   var stage=document.getElementById('kyHorses'); if(!stage) return;
-  var wildImg=document.getElementById('kyWild');
-  var frames=['kokoru_09.jpg','kokoru_05.jpg','kokoru_08.jpg','kokoru_01.jpg']; var i=0;
-  // preload the kok-boru frames so the placeholder swaps instantly (until the real video lands)
-  frames.forEach(function(f){ var im=new Image(); im.src=f; });
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var on=false;
   setInterval(function(){
     on=!on;
-    if(on){ i=(i+1)%frames.length; wildImg.src=frames[i]; }
     stage.classList.toggle('wild', on);
   }, 5000);
 })();

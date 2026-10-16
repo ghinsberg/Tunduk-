@@ -228,49 +228,43 @@
   </div>
 </section>
 
-<!-- KYRGYZSTAN: serene pasture <-> kok-boru assault (horses) -->
+<!-- KYRGYZSTAN: four-state showcase — horses (calm/wild) then market (idle/action), dissolving -->
 <style>
   .ky-wrap { max-width:var(--max); margin:0 auto; padding:clamp(1.4rem,3vw,2.8rem) var(--gutter) 0; }
-  .ky-cap { font-family:var(--font-l); font-size:.6rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 1rem; }
-  /* TOP: the big window */
+  .ky-cap { font-family:var(--font-l); font-size:.6rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 1rem; transition:opacity .6s ease; }
   .ky-top { position:relative; overflow:hidden; border:1px solid var(--line); background:var(--line); aspect-ratio:16/9; margin:0; }
-  .ky-top .ky-layer { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-  .ky-top .ky-calm { opacity:1; transition:opacity 1.5s ease; }
-  .ky-top .ky-wild { opacity:0; transform:scale(1.06); transition:opacity 1.5s ease, transform 2s ease; }
-  .ky-swap.wild .ky-top .ky-calm { opacity:0; transition:opacity 1.5s ease; }
-  .ky-swap.wild .ky-top .ky-wild { opacity:1; transform:none; }
-  /* BOTTOM: a row of three stills that flip from kok-boru to pasture */
+  .ky-top .ky-layer { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transform:scale(1.06); transition:opacity 1.5s ease, transform 2s ease; }
+  .ky-top .ky-layer.show { opacity:1; transform:none; }
   .ky-bottom { display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; margin-top:.6rem; }
   .ky-cell { position:relative; overflow:hidden; border:1px solid var(--line); background:var(--line); aspect-ratio:16/10; }
-  .ky-cell .ky-layer { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
-  .ky-cell .ky-rest { opacity:1; transition:opacity 1.3s ease; }
-  .ky-cell .ky-active { opacity:0; transition:opacity 1.3s ease; }
-  .ky-swap.wild .ky-cell .ky-rest { opacity:0; }
-  .ky-swap.wild .ky-cell .ky-active { opacity:1; }
+  .ky-cell .ky-layer { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; opacity:0; transition:opacity 1.3s ease; }
+  .ky-cell .ky-layer.show { opacity:1; }
   @media(max-width:560px){ .ky-bottom { gap:.4rem; } }
-  @media(prefers-reduced-motion: reduce){ .ky-top .ky-wild { transition:none; } }
 </style>
 <div class="ky-wrap rev">
-  <p class="ky-cap">Kyrgyzstan · the land and its horsemen</p>
-  <div class="ky-swap" id="kyHorses">
-    <!-- TOP: serene pasture video, assaulted by kok-boru action -->
+  <p class="ky-cap" id="kyCap">Kyrgyzstan · the land and its horsemen</p>
+  <div class="ky-swap" id="kyStage">
     <figure class="ky-top">
-      <video class="ky-layer ky-calm" src="horses-kyrgyz.mp4" poster="horses-kyrgyz.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Horses and a cow grazing on a Kyrgyz hillside"></video>
-      <video class="ky-layer ky-wild" id="kyWild" src="kokboru.mp4" poster="kokboru.jpg" muted loop autoplay playsinline preload="metadata" aria-label="Kok-boru, the horseback game, in full action"></video>
+      <video class="ky-layer vid show" data-k="hCalm" src="horses-kyrgyz.mp4" poster="horses-kyrgyz.jpg" muted loop playsinline preload="metadata" aria-label="Horses and a cow grazing on a Kyrgyz hillside"></video>
+      <video class="ky-layer vid" data-k="hWild" src="kokboru.mp4" poster="kokboru.jpg" muted loop playsinline preload="none" aria-label="Kok-boru, the horseback game, in full action"></video>
+      <video class="ky-layer vid" data-k="mCalm" src="market-bishkek.mp4" poster="market-bishkek.jpg" muted loop playsinline preload="none" aria-label="A Bishkek market, the dried fruit and nut stalls"></video>
+      <video class="ky-layer vid" data-k="mWild" src="market-bishkek-3.mp4" poster="market-bishkek-3.jpg" muted loop playsinline preload="none" aria-label="A Bishkek market in full swing"></video>
     </figure>
-    <!-- BOTTOM: kok-boru stills at rest, pasture stills in action -->
     <div class="ky-bottom">
       <figure class="ky-cell">
-        <img class="ky-layer ky-rest" src="kokoru_01.jpg" alt="Kok-boru riders" loading="lazy">
-        <img class="ky-layer ky-active" src="horses-kyrgyz.jpg" alt="Horses and a cow in the pasture" loading="lazy">
+        <img class="ky-layer show" data-s="kokoru" src="kokoru_01.jpg" alt="Kok-boru riders" loading="lazy">
+        <img class="ky-layer" data-s="pasture" src="horses-kyrgyz.jpg" alt="Horses and a cow in the pasture" loading="lazy">
+        <img class="ky-layer" data-s="market" src="market-bishkek.jpg" alt="Dried fruit and nuts at a Bishkek market" loading="lazy">
       </figure>
       <figure class="ky-cell">
-        <img class="ky-layer ky-rest" src="kokoru_08.jpg" alt="Kok-boru against the mountains" loading="lazy">
-        <img class="ky-layer ky-active" src="kyrgyz-herd.webp" alt="A village horse herd on a golden lane" loading="lazy">
+        <img class="ky-layer show" data-s="kokoru" src="kokoru_08.jpg" alt="Kok-boru against the mountains" loading="lazy">
+        <img class="ky-layer" data-s="pasture" src="kyrgyz-herd.webp" alt="A village horse herd on a golden lane" loading="lazy">
+        <img class="ky-layer" data-s="market" src="market-bishkek-2.jpg" alt="The produce hall at a Bishkek market" loading="lazy">
       </figure>
       <figure class="ky-cell">
-        <img class="ky-layer ky-rest" src="kokoru_05.jpg" alt="The charge of the kok-boru" loading="lazy">
-        <img class="ky-layer ky-active" src="kyrgyz-land.webp" alt="The Kyrgyz high country" loading="lazy">
+        <img class="ky-layer show" data-s="kokoru" src="kokoru_05.jpg" alt="The charge of the kok-boru" loading="lazy">
+        <img class="ky-layer" data-s="pasture" src="kyrgyz-land.webp" alt="The Kyrgyz high country" loading="lazy">
+        <img class="ky-layer" data-s="market" src="market-bishkek-3.jpg" alt="Fresh bread at a Bishkek market" loading="lazy">
       </figure>
     </div>
   </div>
@@ -278,13 +272,34 @@
 </div>
 <script>
 (function(){
-  var stage=document.getElementById('kyHorses'); if(!stage) return;
+  var stage=document.getElementById('kyStage'); if(!stage) return;
+  var cap=document.getElementById('kyCap');
+  var tops={}; stage.querySelectorAll('.ky-top .vid').forEach(function(v){ tops[v.dataset.k]=v; });
+  var cells=stage.querySelectorAll('.ky-cell');
+  var states=[
+    { top:'hCalm', set:'kokoru',  cap:'Kyrgyzstan · the land and its horsemen' },
+    { top:'hWild', set:'pasture', cap:'Kyrgyzstan · the land and its horsemen' },
+    { top:'mCalm', set:'market',  cap:'Kyrgyzstan · its markets' },
+    { top:'mWild', set:'market',  cap:'Kyrgyzstan · its markets' }
+  ];
+  function apply(i){
+    var st=states[i];
+    Object.keys(tops).forEach(function(k){
+      var v=tops[k];
+      if(k===st.top){ v.classList.add('show'); if(v.play){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } }
+      else { v.classList.remove('show'); try{ v.pause(); }catch(e){} }
+    });
+    cells.forEach(function(cell){
+      cell.querySelectorAll('.ky-layer').forEach(function(l){ l.classList.toggle('show', l.dataset.s===st.set); });
+    });
+    if(cap && st.cap){
+      if(cap.textContent!==st.cap){ cap.style.opacity='0'; setTimeout(function(){ cap.textContent=st.cap; cap.style.opacity='1'; }, 500); }
+    }
+  }
+  apply(0);
   if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var on=false;
-  setInterval(function(){
-    on=!on;
-    stage.classList.toggle('wild', on);
-  }, 13000);
+  var i=0;
+  setInterval(function(){ i=(i+1)%states.length; apply(i); }, 13000);
 })();
 </script>
 

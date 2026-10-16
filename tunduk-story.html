@@ -228,25 +228,50 @@
   </div>
 </section>
 
-<!-- ATMOSPHERIC REEL + kok-boru: Kyrgyzstan homage -->
+<!-- KYRGYZSTAN: calm/wild swap collage (horses) -->
 <style>
   .ky-wrap { max-width:var(--max); margin:0 auto; padding:clamp(1.4rem,3vw,2.8rem) var(--gutter) 0; }
   .ky-cap { font-family:var(--font-l); font-size:.6rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 1rem; }
-  .ky-reel { width:100%; display:block; border:1px solid var(--line); background:var(--line); }
-  .ky-kokoru { display:grid; grid-template-columns:repeat(3,1fr); gap:.6rem; margin-top:.6rem; }
-  .ky-kokoru img { width:100%; aspect-ratio:16/10; object-fit:cover; display:block; border:1px solid var(--line); }
-  @media(max-width:560px){ .ky-kokoru { gap:.4rem; } }
+  .ky-hero { position:relative; overflow:hidden; border:1px solid var(--line); background:var(--line); aspect-ratio:16/9; margin:0; }
+  .ky-hero .ky-layer { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .ky-hero .ky-calm { opacity:1; transition:opacity 1s ease; }
+  .ky-hero .ky-wild { opacity:0; transform:translateY(55%) scale(1.12); transition:opacity .9s ease, transform 1.2s cubic-bezier(.2,.8,.2,1); }
+  .ky-swap.wild .ky-hero .ky-calm { opacity:0; }
+  .ky-swap.wild .ky-hero .ky-wild { opacity:1; transform:none; }
+  .ky-strip { margin-top:.6rem; position:relative; overflow:hidden; border:1px solid var(--line); background:var(--line); aspect-ratio:48/10; }
+  .ky-strip .ky-layer { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 44%; display:block; }
+  .ky-strip .ky-pasture { opacity:1; transition:opacity 1s ease; }
+  .ky-strip .ky-rest { opacity:0; transition:opacity 1s ease; }
+  .ky-swap.wild .ky-strip .ky-pasture { opacity:1; }
+  @media(prefers-reduced-motion: reduce){ .ky-hero .ky-wild, .ky-swap.wild .ky-hero .ky-calm { transition:none; } }
 </style>
 <div class="ky-wrap rev">
-  <p class="ky-cap">Kyrgyzstan · the land, the markets, the horsemen</p>
-  <video class="ky-reel" src="montage-kyrgyz.mp4" poster="montage-kyrgyz.jpg" muted loop autoplay playsinline preload="metadata"></video>
-  <div class="ky-kokoru">
-    <img src="kokoru_01.jpg" alt="Kok-boru, the horseback game at the heart of Kyrgyz life" loading="lazy">
-    <img src="kokoru_08.jpg" alt="Kok-boru horsemen against the mountains" loading="lazy">
-    <img src="kokoru_09.jpg" alt="The charge of the kok-boru, Kyrgyzstan" loading="lazy">
+  <p class="ky-cap">Kyrgyzstan · the land and its horsemen</p>
+  <div class="ky-swap" id="kyHorses">
+    <figure class="ky-hero">
+      <video class="ky-layer ky-calm" src="horses.mp4" poster="horses.webp" muted loop autoplay playsinline preload="metadata" aria-label="A village horse herd moving down an autumn lane"></video>
+      <img class="ky-layer ky-wild" id="kyWild" src="kokoru_09.jpg" alt="Kok-boru, the horseback game at the heart of Kyrgyz life">
+    </figure>
+    <div class="ky-strip">
+      <img class="ky-layer ky-pasture" src="horses-kyrgyz.jpg" alt="Horses grazing below the snow-capped mountains">
+    </div>
   </div>
   <p class="ky-cap" style="margin:1rem 0 0;">The country Yossi came to see, and never left</p>
 </div>
+<script>
+(function(){
+  var stage=document.getElementById('kyHorses'); if(!stage) return;
+  var wildImg=document.getElementById('kyWild');
+  var frames=['kokoru_09.jpg','kokoru_01.jpg','kokoru_08.jpg','kokoru_05.jpg']; var i=0;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var on=false;
+  setInterval(function(){
+    on=!on;
+    if(on){ i=(i+1)%frames.length; wildImg.src=frames[i]; }
+    stage.classList.toggle('wild', on);
+  }, 5000);
+})();
+</script>
 
 <!-- PULL QUOTE -->
 <section class="story-q">

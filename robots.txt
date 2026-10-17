@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# AI / GEO crawlers welcome — this site documents an authentic craft we want cited correctly.
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://tunduk.trade/sitemap.xml

@@ -486,7 +486,7 @@
           </div>
           <div class="field">
             <label>Approximate timeline</label>
-            <select>
+            <select id="timeline-sel">
               <option>As soon as possible</option>
               <option>Within 3 months</option>
               <option>3–6 months</option>
@@ -523,23 +523,23 @@
             </div>
             <div class="field">
               <label>Phone (optional)</label>
-              <input type="tel" placeholder="+1 234 567 8900">
+              <input type="tel" id="phone" placeholder="+1 234 567 8900">
             </div>
             <div class="field">
               <label>Company / Business (optional)</label>
-              <input type="text" placeholder="Your organisation">
+              <input type="text" id="company" placeholder="Your organisation">
             </div>
             <div class="field">
               <label>Website (optional)</label>
-              <input type="text" inputmode="url" placeholder="www.yourwebsite.com">
+              <input type="text" id="website" inputmode="url" placeholder="www.yourwebsite.com">
             </div>
             <div class="field full">
               <label>When's the best time for a video call?</label>
-              <input type="text" placeholder="A few times that suit you, and your time zone, so we can find a slot">
+              <input type="text" id="besttime" placeholder="A few times that suit you, and your time zone, so we can find a slot">
             </div>
             <div class="field full">
               <label>Tell us about you and your project</label>
-              <textarea placeholder="A little about you and your venture, and how you plan to use the Boz Üy. Anything that helps us prepare for our call."></textarea>
+              <textarea id="message" placeholder="A little about you and your venture, and how you plan to use the Boz Üy. Anything that helps us prepare for our call."></textarea>
             </div>
           </div>
           <p style="font-size:.75rem;color:var(--stone);margin-top:1.2rem;line-height:1.7">By submitting this form you agree to our Privacy Policy. We'll use your details only to arrange your video call and prepare for it. We respond within 48 hours.</p>
@@ -547,6 +547,7 @@
             <button class="btn-prev" onclick="goStep(4)">← Back</button>
             <button class="btn-next" id="submit-btn" onclick="submitForm()" disabled>Request a Video Call →</button>
           </div>
+          <p id="submit-err" role="alert" style="display:none;color:#9b2226;font-size:.82rem;margin-top:1rem;line-height:1.65"></p>
         </div>
       </div>
 
@@ -734,14 +735,63 @@
     else { box.style.display = 'none'; box.value = ''; }
   }
 
-  function submitForm() {
+  async function submitForm() {
+    const btn = document.getElementById('submit-btn');
+    const errEl = document.getElementById('submit-err');
     const ref = 'TDK-' + Date.now().toString(36).toUpperCase();
-    document.getElementById('success-ref').textContent = 'Reference: ' + ref;
-    document.querySelector('.config-main').style.display='none';
-    document.querySelector('.stepper').style.display='none';
-    document.querySelector('.page-hero').style.display='none';
-    document.getElementById('success').classList.add('show');
-    window.scrollTo({top:0,behavior:'smooth'});
+    const val = id => { const el = document.getElementById(id); return el ? el.value.trim() : ''; };
+    const useRadio = document.querySelector('input[name="use"]:checked');
+    let use = useRadio ? useRadio.value : '';
+    if (use === 'other') use = 'Other: ' + val('use-other');
+    const addons = Object.values(S.addons).map(a => a.name).join(', ') || 'None';
+
+    // Lead capture only: selections, not a price. The price is agreed on the call.
+    const payload = {
+      _subject: 'New Tündük configurator request (' + ref + ')',
+      reference: ref,
+      name: (val('fn') + ' ' + val('ln')).trim(),
+      email: val('em'),
+      _replyto: val('em'),
+      phone: val('phone'),
+      company: val('company'),
+      website: val('website'),
+      tier: S.tierName || 'Not selected',
+      size: S.sizeName || 'Not selected',
+      addons: addons,
+      quantity: String(S.qty),
+      intended_use: use || 'Not specified',
+      destination: val('dest-sel') || S.dest || 'Not specified',
+      timeline: val('timeline-sel'),
+      best_time_to_call: val('besttime'),
+      message: val('message')
+    };
+
+    if (errEl) errEl.style.display = 'none';
+    const originalLabel = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    try {
+      const res = await fetch('https://formspree.io/f/xjgdvpkg', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('send failed: ' + res.status);
+      // Show success only after a confirmed send.
+      document.getElementById('success-ref').textContent = 'Reference: ' + ref;
+      document.querySelector('.config-main').style.display = 'none';
+      document.querySelector('.stepper').style.display = 'none';
+      document.querySelector('.page-hero').style.display = 'none';
+      document.getElementById('success').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+      btn.disabled = false;
+      btn.textContent = originalLabel;
+      if (errEl) {
+        errEl.innerHTML = 'Something went wrong sending your request. Please email us at <a href="mailto:trade@tunduk.trade">trade@tunduk.trade</a> and we will pick it up straight away.';
+        errEl.style.display = 'block';
+      }
+    }
   }
 
     // ── Helpers ──

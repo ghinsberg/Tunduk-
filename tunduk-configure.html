@@ -661,9 +661,6 @@
   // ── Tier ──
   function selectTier(id, name, kyrgyz) {
     S.tier=id; S.tierName=name; S.tierKyrgyz=kyrgyz;
-    ['tier-trad','tier-export','tier-bespoke'].forEach(c => document.getElementById(c).classList.remove('selected'));
-    document.getElementById('tier-'+id.split('')[0]+(id==='traditional'?'rad':id==='export'?'xport':'espoke').replace('x','').replace('e','')).classList.add('selected');
-    // simpler id mapping:
     const map = {traditional:'tier-trad', export:'tier-export', bespoke:'tier-bespoke'};
     Object.values(map).forEach(v => document.getElementById(v).classList.remove('selected'));
     document.getElementById(map[id]).classList.add('selected');

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>Order Confirmed · Tündük</title>
+  <meta name="description" content="Your deposit is in and your Boz Üy is about to be made by hand. Here is what happens next.">
+  <link rel="canonical" href="https://tunduk.trade/tunduk-order-confirmed">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#E8E0D1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Archivo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --parchment:#E8E0D1; --white:#FAF7F0; --ink:#1A1410; --ink-mid:#4A3728; --ink-soft:#8A7060;
+      --oxblood:#66442C; --oxblood-h:#7E5638; --gold:#C4923A;
+      --line:rgba(102,68,44,.22); --line-ink:rgba(250,247,240,.16);
+      --font-h:'Playfair Display',Georgia,serif; --font-l:'Archivo',sans-serif; --font-b:'Cormorant Garamond',Georgia,serif;
+      --max:1320px; --gutter:clamp(1.5rem,5vw,5.5rem);
+    }
+    html { scroll-behavior:smooth; font-size:16px; }
+    body { font-family:var(--font-b); background:var(--parchment); color:var(--ink); line-height:1.6; overflow-x:hidden; position:relative; min-height:100vh; display:flex; flex-direction:column; }
+    body::before { content:''; position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.5; mix-blend-mode:multiply;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E"); }
+    a { text-decoration:none; color:inherit; }
+    section, nav, footer, header, main { position:relative; z-index:2; }
+    nav { padding:0 var(--gutter); height:70px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line); }
+    .nav-logo { display:flex; align-items:center; gap:.6rem; }
+    .nav-logo svg { width:26px; height:26px; color:var(--ink); }
+    .nav-logo-word { font-family:var(--font-h); font-size:1.4rem; font-weight:700; letter-spacing:.04em; color:var(--ink); }
+
+    main { flex:1; max-width:720px; margin:0 auto; width:100%; padding:clamp(3rem,8vw,6rem) var(--gutter) 4rem; }
+    .oc-seal { width:64px; height:64px; border-radius:50%; background:var(--oxblood); display:flex; align-items:center; justify-content:center; margin-bottom:2rem; }
+    .oc-seal svg { width:30px; height:30px; color:var(--white); }
+    .oc-eyebrow { font-family:var(--font-l); font-weight:600; font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:var(--oxblood); margin-bottom:1rem; }
+    h1 { font-family:var(--font-h); font-weight:800; font-size:clamp(2.2rem,5vw,3.4rem); line-height:1.05; letter-spacing:-.015em; color:var(--ink); }
+    h1 em { font-style:italic; color:var(--oxblood); }
+    .oc-ref { margin-top:1.2rem; font-family:var(--font-l); font-size:.78rem; letter-spacing:.1em; color:var(--ink-soft); }
+    .oc-ref strong { color:var(--oxblood); }
+    .oc-lead { font-size:1.2rem; line-height:1.7; color:var(--ink-mid); margin-top:1.6rem; }
+    .oc-steps { margin:2.6rem 0 0; list-style:none; }
+    .oc-step { display:grid; grid-template-columns:auto 1fr; gap:1.2rem; padding:1.4rem 0; border-top:1px solid var(--line); }
+    .oc-step:last-child { border-bottom:1px solid var(--line); }
+    .oc-step-n { font-family:var(--font-h); font-style:italic; font-weight:600; font-size:1.4rem; color:var(--gold); line-height:1; }
+    .oc-step h2 { font-family:var(--font-h); font-weight:700; font-size:1.25rem; color:var(--ink); margin-bottom:.35rem; }
+    .oc-step p { font-size:1.08rem; line-height:1.65; color:var(--ink-mid); }
+    .oc-foot { margin-top:2.4rem; font-size:1.05rem; line-height:1.7; color:var(--ink-mid); }
+    .oc-foot a { color:var(--oxblood); border-bottom:1px solid var(--line); padding-bottom:1px; }
+    .oc-cta { margin-top:2.4rem; display:inline-block; font-family:var(--font-l); font-size:.72rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--white); background:var(--oxblood); padding:1rem 1.9rem; }
+    footer { border-top:1px solid var(--line); padding:1.8rem var(--gutter); text-align:center; }
+    .ft-copy { font-family:var(--font-l); font-size:.68rem; letter-spacing:.06em; color:var(--ink-soft); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg viewBox="0 0 80 80" fill="none">
+      <circle cx="40" cy="40" r="34" stroke="currentColor" stroke-width="2"/>
+      <circle cx="40" cy="40" r="10" stroke="currentColor" stroke-width="1.5"/>
+      <line x1="50" y1="40" x2="74" y2="40" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="40" y1="50" x2="40" y2="74" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="30" y1="40" x2="6" y2="40" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="40" y1="30" x2="40" y2="6" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="48.66" y1="35" x2="69.44" y2="23" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="31.34" y1="35" x2="10.56" y2="23" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="48.66" y1="45" x2="69.44" y2="57" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="31.34" y1="45" x2="10.56" y2="57" stroke="currentColor" stroke-width="1.2"/>
+    </svg>
+    <span class="nav-logo-word">Tündük</span>
+  </a>
+</nav>
+
+<main>
+  <div class="oc-seal">
+    <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 14 11 20 23 8"/></svg>
+  </div>
+  <p class="oc-eyebrow">Deposit received</p>
+  <h1>Your Boz Üy <em>begins now.</em></h1>
+  <p class="oc-ref" id="oc-ref" style="display:none">Order reference: <strong id="oc-ref-val"></strong></p>
+  <p class="oc-lead">Thank you. Your deposit is in, and Adylet begins your Boz Üy this week, by hand, in Kyzyl-Tuu. Here is what happens next.</p>
+
+  <ol class="oc-steps">
+    <li class="oc-step"><div class="oc-step-n">1</div><div>
+      <h2>The maker starts</h2>
+      <p>Adylet and his family workshop begin your frame the week the deposit is confirmed. The willow is steam-bent, the felt is rolled, the joinery is tied in rawhide.</p>
+    </div></li>
+    <li class="oc-step"><div class="oc-step-n">2</div><div>
+      <h2>You see the frame</h2>
+      <p>We send you photographs once the frame is done, so you can watch your Boz Üy take shape.</p>
+    </div></li>
+    <li class="oc-step"><div class="oc-step-n">3</div><div>
+      <h2>You approve the video</h2>
+      <p>Before anything ships, you get a full video walkthrough of your finished Boz Üy, every component named, every measurement confirmed. The balance is due only after you approve it, as a separate Stripe invoice.</p>
+    </div></li>
+    <li class="oc-step"><div class="oc-step-n">4</div><div>
+      <h2>It travels to you</h2>
+      <p>We handle freight, customs and the export paperwork, and it arrives at your door. Shipping and duties are as set out in your quote.</p>
+    </div></li>
+  </ol>
+
+  <p class="oc-foot">A copy of this is on its way to your email. Questions at any point, write to <a href="mailto:trade@tunduk.trade">trade@tunduk.trade</a> and a person answers. The full detail of how your order is protected is in <a href="tunduk-promise.html">The Tündük Promise</a>.</p>
+
+  <a href="index.html" class="oc-cta">Back to Tündük</a>
+</main>
+
+<footer>
+  <p class="ft-copy">© 2026 Tündük. Keepers of the Boz Üy.</p>
+</footer>
+
+<script>
+  (function () {
+    try {
+      const ref = new URLSearchParams(location.search).get('ref');
+      if (ref && /^[A-Za-z0-9\-]{1,40}$/.test(ref)) {
+        document.getElementById('oc-ref-val').textContent = ref;
+        document.getElementById('oc-ref').style.display = 'block';
+      }
+    } catch (e) {}
+  })();
+</script>
+</body>
+</html>

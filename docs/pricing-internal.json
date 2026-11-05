@@ -1,0 +1,23 @@
+{
+  "_comment": "INTERNAL reference prices. NOT deployed (docs/ is held out of the Cloudflare Pages deploy) and never shown on the site. These are Yossi's single source of truth for the numbers to quote on a call. Values carried over exactly from the old inline configurator as of 2026-11-02; update them here. The site itself contains no prices. The Stripe deposit is computed from the AGREED total entered after the call, not from this file.",
+  "currency": "USD",
+  "depositPercent": 50,
+  "quoteValidDays": 14,
+  "tiers": {
+    "traditional": { "label": "Boz Üy (Traditional)", "base": 6000 },
+    "export": { "label": "Export Suite", "base": 8000 },
+    "bespoke": { "label": "Bespoke", "base": 12000 }
+  },
+  "sizePremiums": {
+    "5m": 0,
+    "6m": 1200,
+    "7m": 2800,
+    "8m": 4800,
+    "10m": "quote",
+    "11-12m": "quote"
+  },
+  "addons": {
+    "rain_cover": { "label": "Breathable Rain Cover", "price": 650 },
+    "enhanced_insulation": { "label": "Enhanced Insulation Layer", "price": 480 }
+  }
+}

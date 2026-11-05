@@ -1,0 +1,6 @@
+{
+  "_comment": "PUBLIC terms only. No product prices live here or anywhere on the served site: prices are agreed on the video call. The actual reference prices are kept internally in docs/pricing-internal.json, which is not deployed. depositPercent and quoteValidDays are stated openly on the Promise and Terms pages, so they are safe to serve; the Stripe deposit function reads depositPercent from here.",
+  "currency": "USD",
+  "depositPercent": 50,
+  "quoteValidDays": 14
+}

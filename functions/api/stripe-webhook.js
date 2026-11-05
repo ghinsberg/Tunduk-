@@ -22,28 +22,44 @@ export async function onRequestPost(context) {
   let event;
   try { event = JSON.parse(payload); } catch { return new Response("Bad payload", { status: 400 }); }
 
-  if (event.type === "checkout.session.completed") {
+  // checkout.session.completed can fire before an async payment settles, so only
+  // treat money as received when payment_status is "paid". Async methods confirm via
+  // checkout.session.async_payment_succeeded / _failed.
+  const sessionEvents = [
+    "checkout.session.completed",
+    "checkout.session.async_payment_succeeded",
+    "checkout.session.async_payment_failed",
+  ];
+  if (sessionEvents.includes(event.type)) {
     const s = event.data.object || {};
     const m = s.metadata || {};
-    const email = s.customer_email || (s.customer_details && s.customer_details.email) || "";
-    const notify = {
-      _subject: `Tündük deposit PAID — ${m.reference || s.id}`,
-      reference: m.reference || "",
-      type: m.type || "deposit",
-      customer_email: email,
-      amount_paid_usd: ((s.amount_total || 0) / 100).toFixed(2),
-      agreed_total_usd: m.agreed_total_usd || "",
-      balance_due_usd: m.balance_due_usd || "",
-      stripe_session: s.id || ""
-    };
-    // Best-effort notification; do not fail the webhook if it hiccups.
-    context.waitUntil(
-      fetch(NOTIFY_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(notify),
-      }).catch(() => {})
-    );
+    if (m.type === "deposit") {
+      const failed = event.type === "checkout.session.async_payment_failed";
+      const paid = !failed && s.payment_status === "paid";
+      if (paid || failed) {
+        const email = s.customer_email || (s.customer_details && s.customer_details.email) || "";
+        const notify = {
+          _subject: `Tündük deposit ${failed ? "FAILED" : "PAID"}: ${m.reference || s.id}`,
+          status: failed ? "failed" : "paid",
+          reference: m.reference || "",
+          type: m.type,
+          customer_email: email,
+          amount_usd: ((s.amount_total || 0) / 100).toFixed(2),
+          agreed_total_usd: m.agreed_total_usd || "",
+          balance_due_usd: m.balance_due_usd || "",
+          stripe_session: s.id || ""
+        };
+        // Best-effort notification; do not fail the webhook if it hiccups.
+        context.waitUntil(
+          fetch(NOTIFY_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(notify),
+          }).catch(() => {})
+        );
+      }
+      // completed but not yet paid (async pending): wait for the async event.
+    }
   }
 
   return new Response(JSON.stringify({ received: true }), {

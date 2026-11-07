@@ -26,6 +26,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://tunduk.trade/tunduk-promise</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tunduk.trade/tunduk-terms</loc>
+    <lastmod>2026-11-02</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://tunduk.trade/tunduk-heritage</loc>
     <lastmod>2026-10-17</lastmod>
     <priority>0.7</priority>
